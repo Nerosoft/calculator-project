@@ -233,12 +233,18 @@ void Calculator::display_result() {
                         m_result.at(m_index) = m_vec;
                         this->myInput.myResult = m_result;
                         this->addResult(this->myInput.myResult);
-                        this->myInput_edit.vec.pop_back();
                         std::string label = this->myInput.language.m_print_successfully_statement_message_confirm103;
                         int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
                         this->myInput.print_statement(label, color_label);
                         std::string index = pos;
-                        this->myInput = InputValue(&option, index, &item);//confirm
+
+
+                       this->myInput_edit.vec.pop_back();
+                       this->myInput_edit.m_operator = "";
+
+                       this->myInput = InputValue(&option, index, &item);//confirm
+                     
+
                         if (this->myInput_search.m_id == stoi(pos)) {
                             std::string key = this->myInput.language.m_input_key102;
                                 this->myInput_search = InputValue(key, false, search != "search" ? nullptr : &search);//search
