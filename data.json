@@ -1,1 +1,279 @@
-{"data":[{"eng":{"addition":{"m_input_clear":"clear","m_input_n":"n","m_input_result_table":"lee","m_input_y":"y","m_print_clear":"The opration is cleared.","m_print_error_number":"There is an error on the add screen. Please enter the number again!.","m_print_error_operator":"Error in entering addition, multiplication and division signs.","m_print_error_statement_confirm":"There was an error in the add process please review the matter.","m_print_number":"Please enter the number ? ","m_print_operator":"Please enter the opretor (+ - / * =): or help ? ","m_print_statement_confirm":"Do you agree to add the calculation or help ? ","m_print_successfully_statement_message_confirm":"The addition process was completed successfully."},"color":{"m_color_clear":"blue","m_color_data_table":"bright_cyan","m_color_data_title":"cyan","m_color_error_menu_statement":"red","m_color_error_message_user":"red","m_color_error_number":"red","m_color_error_operator":"red","m_color_error_statement_confirm":"red","m_color_help":"bright_green","m_color_menu_statement":"blue","m_color_menu_table":"green","m_color_menu_title":"cyan","m_color_number":"blue","m_color_operator":"yellow","m_color_result_table":"green","m_color_result_title":"cyan","m_color_select":"yellow_dark","m_color_statement_confirm":"blue","m_color_successfully_menu_statement":"pink_magenta","m_color_successfully_statement_confirm":"pink_magenta","m_color_successfully_statement_message_confirm":"green","m_color_sugges_table":"purple","m_color_sugges_title":"cyan"},"confirm":{"m_input_key_delete":"d","m_input_key_edit":"u","m_print_error_message_user":"There is an error confirm screen, please re-enter the command again.","m_print_message_user":"Please choose to modify the selected item or choose to delete the selected item or help ? ","m_print_successfully_statement_confirm_delete":"You have successfully finished working on the confirm program. you are now in delete program.","m_print_successfully_statement_confirm_edit":"You have successfully finished working on the confirm program. you are now in edit program."},"delete":{"m_input_n":"n","m_input_y":"y","m_print_error_message_user":"Error in deleting the correct operation to be modified.","m_print_message_user":"Please delete the correct operation to modify or help ? ","m_print_successfully_statement_message_confirm":"The delete process was completed successfully."},"dialog":{"m_input_menu_add":"add","m_input_menu_confirm":"confirm","m_input_menu_delete":"delete","m_input_menu_edit":"edit","m_input_menu_main":"main","m_input_menu_search":"search","m_menu_title_add":"Add list","m_menu_title_confirm":"Confirm list","m_menu_title_delete":"Delete list","m_menu_title_edit":"Edit list","m_menu_title_main":"Main list","m_menu_title_search":"Search list","m_print_error_menu_statement_add":"Error in the add-on list. please try again.","m_print_error_menu_statement_confirm":"Error in the confirm-on list. please try again.","m_print_error_menu_statement_delete":"Error in the delete-on list. please try again.","m_print_error_menu_statement_edit":"Error in the edit-on list. please try again.","m_print_error_menu_statement_main":"Error in the main-on list. please try again.","m_print_error_menu_statement_search":"Error in the search-on list. please try again.","m_print_menu_statement_add":"Welcome to the add list. please choose the list you want to go to ? ","m_print_menu_statement_confirm":"Welcome to the confirm list. please choose the list you want to go to ? ","m_print_menu_statement_delete":"Welcome to the delete list. please choose the list you want to go to ? ","m_print_menu_statement_edit":"Welcome to the edit list. please choose the list you want to go to ? ","m_print_menu_statement_main":"Welcome to the main list. please choose the list you want to go to ? ","m_print_menu_statement_search":"Welcome to the search list. please choose the list you want to go to ? ","m_print_screen_add":"Add program","m_print_screen_confirm":"Confirm program","m_print_screen_delete":"Delete program","m_print_screen_edit":"Edit program","m_print_screen_exit":"Exit program","m_print_screen_main":"Main program","m_print_screen_search":"Search program","m_print_successfully_menu_statement_add":"Welcome to the add screen.","m_print_successfully_menu_statement_add_screen":"You have successfully gone to the add screen.","m_print_successfully_menu_statement_confirm":"Welcome to the confirm screen.","m_print_successfully_menu_statement_confirm_screen":"You have successfully gone to the confirm screen.","m_print_successfully_menu_statement_delete":"Welcome to the delete screen.","m_print_successfully_menu_statement_delete_screen":"You have successfully gone to the delete list.","m_print_successfully_menu_statement_edit":"Welcome to the edit screen.","m_print_successfully_menu_statement_edit_screen":"You have successfully gone to the edit list.","m_print_successfully_menu_statement_main":"Welcome to the main screen.","m_print_successfully_menu_statement_main_screen":"You have successfully gone to the main screen.","m_print_successfully_menu_statement_search":"Welcome to the search screen.","m_print_successfully_menu_statement_search_screen":"You have successfully gone to the search screen."},"edit":{"m_input_clear":"clear","m_input_n":"n","m_input_result_table":"lee","m_input_y":"y","m_print_clear":"The opration is cleared.","m_print_error_number":"There is an error on the edit screen. please enter the new number again!.","m_print_error_operator":"Error in entering addition, multiplication and division signs in edit screen.","m_print_error_statement_confirm":"There was an error in the update process please review the matter.","m_print_number":"Please enter the new number ? ","m_print_operator":"Please enter the new opretor(+ - / * =): or help ? ","m_print_statement_confirm":"Do you agree to update the calculation or help ? ","m_print_successfully_statement_message_confirm":"The update process was completed successfully."},"help":{"m_input_help_add":"help","m_input_help_confirm":"help","m_input_help_delete":"help","m_input_help_edit":"help","m_input_help_main":"help","m_input_help_search":"help","m_print_help_add":"The addition screen allows you to perform new calculations, which are then recorded in the calculations table.","m_print_help_confirm":"The confirmation screen allows you to confirm the order to modify this calculation or the order to delete this calculation.","m_print_help_delete":"The delete screen allows you to delete the calculation from the calculations table.","m_print_help_edit":"The modification screen allows you to modify calculations that you have previously registered and that are already in the calculations table.","m_print_help_main":"The Choose Calculations screen allows you to select a calculation by the location of the calculation in the table.","m_print_help_search":"The search screen allows you to search for precalculations that already exist in the calculations table."},"main":{"m_input_key_add":"a","m_input_key_search":"s","m_print_error_message_user":"Error in selecting the correct operation to be modified.","m_print_message_user":"Please select the correct operation to modify or help ? ","m_print_successfully_statement_confirm_add":"You have successfully finished working on the main program. you are now in add program.","m_print_successfully_statement_confirm_search":"You have successfully finished working on the main program. you are now in search program.","m_print_successfully_statement_message_confirm":"The select process was completed successfully."},"search":{"m_input_clear":"clear","m_input_n":"n","m_input_result_table":"lee","m_input_y":"y","m_print_clear":"The opration is cleared.","m_print_error_number":"There is an error on the search screen. please enter the number again!.","m_print_error_operator":"Error in entering addition, multiplication and division signs in search screen.","m_print_error_statement_confirm":"There was an error in the search process please review the matter.","m_print_number":"Please enter the number you are looking for ? ","m_print_operator":"Please enter the opretor you are looking for (+ - / * =): or help ? ","m_print_statement_confirm":"Do you agree to delete and edit the calculation or help ? ","m_print_successfully_statement_message_confirm":"The search process was completed successfully."},"tables":{"m_address":"address","m_app":"app","m_app_address":"app address","m_center_label":true,"m_data_fill":"","m_data_space":2,"m_data_title":"Data entry table","m_heddin_data_address":"on","m_heddin_data_result":"on","m_heddin_menu_address":"on","m_heddin_result":"on","m_heddin_result_address":"on","m_heddin_sugges_address":"on","m_heddin_sugges_result":"on","m_interrogative":"!?","m_mark":"operator","m_menu_space":2,"m_result_fill":"###","m_result_space":2,"m_result_table_suggestion":"Suggestion table","m_result_title":"Results table","m_sugges_fill":"###","m_sugges_space":2,"m_total":"total","m_type_table_operator":"onf","m_value":"value","m_value_result":"#?"}},"result":[[{"m_operator":"+","m_result":"803.000000","m_var1":"1"},{"m_operator":"+","m_result":"","m_var1":"1"},{"m_operator":"+","m_result":"","m_var1":"213"},{"m_operator":"+","m_result":"","m_var1":"1"},{"m_operator":"+","m_result":"","m_var1":"1"},{"m_operator":"+","m_result":"","m_var1":"1"},{"m_operator":"+","m_result":"","m_var1":"1"},{"m_operator":"-","m_result":"","m_var1":"200"},{"m_operator":"+","m_result":"","m_var1":"19"},{"m_operator":"+","m_result":"","m_var1":"100"},{"m_operator":"+","m_result":"","m_var1":"100"},{"m_operator":"+","m_result":"","m_var1":"1"},{"m_operator":"+","m_result":"","m_var1":"1"},{"m_operator":"+","m_result":"","m_var1":"200"},{"m_operator":"","m_result":"","m_var1":"1"}],[{"m_operator":"+","m_result":"2.000000","m_var1":"1"},{"m_operator":"","m_result":"","m_var1":"1"}],[{"m_operator":"+","m_result":"2.000000","m_var1":"1"},{"m_operator":"","m_result":"","m_var1":"1"}],[{"m_operator":"+","m_result":"232.000000","m_var1":"1"},{"m_operator":"","m_result":"","m_var1":"231"}],[{"m_operator":"+","m_result":"100.000000","m_var1":"1"},{"m_operator":"","m_result":"","m_var1":"99"}],[{"m_operator":"/","m_result":"1.000000","m_var1":"1"},{"m_operator":"","m_result":"","m_var1":"1"}],[{"m_operator":"*","m_result":"12.000000","m_var1":"2"},{"m_operator":"","m_result":"","m_var1":"6"}]]}],"m_application":"","m_index":0,"m_name":""}
+{
+  "data": [
+    {
+      "eng": {
+        "addition": {
+          "m_input_clear": "clear",
+          "m_input_n": "n",
+          "m_input_result_table": "lee",
+          "m_input_y": "y",
+          "m_print_clear": "The opration is cleared.",
+          "m_print_error_number": "There is an error on the add screen. Please enter the number again!.",
+          "m_print_error_operator": "Error in entering addition, multiplication and division signs.",
+          "m_print_error_statement_confirm": "There was an error in the add process please review the matter.",
+          "m_print_number": "Please enter the number ? ",
+          "m_print_operator": "Please enter the opretor (+ - / * =): or help ? ",
+          "m_print_statement_confirm": "Do you agree to add the calculation or help ? ",
+          "m_print_successfully_statement_message_confirm": "The addition process was completed successfully."
+        },
+        "color": {
+          "m_color_clear": "blue",
+          "m_color_data_table": "bright_cyan",
+          "m_color_data_title": "cyan",
+          "m_color_error_menu_statement": "red",
+          "m_color_error_message_user": "red",
+          "m_color_error_number": "red",
+          "m_color_error_operator": "red",
+          "m_color_error_statement_confirm": "red",
+          "m_color_help": "bright_green",
+          "m_color_menu_statement": "blue",
+          "m_color_menu_table": "green",
+          "m_color_menu_title": "cyan",
+          "m_color_number": "blue",
+          "m_color_operator": "yellow",
+          "m_color_result_table": "green",
+          "m_color_result_title": "cyan",
+          "m_color_select": "yellow_dark",
+          "m_color_statement_confirm": "blue",
+          "m_color_successfully_menu_statement": "pink_magenta",
+          "m_color_successfully_statement_confirm": "pink_magenta",
+          "m_color_successfully_statement_message_confirm": "green",
+          "m_color_sugges_table": "purple",
+          "m_color_sugges_title": "cyan"
+        },
+        "confirm": {
+          "m_input_key_delete": "d",
+          "m_input_key_edit": "u",
+          "m_print_error_message_user": "There is an error confirm screen, please re-enter the command again.",
+          "m_print_message_user": "Please choose to modify the selected item or choose to delete the selected item or help ? ",
+          "m_print_successfully_statement_confirm_delete": "You have successfully finished working on the confirm program. you are now in delete program.",
+          "m_print_successfully_statement_confirm_edit": "You have successfully finished working on the confirm program. you are now in edit program."
+        },
+        "delete": {
+          "m_input_n": "n",
+          "m_input_y": "y",
+          "m_print_error_message_user": "Error in deleting the correct operation to be modified.",
+          "m_print_message_user": "Please delete the correct operation to modify or help ? ",
+          "m_print_successfully_statement_message_confirm": "The delete process was completed successfully."
+        },
+        "dialog": {
+          "m_input_menu_add": "add",
+          "m_input_menu_confirm": "confirm",
+          "m_input_menu_delete": "delete",
+          "m_input_menu_edit": "edit",
+          "m_input_menu_main": "main",
+          "m_input_menu_search": "search",
+          "m_menu_title_add": "Add list",
+          "m_menu_title_confirm": "Confirm list",
+          "m_menu_title_delete": "Delete list",
+          "m_menu_title_edit": "Edit list",
+          "m_menu_title_main": "Main list",
+          "m_menu_title_search": "Search list",
+          "m_print_error_menu_statement_add": "Error in the add-on list. please try again.",
+          "m_print_error_menu_statement_confirm": "Error in the confirm-on list. please try again.",
+          "m_print_error_menu_statement_delete": "Error in the delete-on list. please try again.",
+          "m_print_error_menu_statement_edit": "Error in the edit-on list. please try again.",
+          "m_print_error_menu_statement_main": "Error in the main-on list. please try again.",
+          "m_print_error_menu_statement_search": "Error in the search-on list. please try again.",
+          "m_print_menu_statement_add": "Welcome to the add list. please choose the list you want to go to ? ",
+          "m_print_menu_statement_confirm": "Welcome to the confirm list. please choose the list you want to go to ? ",
+          "m_print_menu_statement_delete": "Welcome to the delete list. please choose the list you want to go to ? ",
+          "m_print_menu_statement_edit": "Welcome to the edit list. please choose the list you want to go to ? ",
+          "m_print_menu_statement_main": "Welcome to the main list. please choose the list you want to go to ? ",
+          "m_print_menu_statement_search": "Welcome to the search list. please choose the list you want to go to ? ",
+          "m_print_screen_add": "Add program",
+          "m_print_screen_confirm": "Confirm program",
+          "m_print_screen_delete": "Delete program",
+          "m_print_screen_edit": "Edit program",
+          "m_print_screen_exit": "Exit program",
+          "m_print_screen_main": "Main program",
+          "m_print_screen_search": "Search program",
+          "m_print_successfully_menu_statement_add": "Welcome to the add screen.",
+          "m_print_successfully_menu_statement_add_screen": "You have successfully gone to the add screen.",
+          "m_print_successfully_menu_statement_confirm": "Welcome to the confirm screen.",
+          "m_print_successfully_menu_statement_confirm_screen": "You have successfully gone to the confirm screen.",
+          "m_print_successfully_menu_statement_delete": "Welcome to the delete screen.",
+          "m_print_successfully_menu_statement_delete_screen": "You have successfully gone to the delete list.",
+          "m_print_successfully_menu_statement_edit": "Welcome to the edit screen.",
+          "m_print_successfully_menu_statement_edit_screen": "You have successfully gone to the edit list.",
+          "m_print_successfully_menu_statement_main": "Welcome to the main screen.",
+          "m_print_successfully_menu_statement_main_screen": "You have successfully gone to the main screen.",
+          "m_print_successfully_menu_statement_search": "Welcome to the search screen.",
+          "m_print_successfully_menu_statement_search_screen": "You have successfully gone to the search screen."
+        },
+        "edit": {
+          "m_input_clear": "clear",
+          "m_input_n": "n",
+          "m_input_result_table": "lee",
+          "m_input_y": "y",
+          "m_print_clear": "The opration is cleared.",
+          "m_print_error_number": "There is an error on the edit screen. please enter the new number again!.",
+          "m_print_error_operator": "Error in entering addition, multiplication and division signs in edit screen.",
+          "m_print_error_statement_confirm": "There was an error in the update process please review the matter.",
+          "m_print_number": "Please enter the new number ? ",
+          "m_print_operator": "Please enter the new opretor(+ - / * =): or help ? ",
+          "m_print_statement_confirm": "Do you agree to update the calculation or help ? ",
+          "m_print_successfully_statement_message_confirm": "The update process was completed successfully."
+        },
+        "help": {
+          "m_input_help_add": "help",
+          "m_input_help_confirm": "help",
+          "m_input_help_delete": "help",
+          "m_input_help_edit": "help",
+          "m_input_help_main": "help",
+          "m_input_help_search": "help",
+          "m_print_help_add": "The addition screen allows you to perform new calculations, which are then recorded in the calculations table.",
+          "m_print_help_confirm": "The confirmation screen allows you to confirm the order to modify this calculation or the order to delete this calculation.",
+          "m_print_help_delete": "The delete screen allows you to delete the calculation from the calculations table.",
+          "m_print_help_edit": "The modification screen allows you to modify calculations that you have previously registered and that are already in the calculations table.",
+          "m_print_help_main": "The Choose Calculations screen allows you to select a calculation by the location of the calculation in the table.",
+          "m_print_help_search": "The search screen allows you to search for precalculations that already exist in the calculations table."
+        },
+        "main": {
+          "m_input_key_add": "a",
+          "m_input_key_search": "s",
+          "m_print_error_message_user": "Error in selecting the correct operation to be modified.",
+          "m_print_message_user": "Please select the correct operation to modify or help ? ",
+          "m_print_successfully_statement_confirm_add": "You have successfully finished working on the main program. you are now in add program.",
+          "m_print_successfully_statement_confirm_search": "You have successfully finished working on the main program. you are now in search program.",
+          "m_print_successfully_statement_message_confirm": "The select process was completed successfully."
+        },
+        "search": {
+          "m_input_clear": "clear",
+          "m_input_n": "n",
+          "m_input_result_table": "lee",
+          "m_input_y": "y",
+          "m_print_clear": "The opration is cleared.",
+          "m_print_error_number": "There is an error on the search screen. please enter the number again!.",
+          "m_print_error_operator": "Error in entering addition, multiplication and division signs in search screen.",
+          "m_print_error_statement_confirm": "There was an error in the search process please review the matter.",
+          "m_print_number": "Please enter the number you are looking for ? ",
+          "m_print_operator": "Please enter the opretor you are looking for (+ - / * =): or help ? ",
+          "m_print_statement_confirm": "Do you agree to delete and edit the calculation or help ? ",
+          "m_print_successfully_statement_message_confirm": "The search process was completed successfully."
+        },
+        "tables": {
+          "m_address": "address",
+          "m_app": "app",
+          "m_app_address": "app address",
+          "m_center_label": true,
+          "m_data_fill": "",
+          "m_data_space": 2,
+          "m_data_title": "Data entry table",
+          "m_heddin_data_address": "on",
+          "m_heddin_data_result": "on",
+          "m_heddin_menu_address": "on",
+          "m_heddin_result": "on",
+          "m_heddin_result_address": "on",
+          "m_heddin_sugges_address": "on",
+          "m_heddin_sugges_result": "on",
+          "m_interrogative": "!?",
+          "m_mark": "operator",
+          "m_menu_space": 2,
+          "m_result_fill": "###",
+          "m_result_space": 2,
+          "m_result_table_suggestion": "Suggestion table",
+          "m_result_title": "Results table",
+          "m_sugges_fill": "###",
+          "m_sugges_space": 2,
+          "m_total": "total",
+          "m_type_table_operator": "on",
+          "m_value": "value",
+          "m_value_result": "#?"
+        }
+      },
+      "result": [
+        [
+          {
+            "m_operator": "+",
+            "m_result": "2.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "2.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "433.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "231"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "200"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "11.000000",
+            "m_var1": "44"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "4"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "122123.000000",
+            "m_var1": "88"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "8"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "122112"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "11.000000",
+            "m_var1": "88"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "8"
+          }
+        ]
+      ]
+    }
+  ],
+  "m_application": "",
+  "m_index": 0,
+  "m_name": ""
+}
