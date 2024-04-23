@@ -32,7 +32,6 @@ public:
 
     std::string  m_heddin_data_result;
     std::string  m_heddin_data_address;
-    std::string  m_data_fill;
     int  m_data_space;
     std::string m_interrogative;
     std::string m_value_result;
@@ -69,7 +68,6 @@ public:
 
         m_heddin_data_result,
         m_heddin_data_address,
-        m_data_fill,
         m_data_space,
         m_interrogative,
         m_value_result,
