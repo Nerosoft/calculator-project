@@ -861,7 +861,6 @@ private:
 
         this->m_heddin_data_result = table.m_heddin_data_result;
         this->m_heddin_data_address = table.m_heddin_data_address;
-        this->m_data_fill = table.m_data_fill;
         this->m_data_space = table.m_data_space;
         this->m_interrogative = table.m_interrogative;
         this->m_value_result = table.m_value_result;
