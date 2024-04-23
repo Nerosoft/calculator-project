@@ -733,10 +733,18 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
 
 void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table_jop = "", std::string label = "") {
     std::vector<std::string> array1;
-    int space = this->language.m_result_space;
-    std::string fill = this->language.m_result_fill;
-    bool heddinIndex = this->language.m_heddin_result_address != "on" ? false : true;
-    bool heddinResult = this->language.m_heddin_result != "on" ? false : true;
+    int space = table_jop != "" ? this->language.m_result_space : this->language.m_sugges_space;
+    std::string fill = table_jop != "" ? this->language.m_result_fill : this->language.m_sugges_fill;
+    bool heddinIndex, heddinResult;
+    if (table_jop != "") {
+        heddinIndex = this->language.m_heddin_result_address != "on" ? false : true;
+        heddinResult = this->language.m_heddin_result != "on" ? false : true;
+    }
+    else {
+        heddinIndex = this->language.m_heddin_sugges_address != "on" ? false : true;
+        heddinResult = this->language.m_heddin_sugges_result != "on" ? false : true;
+    }
+   
     int sizeOfResult = 0, sizeOfIndex = 0;
     std::vector<std::vector<Input>> temp;
     int sizeOfHed = 0;
@@ -867,7 +875,7 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
             if (temp.at(y).size() < this->myResult.at(sizeOfHed).size()) {
                 int mySize = this->myResult.at(sizeOfHed).size() - temp.at(y).size();
                 for (int ii = 0; ii < mySize; ii++) {
-                    temp.at(y).push_back(Input(fill, "", fill, ""));
+                    temp.at(y).push_back(Input(fill, fill, ""));
                 }
             }
             for (int a = 0; a < temp.at(y).size(); a++)
@@ -1326,7 +1334,7 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
             if (temp.at(y).size() < this->myResult.at(sizeOfHed).size()) {
                 int mySize = this->myResult.at(sizeOfHed).size() - temp.at(y).size();
                 for (int ii = 0; ii < mySize; ii++) {
-                    temp.at(y).push_back(Input(fill, "", "", ""));
+                    temp.at(y).push_back(Input(fill, fill, ""));
                 }
             }
             for (int a = 0; a < temp.at(y).size(); a++)
@@ -1736,3 +1744,18 @@ bool Tables::get_star(std::string label, std::string my_line, int title) {
     return label.length() < title ?
         ((my_line.length() - (mySpace * 2)) - label.length()) % 2 == 1 : true;
 }
+
+
+
+
+
+
+
+
+
+/*
+
+"---------------+------------+"
+"+---------+------------+-----"
+
+*/
