@@ -157,7 +157,6 @@
           "m_app": "app",
           "m_app_address": "app address",
           "m_center_label": true,
-          "m_data_fill": "",
           "m_data_space": 2,
           "m_data_title": "Data entry table",
           "m_heddin_data_address": "on",
@@ -185,38 +184,14 @@
       "result": [
         [
           {
-            "m_operator": "+",
-            "m_result": "2.000000",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "1"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "2.000000",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "1"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "433.000000",
+            "m_operator": "/",
+            "m_result": "202.000000",
             "m_var1": "1"
           },
           {
             "m_operator": "+",
             "m_result": "",
-            "m_var1": "231"
+            "m_var1": "1"
           },
           {
             "m_operator": "+",
@@ -232,42 +207,329 @@
         [
           {
             "m_operator": "/",
-            "m_result": "11.000000",
-            "m_var1": "44"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "4"
-          }
-        ],
-        [
-          {
-            "m_operator": "/",
-            "m_result": "122123.000000",
-            "m_var1": "88"
+            "m_result": "12.000000",
+            "m_var1": "22"
           },
           {
             "m_operator": "+",
             "m_result": "",
-            "m_var1": "8"
+            "m_var1": "2"
           },
           {
             "m_operator": "",
             "m_result": "",
-            "m_var1": "122112"
+            "m_var1": "1"
           }
         ],
         [
           {
             "m_operator": "/",
-            "m_result": "11.000000",
-            "m_var1": "88"
+            "m_result": "13.000000",
+            "m_var1": "33"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "3"
           },
           {
             "m_operator": "",
             "m_result": "",
-            "m_var1": "8"
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "7.000000",
+            "m_var1": "12"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "22.181818",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "11"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "22"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "5.500000",
+            "m_var1": "77"
+          },
+          {
+            "m_operator": "/",
+            "m_result": "",
+            "m_var1": "7"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "24.000000",
+            "m_var1": "66"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "6"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "5.500000",
+            "m_var1": "11"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "3.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "70.000000",
+            "m_var1": "20"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "50"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "-1.000000",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "-",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "8.200000",
+            "m_var1": "21"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "5"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "34.000000",
+            "m_var1": "34"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "119.000000",
+            "m_var1": "98"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "22"
+          }
+        ],
+        [
+          {
+            "m_operator": "/",
+            "m_result": "25.363636",
+            "m_var1": "78"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "33"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "22"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "4.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "42.000000",
+            "m_var1": "22"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "*",
+            "m_result": "1.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "0.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "2.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
           }
         ]
       ]
