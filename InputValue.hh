@@ -158,7 +158,6 @@ public:
     std::string searchItem(int id);
     std::vector<Input> search_by_id(int id);
     std::string check_vec(std::vector<Input> vec);
-    std::string check_vec2(std::vector<Input> vec);
     std::string add_search_ubdate(std::string value);
 
     void print_statement(std::string word, int color);
@@ -359,24 +358,7 @@ std::string InputValue::check_vec(std::vector<Input> vec) {
     return  this->m_id != 0 ? std::to_string(this->m_id) : this->language.m_interrogative;
 }
 
-std::string InputValue::check_vec2(std::vector<Input> vec) {
-    std::string var1 = "", var2 = "";
-    int m_index = -1;
-    for (int y = 0; y < vec.size(); y++) {
-        var1 += vec.at(y).m_var1;
-        var1 += vec.at(y).m_operator;
-    }
-    for (int i = 0; i < this->myResult.size(); i++) {
-        std::vector<Input> m_vec = this->myResult.at(i);
-        var2 = "";
-        for (int z = 0; z < m_vec.size(); z++) {
-            var2 += m_vec.at(z).m_var1;
-            var2 += m_vec.at(z).m_operator;
-        }
-        if (var1 == var2)
-            return std::to_string(this->m_id);
-    }
-}
+
 
 std::string InputValue::add_search_ubdate(std::string value) {
     if (value == this->language.get_m_input_menu(this->m_input_valid))
@@ -419,7 +401,7 @@ std::string InputValue::add_search_ubdate(std::string value) {
                 if (this->myResult.size() != 0)
                     this->show_result_with_operator(&vec);
                 std::string label = this->language.get_m_print_operator(this->m_input_valid);
-                this->tableResult77(vec, this->m_input_valid != InputValid::input_mark_search ? this->m_index : check_vec2(vec), label);
+                this->tableResult77(vec, this->m_input_valid != InputValid::input_mark_search ? this->m_index : std::to_string(this->m_id), label);
                 this->m_var1 = vec.at(vec.size() - 1).m_var1;
                 vec.pop_back();
             }
@@ -486,7 +468,7 @@ std::string InputValue::add_search_ubdate(std::string value) {
             if (this->myResult.size() != 0)
                 this->show_result_with_operator(&vec);
             std::string label = this->language.get_m_print_operator(this->m_input_valid);
-            this->tableResult77(vec, this->m_input_valid != InputValid::input_mark_search ? this->m_index : check_vec2(vec), label);
+            this->tableResult77(vec, this->m_input_valid != InputValid::input_mark_search ? this->m_index : std::to_string(this->m_id), label);
             this->m_var1 = vec.at(vec.size() - 1).m_var1;
             vec.pop_back();
             test = "+";
