@@ -71,14 +71,13 @@ void Calculator::display_result() {
                 this->isValidInt22(MenuEdit::search, &search);
             else {
                 int id = stoi(search);
-                this->myInput.searchItem(id);
-                std::vector<Input>vec = this->myInput.vec;
+                std::vector<Input>vec = this->myInput.search_by_id(id);
                 std::string label = this->myInput.language.m_print_statement_confirm102;
                 int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
                 this->myInput.tableResult77(vec, search, label);
                 this->myInput.print_statement(label, color_label, &search);
                 if (isValidInt22(MenuEdit::message101, &search)) {
-                    this->myInput_search.vec.pop_back();
+                    //this->myInput_search.vec.pop_back();
                     std::string label = this->myInput.language.m_print_successfully_statement_message_confirm102;
                     int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
@@ -98,9 +97,8 @@ void Calculator::display_result() {
                         this->myInput = InputValue(&option, m_pos, value, m_operator, vec, test, &item);//confirm
                     }
                 }
-                else if (search != this->myInput.language.m_input_menu102) {
+                else if (search != this->myInput.language.m_input_menu102)
                     this->myInput.vec.pop_back();
-                }
             }
         }
         else if (item == this->myInput.language.m_input_key101) {//add
@@ -142,6 +140,7 @@ void Calculator::display_result() {
                 }
                 else if (add != this->myInput.language.m_input_menu101)
                     this->myInput.vec.pop_back();
+                
             }
         }
         else if (item != "") {
