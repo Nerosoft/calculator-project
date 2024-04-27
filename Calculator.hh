@@ -77,7 +77,6 @@ void Calculator::display_result() {
                 this->myInput.tableResult77(vec, search, label);
                 this->myInput.print_statement(label, color_label, &search);
                 if (isValidInt22(MenuEdit::message101, &search)) {
-                    //this->myInput_search.vec.pop_back();
                     std::string label = this->myInput.language.m_print_successfully_statement_message_confirm102;
                     int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
