@@ -7,7 +7,7 @@ public:
     std::vector<Input>vec;
     InputValid m_input_valid;
     InputValue(){}
-    //----------------------------------valid - select and menu select--------------------------------------------------------------------
+    //----------------------------------select--------------------------------------------------------------------
     InputValue(std::string* item) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
@@ -15,9 +15,6 @@ public:
             std::string label = this->language.m_print_message_user101;
             this->show_result_with_operator(nullptr, "jop1", label);
         } 
-        //*item = "" ;
-        //*option = option != nullptr ? var : *option;
-       
         if (item != nullptr)
             *item = "";
     }
@@ -25,10 +22,9 @@ public:
 
     void display_table_confirm(std::string label);
     void display_table_confirm2(std::string label);
-    //------------------------------------valid - confirm----------------------------------------------------
+    //------------------------------------confirm----------------------------------------------------
     InputValue(std::string* option, std::string pos, std::string*item) {// search and first screen and update -- item only for search
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        //this->m_input_valid = InputValid::input_mark_update_add;
         this->m_index = pos;
         std::string label = this->language.m_print_message_user102;
         this->display_table_confirm2(label);
@@ -59,7 +55,7 @@ public:
     }
     //------------------------------------end confirm--------------------------------------------------------
 
-    //----------------------------valid - add and menu add and-search-----------------------------------------------------------------------------------------
+    //----------------------------add and-search-----------------------------------------------------------------------------------------
    
     InputValue(std::string key, bool state, std::string* search) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -78,7 +74,6 @@ public:
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
         this->m_input_valid = key != this->language.m_input_key102 ? InputValid::addition : InputValid::input_mark_search;
-        //this->m_index = key != this->language.m_input_key102 ? std::to_string(this->myResult.size() + 1) : index;
         this->m_index = std::to_string(this->myResult.size() + 1);
         this->m_id = id != 0 ? id : 0;//best
         this->my_lable_space = space;
@@ -86,20 +81,11 @@ public:
         this->vec = vec;
         this->m_var1 = value;
         this->m_operator = m_operator;
-       // *item = key;
         if (item != nullptr)
             *item = key;
     }
     //-----------------------------end add--------------------------------------------------------------------------------------------------------
     
-    
-    //--------------------------------------------------------------------------------------------------------
-
-
-
-    //InputValue(){
-    //}
-   
      
     //-----------------------------delete--------------------------------------------------------------------------
     InputValue(std::string pos, std::string* option, std::string* item) {
@@ -116,7 +102,7 @@ public:
     }
     //----------------------------end-delete--------------------------------------------------------------------------
  
-    // --------------------------------------for edit----------------------------------------------------------------------  
+    // --------------------------------------edit----------------------------------------------------------------------  
     InputValue(std::string* option, std::string* item, std::string pos) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
@@ -130,7 +116,6 @@ public:
             *item = pos;
             *option = this->language.m_input_key103;
         }
-        //*option = option != nullptr ? var : *option;
     }
     InputValue(std::string pos, int space, std::string test, std::string value, std::string m_operator, std::vector<Input>vec, std::string* item, std::string* option) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -276,7 +261,7 @@ bool InputValue::isValidInt(InputValid section, std::string state, std::string* 
                 }
                 else if (i + 1 == input_value->size()) {
                     m_id = stoi(*input_value);
-                    return state != "+" ? true : false;
+                    return true;
                 }
             }
         }
@@ -310,7 +295,7 @@ bool InputValue::isValidInt(InputValid section, std::string state, std::string* 
             return false;
         }
         else if (*input_value == "+" || *input_value == "-" || *input_value == "*" || *input_value == "/")
-            return true;
+            return false;
         else {
             std::string label = this->language.get_m_print_error_operator(section);
             int color_label = this->get_color_by_name(this->language.m_color_error_operator);
@@ -425,28 +410,19 @@ std::string InputValue::add_search_ubdate(std::string value) {
         int color_label = this->get_color_by_name(this->language.m_color_operator);
         this->print_statement(label, color_label, &this->m_operator);
         bool state_validation = this->isValidInt(this->m_input_valid, test != "" ? test : "+", &this->m_operator);
-        if (vec.empty() && state_validation) {
-            vec.push_back(Input(this->m_var1, this->m_operator, this->m_result));
+        if (state_validation) {
+            this->m_var1 = this->m_operator;
+            this->searchItem();
+            std::vector<Input> v1 = vec;
+            vec.swap(v1);
             if (this->myResult.size() != 0)
                 this->show_result_with_operator(&vec);
-            std::vector<Input>myVector = vec;
-            myVector.at(myVector.size() - 1).m_operator = this->m_operator;
-            myVector.at(0).m_result = this->language.m_value_result;
-            std::string label = this->language.get_m_print_number(this->m_input_valid);
-            this->tableResult77(myVector, this->m_input_valid != InputValid::input_mark_search ? this->m_index : this->language.m_interrogative, label);
-        }
-        else if (state_validation) {
-            if(vec.at(vec.size() - 1).m_operator == "")
-                vec.at(vec.size() - 1).m_operator = this->m_operator;
-            else
-                vec.push_back(Input(this->m_var1, this->m_operator, this->m_result));
-            if (this->myResult.size() != 0)
-                this->show_result_with_operator(&vec);
-            std::vector<Input>myVector = vec;
-            myVector.at(myVector.size() - 1).m_operator = this->m_operator;
-            myVector.at(0).m_result = this->language.m_value_result;
-            std::string label = this->language.get_m_print_number(this->m_input_valid);
-            this->tableResult77(myVector, this->m_input_valid != InputValid::input_mark_search ? this->m_index : this->language.m_interrogative, label);
+            std::string label = this->language.get_m_print_operator(this->m_input_valid);
+            this->tableResult77(vec, this->m_input_valid != InputValid::input_mark_search ? this->m_index : std::to_string(this->m_id), label);
+            this->m_var1 = vec.at(vec.size() - 1).m_var1;
+            vec.pop_back();
+            test = "+";
+            continue;
         }
         else if (this->m_operator == this->language.get_m_input_menu(this->m_input_valid)) {
             this->m_operator = "";
@@ -460,19 +436,14 @@ std::string InputValue::add_search_ubdate(std::string value) {
             this->vec[0].m_result = this->getResult();
             return this->m_input_valid != InputValid::input_mark_search ? "" : std::to_string(this->m_id);
         }
-        else if (!isdigit(stoi(this->m_operator))) {
-            this->m_var1 = this->m_operator;
-            this->searchItem();
-            std::vector<Input> v1 = vec;
-            vec.swap(v1);
+        else {
+            vec.push_back(Input(this->m_var1, this->m_operator, this->m_result));
             if (this->myResult.size() != 0)
                 this->show_result_with_operator(&vec);
-            std::string label = this->language.get_m_print_operator(this->m_input_valid);
-            this->tableResult77(vec, this->m_input_valid != InputValid::input_mark_search ? this->m_index : std::to_string(this->m_id), label);
-            this->m_var1 = vec.at(vec.size() - 1).m_var1;
-            vec.pop_back();
-            test = "+";
-            continue;
+            std::vector<Input>myVector = vec;
+            myVector.at(0).m_result = this->language.m_value_result;
+            std::string label = this->language.get_m_print_number(this->m_input_valid);
+            this->tableResult77(myVector, this->m_input_valid != InputValid::input_mark_search ? this->m_index : this->language.m_interrogative, label);  
         }
 
         test = "";
