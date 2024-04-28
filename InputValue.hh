@@ -7,7 +7,7 @@ public:
     std::vector<Input>vec;
     InputValid m_input_valid;
     InputValue(){}
-    //----------------------------------select--------------------------------------------------------------------
+    //select
     InputValue(std::string* item) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
@@ -18,11 +18,11 @@ public:
         if (item != nullptr)
             *item = "";
     }
-    //----------------------------------end select----------------------------------------------------------------------------------------
+    //end select
 
     void display_table_confirm(std::string label);
     void display_table_confirm2(std::string label);
-    //------------------------------------confirm----------------------------------------------------
+    //start confirm
     InputValue(std::string* option, std::string pos, std::string*item) {// search and first screen and update -- item only for search
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->m_index = pos;
@@ -53,10 +53,9 @@ public:
         if (item != nullptr)
             *item = pos;
     }
-    //------------------------------------end confirm--------------------------------------------------------
+    //end confirm
 
-    //----------------------------add and-search-----------------------------------------------------------------------------------------
-   
+    //start add and search
     InputValue(std::string key, bool state, std::string* search) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
@@ -84,10 +83,10 @@ public:
         if (item != nullptr)
             *item = key;
     }
-    //-----------------------------end add--------------------------------------------------------------------------------------------------------
+    //end add
     
      
-    //-----------------------------delete--------------------------------------------------------------------------
+    //start delete
     InputValue(std::string pos, std::string* option, std::string* item) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
@@ -100,9 +99,9 @@ public:
             *option = this->language.m_input_key104;
         }
     }
-    //----------------------------end-delete--------------------------------------------------------------------------
+    //end delete
  
-    // --------------------------------------edit----------------------------------------------------------------------  
+    //start edit 
     InputValue(std::string* option, std::string* item, std::string pos) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
@@ -132,19 +131,20 @@ public:
             *item = pos;
         }
     }
-    //--------------------------------------end edit-----------------------------------------------------------------------
+    //end edit
    
     std::string getResult();
     std::string getResult(std::vector <Input>* vec);
 
 
-    bool isValidInt(InputValid section, std::string state, std::string* input_value);
+    bool isValidInt(std::string* input_value);
 
     std::string searchItem(int id);
     std::vector<Input> search_by_id(int id);
     std::string check_vec(std::vector<Input> vec);
     std::string add_search_ubdate(std::string value);
 
+    void set_value();
     void print_statement(std::string word, int color);
     void print_statement(std::string word, int color, std::string* input_value);
     void print_statement(std::string word, int color, int* input_value);
@@ -212,97 +212,103 @@ std::string InputValue::getResult(std::vector <Input>* vec) {// any vec
             value = std::to_string(stof(value) / stof(vec->at(i + 1).m_var1));
     return value;
 }
-
-bool InputValue::isValidInt(InputValid section, std::string state, std::string* input_value) {
+void InputValue::set_value() {
+    if (test != "")
+        this->m_operator.erase(this->m_operator.begin());
+    else
+        this->m_var1.erase(this->m_var1.begin());
+}
+bool InputValue::isValidInt(std::string* input_value) {
     while (true)
     {
-        if (*input_value == this->language.get_m_input_menu(section)) {
+        if (this->m_var1 == this->language.get_m_input_menu(this->m_input_valid) || this->m_operator == this->language.get_m_input_menu(this->m_input_valid))
             return false;
-        }
-        else if (*input_value == this->language.get_m_input_help(section)) {
-            std::string label = this->language.get_m_print_help(section);
+        else if (this->m_var1 == this->language.get_m_input_help(this->m_input_valid) || this->m_operator == this->language.get_m_input_help(this->m_input_valid)) {
+            std::string label = this->language.get_m_print_help(this->m_input_valid);
             int color_label = this->get_color_by_name(this->language.m_color_help);
             this->print_statement(label, color_label);
-            label = state != "" ? this->language.get_m_print_operator(section) : this->language.get_m_print_number(section);
-            color_label = state != "" ? this->get_color_by_name(this->language.m_color_operator) : this->get_color_by_name(this->language.m_color_number);
-            this->print_statement(label, color_label, input_value);
+            label = test != "" ? this->language.get_m_print_operator(this->m_input_valid) : this->language.get_m_print_number(this->m_input_valid);
+            color_label = test != "" ? this->get_color_by_name(this->language.m_color_operator) : this->get_color_by_name(this->language.m_color_number);
+            this->print_statement(label, color_label, test != "" ? &this->m_operator : &this->m_var1);
         }
-        else if (*input_value == this->language.get_m_input_result_table(section)) {
-            std::string label = state != "" ? this->language.get_m_print_operator(section) : this->language.get_m_print_number(section);
+        else if (this->m_var1 == this->language.get_m_input_result_table(this->m_input_valid) || this->m_operator == this->language.get_m_input_result_table(this->m_input_valid)) {
+            std::string label = test != "" ? this->language.get_m_print_operator(this->m_input_valid) : this->language.get_m_print_number(this->m_input_valid);
             this->show_result_table(label);
-            label = state != "" ? this->language.get_m_print_operator(section) : this->language.get_m_print_number(section);
-            int color_label = state != "" ? this->get_color_by_name(this->language.m_color_operator) : this->get_color_by_name(this->language.m_color_number);
-            this->print_statement(label, color_label, input_value);
+            label = test != "" ? this->language.get_m_print_operator(this->m_input_valid) : this->language.get_m_print_number(this->m_input_valid);
+            int color_label = test != "" ? this->get_color_by_name(this->language.m_color_operator) : this->get_color_by_name(this->language.m_color_number);
+            this->print_statement(label, color_label, test != "" ? &this->m_operator : &this->m_var1);
         }
-        else if (*input_value == this->language.get_m_input_clear(section)) {
+        else if (this->m_var1 == this->language.get_m_input_clear(this->m_input_valid) || this->m_operator == this->language.get_m_input_clear(this->m_input_valid)) {
             vec.clear();
-            std::string label = this->language.get_m_print_clear(section);
+            std::string label = this->language.get_m_print_clear(this->m_input_valid);
             int color_label = this->get_color_by_name(this->language.m_color_clear);
             this->print_statement(label, color_label);
-            if (state == "+") 
-                return false;
             this->m_operator = "";// for display table in confirm section when call constractor confirm and send operator
-            label = this->language.get_m_print_number(section);
+            label = this->language.get_m_print_number(this->m_input_valid);
             color_label = this->get_color_by_name(this->language.m_color_number);
-            this->print_statement(label, color_label, input_value);
+            this->print_statement(label, color_label, &this->m_var1);
+            test = "";
         }
-        else if (input_value->at(0) == '=' && input_value->size() >= 2 ) {
-            input_value->erase(input_value->begin());
-            for (int i = 0; i < input_value->size(); i++) {
-                if (input_value->length() >= MAX_SIZE_STRING || input_value->at(0) == '0' || !isdigit(input_value->at(i)) || stoi(*input_value) > this->myResult.size() || stoi(*input_value) < 1) {
-                    std::string label = state != "+" ? this->language.get_m_print_error_number(section) : this->language.get_m_print_error_operator(section);
-                    int color_label = state != "+" ? this->get_color_by_name(this->language.m_color_error_number) : this->get_color_by_name(this->language.m_color_error_operator);
+        else if (this->m_var1[0] == '=' && this->m_var1.size() >= 2 || this->m_operator[0] == '=' && this->m_operator.size() >= 2) {
+            this->set_value();
+            for (int i = 0; i < (test != "" ? this->m_operator.size() : this->m_var1.size()); i++) {
+                if (this->m_var1.length() >= MAX_SIZE_STRING || this->m_operator.length() >= MAX_SIZE_STRING
+                    || this->m_var1[0] == '0' || this->m_operator[0] == '0'
+                    || !isdigit(test != "" ? this->m_operator.at(i) : this->m_var1.at(i))
+                    || stoi(test != "" ? this->m_operator: this->m_var1) > this->myResult.size() 
+                    || stoi(test != "" ? this->m_operator: this->m_var1) < 1) {
+                    std::string label = test != "+" ? this->language.get_m_print_error_number(this->m_input_valid) : this->language.get_m_print_error_operator(this->m_input_valid);
+                    int color_label = test != "+" ? this->get_color_by_name(this->language.m_color_error_number) : this->get_color_by_name(this->language.m_color_error_operator);
                     this->print_statement(label, color_label);
                    
-                    label = state != "+" ? this->language.get_m_print_number(section) : this->language.get_m_print_operator(section);
-                    color_label = state != "+" ? this->get_color_by_name(this->language.m_color_number) : this->get_color_by_name(this->language.m_color_operator);
-                    this->print_statement(label, color_label, input_value);
+                    label = test != "+" ? this->language.get_m_print_number(this->m_input_valid) : this->language.get_m_print_operator(this->m_input_valid);
+                    color_label = test != "+" ? this->get_color_by_name(this->language.m_color_number) : this->get_color_by_name(this->language.m_color_operator);
+                    this->print_statement(label, color_label, test != "+" ? &this->m_var1 : &this->m_operator);
                     break;
                 }
-                else if (i + 1 == input_value->size()) {
-                    m_id = stoi(*input_value);
+                else if (i + 1 == (test != "" ? this->m_operator.size() : this->m_var1.size())) {
+                    m_id = stoi(test != "" ? this->m_operator : this->m_var1);
                     return true;
                 }
             }
         }
-        else if (state == "")
-            try {
-            for (int i = input_value->at(0) == '-' && input_value->size() > 1 ? 1 : 0; i < input_value->size(); i++) {
-                if (input_value->find("-0") == 0
-                    || this->m_operator == "/" && *input_value == "0"
-                    || !isdigit(input_value->at(i))
-                    || input_value->at(0) == '0' && input_value->length() > 1
-                    || input_value->length() > MAX_SIZE_STRING) {
-                    std::string label = this->language.get_m_print_error_number(section);
+        else if (test == "")
+        try {
+            for (int i = this->m_var1.at(0) == '-' && this->m_var1.size() > 1 ? 1 : 0; i < this->m_var1.size(); i++) {
+                if (this->m_var1.find("-0") == 0
+                    || this->m_operator == "/" && this->m_var1 == "0"
+                    || !isdigit(this->m_var1.at(i))
+                    || this->m_var1.at(0) == '0' && this->m_var1.length() > 1
+                    || this->m_var1.length() > MAX_SIZE_STRING) {
+                    std::string label = this->language.get_m_print_error_number(this->m_input_valid);
                     int color_label = this->get_color_by_name(this->language.m_color_error_number);
                     this->print_statement(label, color_label);
-                    label = this->language.get_m_print_number(section);
+                    label = this->language.get_m_print_number(this->m_input_valid);
                     color_label = this->get_color_by_name(this->language.m_color_number);
-                    this->print_statement(label, color_label, input_value);
+                    this->print_statement(label, color_label, &this->m_var1);
                     break;
                 }
-                else if (i + 1 == input_value->size()) {
+                else if (i + 1 == this->m_var1.size()) {
                     return false;
                 }
             }
         }
         catch (std::exception& e) {
             std::cout << "Standard exception: result" << e.what() << std::endl;
-
         }
-        else if (*input_value == "=" && vec.size() >= 1 && m_id != 0 || *input_value == "=" && vec.size() >= 1 && section != InputValue::InputValid::input_mark_search) {
+        else if (this->m_operator == "=" && vec.size() >= 1 && m_id != 0 || this->m_operator == "=" && vec.size() >= 1 && this->m_input_valid != InputValue::InputValid::input_mark_search) {
             vec.push_back(Input(this->m_var1, "", this->m_result));
             return false;
         }
-        else if (*input_value == "+" || *input_value == "-" || *input_value == "*" || *input_value == "/")
+        else if (this->m_operator == "+" || this->m_operator == "-" || this->m_operator == "*" || this->m_operator == "/")
             return false;
         else {
-            std::string label = this->language.get_m_print_error_operator(section);
+            std::string label = this->language.get_m_print_error_operator(this->m_input_valid);
             int color_label = this->get_color_by_name(this->language.m_color_error_operator);
             this->print_statement(label, color_label);
-            label = this->language.get_m_print_operator(section);
+            label = this->language.get_m_print_operator(this->m_input_valid);
             color_label = this->get_color_by_name(this->language.m_color_operator);
-            this->print_statement(label, color_label, input_value);
+            this->print_statement(label, color_label, &this->m_operator);
         }
     }
 }
@@ -375,46 +381,14 @@ std::string InputValue::add_search_ubdate(std::string value) {
         this->tableResult77(v1, this->m_input_valid != InputValid::input_mark_search ? this->m_index : id, label);
     }
     do {
-        if (test == "") {
-            std::string label = this->language.get_m_print_number(this->m_input_valid);
-            int color_label = this->get_color_by_name(this->language.m_color_number);
-            this->print_statement(label, color_label, &this->m_var1);
-            if (this->isValidInt(this->m_input_valid, test, &this->m_var1)) {
-                this->searchItem();
-                std::vector<Input> myInput = this->vec;
-                vec.swap(myInput);
-                if (this->myResult.size() != 0)
-                    this->show_result_with_operator(&vec);
-                std::string label = this->language.get_m_print_operator(this->m_input_valid);
-                this->tableResult77(vec, this->m_input_valid != InputValid::input_mark_search ? this->m_index : std::to_string(this->m_id), label);
-                this->m_var1 = vec.at(vec.size() - 1).m_var1;
-                vec.pop_back();
-            }
-            else if (this->m_var1 == this->language.get_m_input_menu(this->m_input_valid)) {
-                this->m_var1 = "";
-                test = "";
-                return this->language.get_m_input_menu(this->m_input_valid);
-            }
-            else {
-                std::vector<Input>v1 = vec;
-                v1.push_back(Input(this->m_var1, "", ""));
-                if (this->myResult.size() != 0)
-                    show_result_with_operator(&v1);
-                v1.at(0).m_result = this->getResult(&v1);
-                std::string label = this->language.get_m_print_operator(this->m_input_valid);
-                this->tableResult77(v1, this->m_input_valid != InputValid::input_mark_search ? this->m_index : check_vec(v1), label);
-            }
-        }
-
-        std::string label = this->language.get_m_print_operator(m_input_valid);
-        int color_label = this->get_color_by_name(this->language.m_color_operator);
-        this->print_statement(label, color_label, &this->m_operator);
-        bool state_validation = this->isValidInt(this->m_input_valid, test != "" ? test : "+", &this->m_operator);
-        if (state_validation) {
-            this->m_var1 = this->m_operator;
+        std::string label1 = test != "" ? this->language.get_m_print_operator(m_input_valid) : this->language.get_m_print_number(this->m_input_valid);
+        int color_label1 = test != "" ? this->get_color_by_name(this->language.m_color_operator) : this->get_color_by_name(this->language.m_color_number);
+        this->print_statement(label1, color_label1, test != "" ? &this->m_operator : &this->m_var1); 
+        if (this->isValidInt(test != "" ? &this->m_operator : &this->m_var1)) {
+            this->m_var1 = test != "" ? this->m_operator : this->m_var1;
             this->searchItem();
-            std::vector<Input> v1 = vec;
-            vec.swap(v1);
+            std::vector<Input> myInput = this->vec;
+            vec.swap(myInput);
             if (this->myResult.size() != 0)
                 this->show_result_with_operator(&vec);
             std::string label = this->language.get_m_print_operator(this->m_input_valid);
@@ -424,29 +398,33 @@ std::string InputValue::add_search_ubdate(std::string value) {
             test = "+";
             continue;
         }
-        else if (this->m_operator == this->language.get_m_input_menu(this->m_input_valid)) {
-            this->m_operator = "";
-            test = "+";
+        else if (this->m_var1 == this->language.get_m_input_menu(this->m_input_valid) ||
+            this->m_operator == this->language.get_m_input_menu(this->m_input_valid)) {
+            this->m_var1 = test != "+" ? "" : this->m_var1;
+            this->m_operator = test != "" ? "" : this->m_operator;
             return this->language.get_m_input_menu(this->m_input_valid);
         }
-        else if (this->m_operator == this->language.get_m_input_clear(this->m_input_valid))
-            this->m_operator = "";
         else if (this->m_operator == "=") {
-            test = "+";
             this->vec[0].m_result = this->getResult();
             return this->m_input_valid != InputValid::input_mark_search ? "" : std::to_string(this->m_id);
         }
+        else if(test == "") {
+            std::vector<Input>v1 = vec;
+            v1.push_back(Input(this->m_var1, "", ""));
+            show_result_with_operator(&v1);
+            v1.at(0).m_result = this->getResult(&v1);
+            std::string label = this->language.get_m_print_operator(this->m_input_valid);
+            this->tableResult77(v1, this->m_input_valid != InputValid::input_mark_search ? this->m_index : check_vec(v1), label);
+        }
         else {
             vec.push_back(Input(this->m_var1, this->m_operator, this->m_result));
-            if (this->myResult.size() != 0)
-                this->show_result_with_operator(&vec);
+            this->show_result_with_operator(&vec);
             std::vector<Input>myVector = vec;
             myVector.at(0).m_result = this->language.m_value_result;
             std::string label = this->language.get_m_print_number(this->m_input_valid);
-            this->tableResult77(myVector, this->m_input_valid != InputValid::input_mark_search ? this->m_index : this->language.m_interrogative, label);  
+            this->tableResult77(myVector, this->m_input_valid != InputValid::input_mark_search ? this->m_index : this->language.m_interrogative, label);
         }
-
-        test = "";
+        test = test != "" ? "" : "+";
     } while (true);
 }
 
