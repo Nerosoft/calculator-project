@@ -137,7 +137,7 @@ public:
     std::string getResult(std::vector <Input>* vec);
 
 
-    bool isValidInt(std::string* input_value);
+    bool isValidInt();
 
     std::string searchItem(int id);
     std::vector<Input> search_by_id(int id);
@@ -218,7 +218,7 @@ void InputValue::set_value() {
     else
         this->m_var1.erase(this->m_var1.begin());
 }
-bool InputValue::isValidInt(std::string* input_value) {
+bool InputValue::isValidInt() {
     while (true)
     {
         if (this->m_var1 == this->language.get_m_input_menu(this->m_input_valid) || this->m_operator == this->language.get_m_input_menu(this->m_input_valid))
@@ -384,7 +384,7 @@ std::string InputValue::add_search_ubdate(std::string value) {
         std::string label1 = test != "" ? this->language.get_m_print_operator(m_input_valid) : this->language.get_m_print_number(this->m_input_valid);
         int color_label1 = test != "" ? this->get_color_by_name(this->language.m_color_operator) : this->get_color_by_name(this->language.m_color_number);
         this->print_statement(label1, color_label1, test != "" ? &this->m_operator : &this->m_var1); 
-        if (this->isValidInt(test != "" ? &this->m_operator : &this->m_var1)) {
+        if (this->isValidInt()) {
             this->m_var1 = test != "" ? this->m_operator : this->m_var1;
             this->searchItem();
             std::vector<Input> myInput = this->vec;
