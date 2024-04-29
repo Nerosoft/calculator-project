@@ -397,7 +397,6 @@ std::string InputValue::add_search_ubdate(std::string value) {
         else if (this->m_var1 == this->language.get_m_input_menu(this->m_input_valid) ||
             this->m_operator == this->language.get_m_input_menu(this->m_input_valid)) {
             this->m_var1 = test != "+" ? "" : this->m_var1;// for display table in confirm section when call constractor confirm and send operator
-            //this->m_operator = test != "" ? "" : this->m_operator;
             return this->language.get_m_input_menu(this->m_input_valid);
         }
         else if (this->m_operator == "=") {
