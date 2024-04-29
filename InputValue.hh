@@ -145,6 +145,7 @@ public:
     std::string add_search_ubdate(std::string value);
 
     void set_value();
+    bool valid_number();
     void print_statement(std::string word, int color);
     void print_statement(std::string word, int color, std::string* input_value);
     void print_statement(std::string word, int color, int* input_value);
@@ -218,6 +219,25 @@ void InputValue::set_value() {
     else
         this->m_var1.erase(this->m_var1.begin());
 }
+bool InputValue::valid_number() {
+    try {
+        for (int i = this->m_var1.at(0) == '-' && this->m_var1.size() > 1 ? 1 : 0; i < this->m_var1.size(); i++) {
+            if (this->m_var1.find("-0") == 0
+                || this->m_operator == "/" && this->m_var1 == "0"
+                || !isdigit(this->m_var1.at(i))
+                || this->m_var1.at(0) == '0' && this->m_var1.length() > 1
+                || this->m_var1.length() > MAX_SIZE_STRING)
+                return false;
+            else if (i + 1 == this->m_var1.size())
+                return true;
+        }
+    }
+    catch (std::exception& e) {
+        std::cout << "Standard exception: result" << e.what() << std::endl;
+        return false;
+    }
+
+}
 bool InputValue::isValidInt() {
     while (true)
     {
@@ -271,44 +291,20 @@ bool InputValue::isValidInt() {
                     return true;
                 }
             }
-        }
-        else if (test == "")
-        try {
-            for (int i = this->m_var1.at(0) == '-' && this->m_var1.size() > 1 ? 1 : 0; i < this->m_var1.size(); i++) {
-                if (this->m_var1.find("-0") == 0
-                    || this->m_operator == "/" && this->m_var1 == "0"
-                    || !isdigit(this->m_var1.at(i))
-                    || this->m_var1.at(0) == '0' && this->m_var1.length() > 1
-                    || this->m_var1.length() > MAX_SIZE_STRING) {
-                    std::string label = this->language.get_m_print_error_number(this->m_input_valid);
-                    int color_label = this->get_color_by_name(this->language.m_color_error_number);
-                    this->print_statement(label, color_label);
-                    label = this->language.get_m_print_number(this->m_input_valid);
-                    color_label = this->get_color_by_name(this->language.m_color_number);
-                    this->print_statement(label, color_label, &this->m_var1);
-                    break;
-                }
-                else if (i + 1 == this->m_var1.size()) {
-                    return false;
-                }
-            }
-        }
-        catch (std::exception& e) {
-            std::cout << "Standard exception: result" << e.what() << std::endl;
-        }
+        }       
         else if (this->m_operator == "=" && vec.size() >= 1 && m_id != 0 || this->m_operator == "=" && vec.size() >= 1 && this->m_input_valid != InputValue::InputValid::input_mark_search) {
             vec.push_back(Input(this->m_var1, "", this->m_result));
             return false;
         }
-        else if (this->m_operator == "+" || this->m_operator == "-" || this->m_operator == "*" || this->m_operator == "/")
+        else if (this->m_operator == "+" && test != "" || this->m_operator == "-" && test != "" || this->m_operator == "*" && test != "" || this->m_operator == "/" && test != "" || this->valid_number() && test != "+")
             return false;
         else {
-            std::string label = this->language.get_m_print_error_operator(this->m_input_valid);
-            int color_label = this->get_color_by_name(this->language.m_color_error_operator);
+            std::string label = test != "" ? this->language.get_m_print_error_operator(this->m_input_valid): this->language.get_m_print_error_number(this->m_input_valid);
+            int color_label = test != "" ? this->get_color_by_name(this->language.m_color_error_operator): this->get_color_by_name(this->language.m_color_error_number);
             this->print_statement(label, color_label);
-            label = this->language.get_m_print_operator(this->m_input_valid);
-            color_label = this->get_color_by_name(this->language.m_color_operator);
-            this->print_statement(label, color_label, &this->m_operator);
+            label = test != "" ? this->language.get_m_print_operator(this->m_input_valid): this->language.get_m_print_number(this->m_input_valid);
+            color_label = test != "" ? this->get_color_by_name(this->language.m_color_operator): this->get_color_by_name(this->language.m_color_number);
+            this->print_statement(label, color_label, test != "" ? &this->m_operator : &this->m_var1);
         }
     }
 }
