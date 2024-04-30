@@ -748,19 +748,17 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
     int sizeOfResult = 0, sizeOfIndex = 0;
     std::vector<std::vector<Input>> temp;
     int sizeOfHed = 0;
-    std::string title;
-    int color_title;
-    int color_table;
+    std::string title = table_jop != "jop1" ? this->language.m_result_table_suggestion: this->language.m_result_title;
+    int color_title   = table_jop != "jop1" ? this->get_color_by_name(this->language.m_color_sugges_title): this->get_color_by_name(this->language.m_color_result_title);
+    int color_table   = table_jop != "jop1" ? this->get_color_by_name(this->language.m_color_sugges_table): this->get_color_by_name(this->language.m_color_result_table);
     int temp_title_table;
+    if (this->language.m_center_label && table_jop == "jop1")
+        temp_title_table = title.length() < label.length() ? label.length() : title.length();
+    else
+        temp_title_table = title.length();
+
     if (this->language.m_type_table_operator == "on") {
         if (table_jop == "jop1") {
-            title = this->language.m_result_title;
-            color_title = this->get_color_by_name(this->language.m_color_result_title);
-            color_table = this->get_color_by_name(this->language.m_color_result_table);
-            if (this->language.m_center_label)
-                temp_title_table = title.length() < label.length() ? label.length() : title.length();
-            else
-                temp_title_table = title.length();
             for (int i = 0; i < this->myResult.size(); i++) {
                 sizeOfHed = this->myResult.at(i).size() > this->myResult.at(sizeOfHed).size() ? i : sizeOfHed;
                 for (int z = array1.size() / 2; z < this->myResult.at(sizeOfHed).size(); z++) {
@@ -804,11 +802,6 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
             }
         }
         else {
-            title = this->language.m_result_table_suggestion;
-            color_title = this->get_color_by_name(this->language.m_color_sugges_title);
-            color_table = this->get_color_by_name(this->language.m_color_sugges_table);
-            temp_title_table = title.length();
-           
             for (int i = 0; i < this->myResult.size(); i++) {
                 std::string inp2 = "";
                 for (int ii = 0; ii < (vec->size() > myResult[i].size() ? 0 : vec->size()); ii++) {
@@ -1223,13 +1216,6 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
     else {
 
         if (table_jop == "jop1") {// for result
-            title = this->language.m_result_title;
-            color_title = this->get_color_by_name(this->language.m_color_result_title);
-            color_table = this->get_color_by_name(this->language.m_color_result_table);
-            if (this->language.m_center_label)
-                temp_title_table = title.length() < label.length() ? label.length() : title.length();
-            else
-                temp_title_table = title.length();
             for (int i = 0; i < this->myResult.size(); i++) {
                 sizeOfHed = this->myResult.at(i).size() > this->myResult.at(sizeOfHed).size() ? i : sizeOfHed;
                 for (int z = array1.size(); z < this->myResult.at(sizeOfHed).size(); z++) {
@@ -1268,10 +1254,6 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
             }
         }
         else {
-            title = this->language.m_result_table_suggestion;
-            color_title = this->get_color_by_name(this->language.m_color_sugges_title);
-            color_table = this->get_color_by_name(this->language.m_color_sugges_table);
-            temp_title_table = title.length();
             for (int i = 0; i < this->myResult.size(); i++) {
                 std::string inp2 = "";
                 for (int ii = 0; ii < (vec->size() > myResult[i].size() ? 0 : vec->size()); ii++) {
@@ -1753,9 +1735,3 @@ bool Tables::get_star(std::string label, std::string my_line, int title) {
 
 
 
-/*
-
-"---------------+------------+"
-"+---------+------------+-----"
-
-*/
