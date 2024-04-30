@@ -48,7 +48,8 @@ private:
 
 
 void Calculator::addResult(std::vector<std::vector<Input>> result) {
-    App::write_result(result, this->myInput.m_json);
+    App app;
+    app.write_result(result, this->myInput.m_json);
 }
 
 void Calculator::display_result() {
