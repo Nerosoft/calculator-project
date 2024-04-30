@@ -1,16 +1,16 @@
 class App : public ReadWriteFile{
 public:
-    static std::vector<std::vector<Input>> read_result(Json m_json);
-    static Table    read_table(Json m_json);
-    static Colors   read_colors(Json m_json);
-    static Main     read_main(Json m_json);
-    static Dialog   read_dialog(Json m_json);
-    static Help     read_help(Json m_json);
-    static AddSearchEdit read_add_search_edit(std::string name, Json m_json);
-    static Confirm read_confirm(Json m_json);
-    static Delete read_delete(Json m_json);
-    static void write_result(std::vector<std::vector<Input>> result, Json m_json);
-    static Json read_setting();
+     std::vector<std::vector<Input>> read_result(Json m_json) override;
+     Table    read_table(Json m_json) override;
+     Colors   read_colors(Json m_json) override;
+     Main     read_main(Json m_json) override;
+     Dialog   read_dialog(Json m_json) override;
+     Help     read_Help(Json m_json) override;
+     AddSearchEdit read_add_search_edit(std::string name, Json m_json) override;
+     Confirm read_confirm(Json m_json) override;
+     Delete read_delete(Json m_json) override;
+    void write_result(std::vector<std::vector<Input>> result, Json m_json) override;
+    Json read_setting() override;
 };
 
 
@@ -72,7 +72,7 @@ Dialog App::read_dialog(Json m_json) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Help App::read_help(Json m_json) {
+Help App::read_Help(Json m_json) {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -171,7 +171,7 @@ void App::write_result(std::vector<std::vector<Input>> result, Json m_json) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Json App::read_setting() {
+Json App::read_setting(){
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile = nlohmann::json::parse(MyReadFile);
