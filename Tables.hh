@@ -88,19 +88,20 @@ int Tables::get_color_by_name(std::string color_name) {
 
 void Tables::setup_language() {
     std::vector<std::string> names = { "addition", "search", "edit" };
-    m_json = App::read_setting();
+    App app;
+    m_json = app.read_setting();
     const int size = 3;
     AddSearchEdit add_search_edit[size];
     for(int i = 0; i < names.size(); i++)
-        add_search_edit[i] = App::read_add_search_edit(names[i], m_json);
-    this->myResult           = App::read_result(m_json);
-    Table m_table            = App::read_table(m_json);
-    Colors m_colors          = App::read_colors(m_json);
-    Main m_main              = App::read_main(m_json);
-    Dialog m_dialog          = App::read_dialog(m_json);
-    Help m_help              = App::read_help(m_json);
-    Confirm m_confirm        = App::read_confirm(m_json);
-    Delete m_delete          = App::read_delete(m_json);
+        add_search_edit[i] = app.read_add_search_edit(names[i], m_json);
+    this->myResult = app.read_result(m_json);
+    Table m_table = app.read_table(m_json);
+    Colors m_colors = app.read_colors(m_json);
+    Main m_main = app.read_main(m_json);
+    Dialog m_dialog = app.read_dialog(m_json);
+    Help m_help = app.read_Help(m_json);
+    Confirm m_confirm = app.read_confirm(m_json);
+    Delete m_delete = app.read_delete(m_json);
     this->language = Language(add_search_edit[0], m_main, m_table, m_colors, m_dialog, m_help, add_search_edit[1], add_search_edit[2], m_confirm, m_delete);
 }
 
@@ -1726,6 +1727,7 @@ bool Tables::get_star(std::string label, std::string my_line, int title) {
     return label.length() < title ?
         ((my_line.length() - (mySpace * 2)) - label.length()) % 2 == 1 : true;
 }
+
 
 
 
