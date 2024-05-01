@@ -40,17 +40,10 @@ private:
     InputValue myInput_search; 
     std::vector<std::vector<std::string>> menu;
     HANDLE hConsole;
-    void addResult(std::vector<std::vector<Input>> result);
     void init_input(MenuEdit menu_edit);
     bool isValidInt22(MenuEdit menu_edit, std::string* input_value);
     bool isValidIntegr(int& value, MenuEdit section);
 };
-
-
-void Calculator::addResult(std::vector<std::vector<Input>> result) {
-    App app;
-    app.write_result(result, this->myInput.m_json);
-}
 
 void Calculator::display_result() {
     this->myInput = InputValue(nullptr);//main
@@ -129,7 +122,7 @@ void Calculator::display_result() {
                 if (isValidInt22(MenuEdit::message102, &add)) {
                     std::vector<Input>m_vec = this->myInput.vec;
                     this->myInput.myResult.push_back(m_vec);
-                    this->addResult(this->myInput.myResult);
+                    this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
                     std::string label = this->myInput.language.m_print_successfully_statement_message_confirm101;
                     int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
@@ -172,7 +165,7 @@ void Calculator::display_result() {
                         temp.push_back(this->myInput.myResult.at(i));
                     }
                     this->myInput.myResult = temp;
-                    this->addResult(this->myInput.myResult);
+                    this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
                     std::string label = this->myInput.language.m_print_successfully_statement_message_confirm105;
                     int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
@@ -231,7 +224,7 @@ void Calculator::display_result() {
                         std::vector<Input> m_vec = this->myInput.vec;
                         m_result.at(m_index) = m_vec;
                         this->myInput.myResult = m_result;
-                        this->addResult(this->myInput.myResult);
+                        this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
                         std::string label = this->myInput.language.m_print_successfully_statement_message_confirm103;
                         int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
                         this->myInput.print_statement(label, color_label);
