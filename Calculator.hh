@@ -10,18 +10,20 @@
 
 #include"Section.hh"
 #include"Configration.hh"
-#include"Language.hh"
-
 #include"Input.hh"
 #include"ReadWriteFile.hh"
 #include"App.hh"
+
+#include"Language.hh"
+
+
 #include"Tables.hh"
 #include"InputValue.hh"
-class Calculator : public Section{
+class Calculator : Section{
 public:
     Calculator(){
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        this->menu.push_back({this->myInput.language.m_print_screen107, "menu_exit"});
+        this->menu.push_back({this->myInput.m_print_screen107, "menu_exit"});
     }
     void display_result();
 private:
@@ -48,10 +50,10 @@ private:
 void Calculator::display_result() {
     this->myInput = InputValue(nullptr);//main
     do {
-        if (item == this->myInput.language.m_input_key102) {//search
+        if (item == this->myInput.m_input_key102) {//search
             int menu_size = menu.size();
             for (int i = 0; i < menu_size; i++)
-                if (menu[i][0] == this->myInput.language.m_print_screen102) {
+                if (menu[i][0] == this->myInput.m_print_screen102) {
                     InputValid input_valid = this->myInput.m_input_valid;
                     search = this->myInput.add_search_ubdate(search);
                     break;
@@ -59,23 +61,23 @@ void Calculator::display_result() {
                 else if (i + 1 == menu.size()) {
                     InputValid input_valid = this->myInput.m_input_valid;
                     search = this->myInput.add_search_ubdate(search);
-                    this->menu.push_back({ this->myInput.language.m_print_screen102, "menu_search" });
+                    this->menu.push_back({ this->myInput.m_print_screen102, "menu_search" });
                 }
-            if (search == this->myInput.language.m_input_menu102)
+            if (search == this->myInput.m_input_menu102)
                 this->isValidInt22(MenuEdit::search, &search);
             else {
                 int id = stoi(search);
                 std::vector<Input>vec = this->myInput.search_by_id(id);
-                std::string label = this->myInput.language.m_print_statement_confirm102;
-                int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+                std::string label = this->myInput.m_print_statement_confirm102;
+                int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
                 this->myInput.tableResult77(vec, search, label);
                 this->myInput.print_statement(label, color_label, &search);
                 if (isValidInt22(MenuEdit::message101, &search)) {
-                    std::string label = this->myInput.language.m_print_successfully_statement_message_confirm102;
-                    int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
+                    std::string label = this->myInput.m_print_successfully_statement_message_confirm102;
+                    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
                     int id = this->myInput.m_id;
-                    std::string key = this->myInput.language.m_input_key102;
+                    std::string key = this->myInput.m_input_key102;
                     this->myInput_search = InputValue(key, false, nullptr);//search
                     if (pos != std::to_string(id)) {// for change pos value
                         this->myInput = InputValue(&option, std::to_string(id), &item);//confirm
@@ -90,14 +92,14 @@ void Calculator::display_result() {
                         this->myInput = InputValue(&option, m_pos, value, m_operator, vec, test, &item);//confirm
                     }
                 }
-                else if (search != this->myInput.language.m_input_menu102)
+                else if (search != this->myInput.m_input_menu102)
                     this->myInput.vec.pop_back();
             }
         }
-        else if (item == this->myInput.language.m_input_key101) {//add
+        else if (item == this->myInput.m_input_key101) {//add
             int menu_size = menu.size();
             for (int i = 0; i < menu_size; i++)
-                if (menu[i][0] == this->myInput.language.m_print_screen101) {
+                if (menu[i][0] == this->myInput.m_print_screen101) {
                     InputValid input_valid = this->myInput.m_input_valid;
                     std::string index = this->myInput.m_index;
                     add = this->myInput.add_search_ubdate(add);
@@ -107,15 +109,15 @@ void Calculator::display_result() {
                     InputValid input_valid = this->myInput.m_input_valid;
                     std::string index = this->myInput.m_index;
                     add = this->myInput.add_search_ubdate(add);
-                    this->menu.push_back({ this->myInput.language.m_print_screen101, "menu_add" });
+                    this->menu.push_back({ this->myInput.m_print_screen101, "menu_add" });
                 }
-            if (add == this->myInput.language.m_input_menu101) {
+            if (add == this->myInput.m_input_menu101) {
                 this->isValidInt22(MenuEdit::add, &add);
             }
             else {
                 std::vector<Input> v1 = this->myInput.vec;
-                std::string label = this->myInput.language.m_print_statement_confirm101;
-                int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+                std::string label = this->myInput.m_print_statement_confirm101;
+                int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
                 std::string index = this->myInput.m_index;
                 this->myInput.tableResult77(v1, index, label);
                 this->myInput.print_statement(label, color_label, &add);
@@ -123,15 +125,15 @@ void Calculator::display_result() {
                     std::vector<Input>m_vec = this->myInput.vec;
                     this->myInput.myResult.push_back(m_vec);
                     this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
-                    std::string label = this->myInput.language.m_print_successfully_statement_message_confirm101;
-                    int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
+                    std::string label = this->myInput.m_print_successfully_statement_message_confirm101;
+                    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
                     std::string key = item;
                     this->myInput = InputValue(key, true, nullptr); //add
                     this->myInput_search.m_id = this->myInput_search.m_id != 0 ? this->myInput_search.m_id + 1 : this->myInput_search.m_id;
                     pos = pos != "" ? std::to_string(stoi(pos) + 1) : pos;
                 }
-                else if (add != this->myInput.language.m_input_menu101)
+                else if (add != this->myInput.m_input_menu101)
                     this->myInput.vec.pop_back();
                 
             }
@@ -145,17 +147,17 @@ void Calculator::display_result() {
             }
             else
                 item = pos;
-            if (option == this->myInput.language.m_input_key104) {//delete
+            if (option == this->myInput.m_input_key104) {//delete
                 int menu_size = menu.size();
                 for (int i = 0; i < menu_size; i++)
-                    if (menu[i][0] == this->myInput.language.m_print_screen106) {
+                    if (menu[i][0] == this->myInput.m_print_screen106) {
                         break;
                     }
                     else if (i + 1 == menu.size()) {
-                        this->menu.push_back({ this->myInput.language.m_print_screen106, "menu_delete" });
+                        this->menu.push_back({ this->myInput.m_print_screen106, "menu_delete" });
                     }
-                std::string label = this->myInput.language.m_print_message_user103;
-                int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+                std::string label = this->myInput.m_print_message_user103;
+                int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
                 this->myInput.print_statement(label, color_label, &var2);
                 if (this->isValidInt22(MenuEdit::message104, &var2)) {
                     std::vector<std::vector<Input>>temp;
@@ -166,29 +168,29 @@ void Calculator::display_result() {
                     }
                     this->myInput.myResult = temp;
                     this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
-                    std::string label = this->myInput.language.m_print_successfully_statement_message_confirm105;
-                    int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
+                    std::string label = this->myInput.m_print_successfully_statement_message_confirm105;
+                    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
                     std::vector<std::vector<std::string>> menu1;
                     for (int i = 0, z = 1; i < menu.size(); i++)
-                        if (menu.at(i).at(0) == this->myInput.language.m_print_screen104) {
-                            menu1.push_back({ this->myInput.language.m_print_screen104, "menu_select" });
+                        if (menu.at(i).at(0) == this->myInput.m_print_screen104) {
+                            menu1.push_back({ this->myInput.m_print_screen104, "menu_select" });
                         }
-                        else if (menu.at(i).at(0) == this->myInput.language.m_print_screen107) {
-                            menu1.push_back({ this->myInput.language.m_print_screen107, "menu_exit" });
+                        else if (menu.at(i).at(0) == this->myInput.m_print_screen107) {
+                            menu1.push_back({ this->myInput.m_print_screen107, "menu_exit" });
                         }
-                        else if (menu.at(i).at(0) == this->myInput.language.m_print_screen102) {//temp
-                            menu1.push_back({ this->myInput.language.m_print_screen102, "menu_search" });
+                        else if (menu.at(i).at(0) == this->myInput.m_print_screen102) {//temp
+                            menu1.push_back({ this->myInput.m_print_screen102, "menu_search" });
                             if (this->myInput.myResult.size() == 0 || this->myInput_search.m_id == stoi(pos)) {
-                                std::string key = this->myInput.language.m_input_key102;
+                                std::string key = this->myInput.m_input_key102;
                                 this->myInput_search = InputValue(key, false, search != "search" ? nullptr : &search);//search
                                 //search = "";
                             }
                             else
                                 this->myInput_search.m_id = this->myInput_search.m_id != 0  ?  this->myInput_search.m_id - 1 : this->myInput_search.m_id;
                         }
-                        else if (menu.at(i).at(0) == this->myInput.language.m_print_screen101) {
-                            menu1.push_back({ this->myInput.language.m_print_screen101, "menu_add" });
+                        else if (menu.at(i).at(0) == this->myInput.m_print_screen101) {
+                            menu1.push_back({ this->myInput.m_print_screen101, "menu_add" });
                         }
                         pos = "";
                     this->myInput = InputValue(&item);//main
@@ -196,10 +198,10 @@ void Calculator::display_result() {
                 }
 
             }//edit
-            else if (option == this->myInput.language.m_input_key103) {
+            else if (option == this->myInput.m_input_key103) {
                 int menu_size = menu.size();
                 for (int i = 0; i < menu_size; i++)
-                    if (menu[i][0] == this->myInput.language.m_print_screen103) {
+                    if (menu[i][0] == this->myInput.m_print_screen103) {
                         InputValid input_valid = this->myInput.m_input_valid;
                         var = this->myInput.add_search_ubdate(var);
                         break;
@@ -207,15 +209,15 @@ void Calculator::display_result() {
                     else if (i + 1 == menu.size()) {
                         InputValid input_valid = this->myInput.m_input_valid;
                         var = this->myInput.add_search_ubdate(var);
-                        this->menu.push_back({ this->myInput.language.m_print_screen103, "menu_update" });
+                        this->menu.push_back({ this->myInput.m_print_screen103, "menu_update" });
                     }
-                if (var == this->myInput.language.m_input_menu103)
+                if (var == this->myInput.m_input_menu103)
                     isValidInt22(MenuEdit::update_item, &var);
                 else {
                     std::vector<Input> vec = this->myInput.vec;
                     std::string index = this->myInput.m_index;
-                    std::string label = this->myInput.language.m_print_statement_confirm103;
-                    int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+                    std::string label = this->myInput.m_print_statement_confirm103;
+                    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
                     this->myInput.tableResult77(vec, index, label);
                     this->myInput.print_statement(label, color_label, &var);
                     if (isValidInt22(MenuEdit::message103, &var)) {
@@ -225,8 +227,8 @@ void Calculator::display_result() {
                         m_result.at(m_index) = m_vec;
                         this->myInput.myResult = m_result;
                         this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
-                        std::string label = this->myInput.language.m_print_successfully_statement_message_confirm103;
-                        int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
+                        std::string label = this->myInput.m_print_successfully_statement_message_confirm103;
+                        int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                         this->myInput.print_statement(label, color_label);
                         std::string index = pos;
 
@@ -238,25 +240,25 @@ void Calculator::display_result() {
                      
 
                         if (this->myInput_search.m_id == stoi(pos)) {
-                            std::string key = this->myInput.language.m_input_key102;
+                            std::string key = this->myInput.m_input_key102;
                                 this->myInput_search = InputValue(key, false, search != "search" ? nullptr : &search);//search
                         }
                     }
-                    else if (var != this->myInput.language.m_input_menu103)
+                    else if (var != this->myInput.m_input_menu103)
                         this->myInput.vec.pop_back();
                 }
             }
             else {
                 int menu_size = menu.size();
                 for (int i = 0; i < menu_size; i++)
-                    if (menu[i][0] == this->myInput.language.m_print_screen105) {
+                    if (menu[i][0] == this->myInput.m_print_screen105) {
                         break;
                     }
                     else if (i + 1 == menu.size()) {
-                        this->menu.push_back({ this->myInput.language.m_print_screen105, "menu_option" });
+                        this->menu.push_back({ this->myInput.m_print_screen105, "menu_option" });
                     }
-                std::string label = this->myInput.language.m_print_message_user102;
-                int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+                std::string label = this->myInput.m_print_message_user102;
+                int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
                 this->myInput.print_statement(label, color_label, &option);
                 this->isValidInt22(MenuEdit::chose_operation, &option);
             }
@@ -264,14 +266,14 @@ void Calculator::display_result() {
         else {
             int menu_size = menu.size();
             for (int i = 0; i < menu_size; i++)
-                if (menu[i][0] == this->myInput.language.m_print_screen104) {
+                if (menu[i][0] == this->myInput.m_print_screen104) {
                     break;
                 }
                 else if (i + 1 == menu.size()) {
-                    this->menu.push_back({ this->myInput.language.m_print_screen104, "menu_select" });
+                    this->menu.push_back({ this->myInput.m_print_screen104, "menu_select" });
                 }
-            std::string label = this->myInput.language.m_print_message_user101;
-            int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+            std::string label = this->myInput.m_print_message_user101;
+            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
             this->myInput.print_statement(label, color_label, &item);
             isValidInt22(MenuEdit::first_opration, &item);
         }
@@ -304,20 +306,20 @@ void Calculator::init_input(MenuEdit menu_edit) {
 bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nullptr) {
     this->init_input(menu_edit);
     do {
-        if (*input_value == this->myInput.language.get_m_input_menu(menu_edit)) {
-            std::string label = this->myInput.language.get_m_print_menu_statement(menu_edit);
-            std::string id = this->myInput.language.get_id_menu(menu_edit);
+        if (*input_value == this->myInput.get_m_input_menu(menu_edit)) {
+            std::string label = this->myInput.get_m_print_menu_statement(menu_edit);
+            std::string id = this->myInput.get_id_menu(menu_edit);
             int i;
             this->myInput.display_table_menu(menu, id, label, menu_edit);
-            int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_menu_statement);
+            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_menu_statement);
             this->myInput.print_statement(label, color_label, &i);
             if(i == 1)
                 exit(0);
             else if (!isValidIntegr(i, menu_edit) && i <= this->menu.size() && i > 0 ) {
-                Section::MenuEdit m_menu_edit = this->myInput.language.get_menu_edit(this->menu.at(i - 1).at(0), menu_edit);
-                std::string label = menu_edit != m_menu_edit ? this->myInput.language.get_m_print_menu_statement_screen(this->menu.at(i - 1).at(1))
-                    : this->myInput.language.get_m_print_successfully_menu_statement(menu_edit);
-                int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_menu_statement);
+                Section::MenuEdit m_menu_edit = this->myInput.get_menu_edit(this->menu.at(i - 1).at(0), menu_edit);
+                std::string label = menu_edit != m_menu_edit ? this->myInput.get_m_print_menu_statement_screen(this->menu.at(i - 1).at(1))
+                    : this->myInput.get_m_print_successfully_menu_statement(menu_edit);
+                int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_menu_statement);
                 this->myInput.print_statement(label, color_label);
                 switch (m_menu_edit)
                 {
@@ -328,7 +330,7 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
                     int space = this->myInput.my_lable_space;
                     std::string value = this->myInput_add.m_var1;
                     std::string m_operator = this->myInput_add.m_operator;
-                    std::string key = this->myInput_add.language.m_input_key101;
+                    std::string key = this->myInput_add.m_input_key101;
                     this->myInput = InputValue(key, value, m_operator, test, vec, space, &item);
                     break;
                 }
@@ -339,9 +341,8 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
                     int space = this->myInput.my_lable_space;
                     std::string value = this->myInput_search.m_var1;
                     std::string m_operator = this->myInput_search.m_operator;
-                    std::string key = this->myInput.language.m_input_key102;
+                    std::string key = this->myInput_search.m_input_key102;
                     int id = this->myInput_search.m_id;
-                    std::string m_index = this->myInput_search.m_index;
                     this->myInput = InputValue(key, value, m_operator, test, vec, space, &item, id);
                     break;
                 }
@@ -362,7 +363,6 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
                 
                 case Section::MenuEdit::message104: {
                     std::string index = this->pos;
-                    std::string key_delete = this->myInput.language.m_input_key104;
                     this->myInput = InputValue(index, &option, &item);//delete
                     break;
                 }
@@ -383,22 +383,22 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
                 return false;
             }
         }
-        else if (*input_value == this->myInput.language.get_m_input_help(menu_edit)) {
-            std::string label = this->myInput.language.get_m_print_help(menu_edit);
-            int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_help);
+        else if (*input_value == this->myInput.get_m_input_help(menu_edit)) {
+            std::string label = this->myInput.get_m_print_help(menu_edit);
+            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_help);
             this->myInput.print_statement(label, color_label);
 
-            label = this->myInput.language.get_m_print_message_user(menu_edit);
-            color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+            label = this->myInput.get_m_print_message_user(menu_edit);
+            color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
             this->myInput.print_statement(label, color_label, input_value);
         }
-        else if (*input_value == this->myInput.language.m_input_key101 && menu_edit == MenuEdit::first_opration
-            || *input_value == this->myInput.language.m_input_key102 && menu_edit == MenuEdit::first_opration
-            || *input_value == this->myInput.language.m_input_key103 && menu_edit == MenuEdit::chose_operation
-            || *input_value == this->myInput.language.m_input_key104 && menu_edit == MenuEdit::chose_operation) {
-            Section::InputKey input_key = this->myInput.language.get_section(*input_value, add, search, var);
-            std::string label = this->myInput.language.get_m_print_successfully_statement_confirm(input_key);
-            int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_confirm);
+        else if (*input_value == this->myInput.m_input_key101 && menu_edit == MenuEdit::first_opration
+            || *input_value == this->myInput.m_input_key102 && menu_edit == MenuEdit::first_opration
+            || *input_value == this->myInput.m_input_key103 && menu_edit == MenuEdit::chose_operation
+            || *input_value == this->myInput.m_input_key104 && menu_edit == MenuEdit::chose_operation) {
+            Section::InputKey input_key = this->myInput.get_section(*input_value, add, search, var);
+            std::string label = this->myInput.get_m_print_successfully_statement_confirm(input_key);
+            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_confirm);
             this->myInput.print_statement(label, color_label);
             switch (input_key)
             {
@@ -409,7 +409,7 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
                 int space = this->myInput.my_lable_space;
                 std::string value = this->myInput_add.m_var1;
                 std::string m_operator = this->myInput_add.m_operator;
-                std::string key = this->myInput.language.m_input_key101;
+                std::string key = this->myInput_add.m_input_key101;
                 this->myInput = InputValue(key, value, m_operator, test, vec, space, nullptr);
                 break;
             }
@@ -420,7 +420,7 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
                 int space = this->myInput.my_lable_space;
                 std::string value = this->myInput_search.m_var1;
                 std::string m_operator = this->myInput_search.m_operator;
-                std::string key = this->myInput.language.m_input_key102;
+                std::string key = this->myInput_search.m_input_key102;
                 int id = this->myInput_search.m_id;
                 this->myInput = InputValue(key, value, m_operator, test, vec, space, nullptr, id);
                 break;
@@ -464,43 +464,43 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
             return false;
         }
 
-        else if (*input_value == this->myInput.language.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message102
-            || *input_value == this->myInput.language.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message101
-            || *input_value == this->myInput.language.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message103
-            || *input_value == this->myInput.language.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message104) {
+        else if (*input_value == this->myInput.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message102
+            || *input_value == this->myInput.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message101
+            || *input_value == this->myInput.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message103
+            || *input_value == this->myInput.get_m_input_y(menu_edit) && menu_edit == Section::MenuEdit::message104) {
             return true;
         }
-        else if (*input_value == this->myInput.language.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message102
-            || *input_value == this->myInput.language.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message101
-            || *input_value == this->myInput.language.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message103
-            || *input_value == this->myInput.language.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message104) {
+        else if (*input_value == this->myInput.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message102
+            || *input_value == this->myInput.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message101
+            || *input_value == this->myInput.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message103
+            || *input_value == this->myInput.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message104) {
             return false;
         }
         else if (menu_edit == Section::MenuEdit::add || menu_edit == Section::MenuEdit::search || menu_edit == Section::MenuEdit::update_item
             || menu_edit == Section::MenuEdit::chose_operation || menu_edit == Section::MenuEdit::message101 || menu_edit == Section::MenuEdit::message102
             || menu_edit == Section::MenuEdit::message103 || menu_edit == Section::MenuEdit::message104) {
-            std::string label = this->myInput.language.get_m_print_error_statement_confirm(menu_edit);
-            int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_error_statement_confirm);
+            std::string label = this->myInput.get_m_print_error_statement_confirm(menu_edit);
+            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_error_statement_confirm);
             this->myInput.print_statement(label, color_label);
-            label = this->myInput.language.get_m_print_statement_confirm(menu_edit);
-            color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+            label = this->myInput.get_m_print_statement_confirm(menu_edit);
+            color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
             this->myInput.print_statement(label, color_label, input_value);
         }
         else
             try {
             for (int i = 0; i < input_value->size(); i++) {
                 if (this->myInput.myResult.size() == 0 || input_value ->length()>= MAX_SIZE_STRING || !isdigit(input_value->at(i)) || stoi(*input_value) > this->myInput.myResult.size() || stoi(*input_value) < 1) {
-                    std::string label = this->myInput.language.m_print_successfully_statement_message_confirm104;
-                    int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_error_statement_confirm);
+                    std::string label = this->myInput.m_print_successfully_statement_message_confirm104;
+                    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_error_statement_confirm);
                     this->myInput.print_statement(label, color_label);
-                    label = this->myInput.language.get_m_print_statement_confirm(menu_edit);
-                    color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_statement_confirm);
+                    label = this->myInput.get_m_print_statement_confirm(menu_edit);
+                    color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
                     this->myInput.print_statement(label, color_label, input_value);
                     break;//for exit loop
                 }
                 else if (i + 1 == input_value->size() && pos != *input_value) {// for change pos value
-                    std::string label = this->myInput.language.m_print_successfully_statement_message_confirm104;
-                    int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
+                    std::string label = this->myInput.m_print_successfully_statement_message_confirm104;
+                    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
                     std::string value = *input_value;
                     this->myInput = InputValue(&option, value, nullptr);//confirm
@@ -508,8 +508,8 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
                     return false;
                 }
                 else if (i + 1 == input_value->size()) {// no change pos value
-                    std::string label = this->myInput.language.m_print_successfully_statement_message_confirm104;
-                    int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_successfully_statement_message_confirm);
+                    std::string label = this->myInput.m_print_successfully_statement_message_confirm104;
+                    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
                     std::string value = this->myInput_edit.m_var1;
                     std::string m_operator = this->myInput_edit.m_operator;
@@ -537,11 +537,11 @@ bool Calculator::isValidIntegr(int& value, MenuEdit section) {
             std::cin.clear();
             std::cin.ignore(256, '\n');
         }
-        std::string label = this->myInput.language.get_m_print_error_menu_statement(section);
-        int color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_error_menu_statement);
+        std::string label = this->myInput.get_m_print_error_menu_statement(section);
+        int color_label = this->myInput.get_color_by_name(this->myInput.m_color_error_menu_statement);
         this->myInput.print_statement(label, color_label);
-        label = this->myInput.language.get_m_print_menu_statement(section);
-        color_label = this->myInput.get_color_by_name(this->myInput.language.m_color_menu_statement);
+        label = this->myInput.get_m_print_menu_statement(section);
+        color_label = this->myInput.get_color_by_name(this->myInput.m_color_menu_statement);
         this->myInput.print_statement(label, color_label, &value);
     }
 }
