@@ -1,4 +1,4 @@
-class Tables : public Section {
+class Tables : public Section, public App {
 public:
     HANDLE hConsole;
     std::vector<std::vector<Input>> myResult;
@@ -88,20 +88,19 @@ int Tables::get_color_by_name(std::string color_name) {
 
 void Tables::setup_language() {
     std::vector<std::string> names = { "addition", "search", "edit" };
-    App app;
-    m_json = app.read_setting();
+    m_json = this->read_setting();
     const int size = 3;
     AddSearchEdit add_search_edit[size];
     for(int i = 0; i < names.size(); i++)
-        add_search_edit[i] = app.read_add_search_edit(names[i], m_json);
-    this->myResult = app.read_result(m_json);
-    Table m_table = app.read_table(m_json);
-    Colors m_colors = app.read_colors(m_json);
-    Main m_main = app.read_main(m_json);
-    Dialog m_dialog = app.read_dialog(m_json);
-    Help m_help = app.read_Help(m_json);
-    Confirm m_confirm = app.read_confirm(m_json);
-    Delete m_delete = app.read_delete(m_json);
+        add_search_edit[i] = this->read_add_search_edit(names[i], m_json);
+    this->myResult = this->read_result(m_json);
+    Table m_table = this->read_table(m_json);
+    Colors m_colors = this->read_colors(m_json);
+    Main m_main = this->read_main(m_json);
+    Dialog m_dialog = this->read_dialog(m_json);
+    Help m_help = this->read_Help(m_json);
+    Confirm m_confirm = this->read_confirm(m_json);
+    Delete m_delete = this->read_delete(m_json);
     this->language = Language(add_search_edit[0], m_main, m_table, m_colors, m_dialog, m_help, add_search_edit[1], add_search_edit[2], m_confirm, m_delete);
 }
 
