@@ -1,9 +1,6 @@
-class Tables : public Section, public App {
+class Tables : public Language {
 public:
     HANDLE hConsole;
-    std::vector<std::vector<Input>> myResult;
-    Json m_json;
-    Language language;
     int mySpace = 0;
     int my_lable_space = 0;
     bool m_star = true;
@@ -14,7 +11,6 @@ public:
    
     int get_lable_space(std::string label, std::string my_line, int title);
     bool get_star(std::string label, std::string my_line, int title);
-    void setup_language();
 
     void get_culc_Result();
     int get_color_by_name(std::string color_name);
@@ -24,7 +20,6 @@ private:
 
 Tables::Tables(){
     this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    setup_language();
 }
 
 std::string Tables::get_text_search(std::vector <Input> vec) {
@@ -86,44 +81,27 @@ int Tables::get_color_by_name(std::string color_name) {
         return 7;
 }
 
-void Tables::setup_language() {
-    std::vector<std::string> names = { "addition", "search", "edit" };
-    m_json = this->read_setting();
-    const int size = 3;
-    AddSearchEdit add_search_edit[size];
-    for(int i = 0; i < names.size(); i++)
-        add_search_edit[i] = this->read_add_search_edit(names[i], m_json);
-    this->myResult = this->read_result(m_json);
-    Table m_table = this->read_table(m_json);
-    Colors m_colors = this->read_colors(m_json);
-    Main m_main = this->read_main(m_json);
-    Dialog m_dialog = this->read_dialog(m_json);
-    Help m_help = this->read_Help(m_json);
-    Confirm m_confirm = this->read_confirm(m_json);
-    Delete m_delete = this->read_delete(m_json);
-    this->language = Language(add_search_edit[0], m_main, m_table, m_colors, m_dialog, m_help, add_search_edit[1], add_search_edit[2], m_confirm, m_delete);
-}
+
 
 void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string label) {
 
     std::vector<std::string> array1;
-    int space = this->language.m_data_space;
-    //string fill = this->language.m_data_fill;
-    bool heddinIndex = this->language.m_heddin_data_address != "on" ? false : true;
-    bool heddinResult = this->language.m_heddin_data_result != "on" ? false : true;
+    int space = this->m_data_space;
+    bool heddinIndex = this->m_heddin_data_address != "on" ? false : true;
+    bool heddinResult = this->m_heddin_data_result != "on" ? false : true;
     vec[0].m_index = id;
     int sizeOfResult = 0, sizeOfIndex = 0;
     int temp_title_table;
-    if (this->language.m_center_label)
-        temp_title_table = this->language.m_data_title.length() < label.length() ? label.length() : this->language.m_data_title.length();
+    if (this->m_center_label)
+        temp_title_table = this->m_data_title.length() < label.length() ? label.length() : this->m_data_title.length();
     else
-        temp_title_table = this->language.m_data_title.length();
+        temp_title_table = this->m_data_title.length();
 
   
-    if (this->language.m_type_table_operator == "on") {
+    if (this->m_type_table_operator == "on") {
         for (int i = 0; i < vec.size(); i++) {
-            std::string var1 = this->language.m_value;
-            std::string var2 = this->language.m_mark;
+            std::string var1 = this->m_value;
+            std::string var2 = this->m_mark;
             for (int ii = 0; ii < space; ii++) {
                 var1 = " " + var1 + " ";
                 var2 = " " + var2 + " ";
@@ -136,8 +114,8 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
                 array1.push_back(var2);
             }
             if (heddinResult && heddinIndex && i + 1 == vec.size()) {
-                array1.push_back(this->language.m_total);
-                array1.push_back(this->language.m_address);
+                array1.push_back(this->m_total);
+                array1.push_back(this->m_address);
                 sizeOfResult = array1.size() - 2;
                 sizeOfIndex = array1.size() - 1;
                 for (int ii = 0; ii < space; ii++) {
@@ -146,13 +124,13 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
                 }
             }
             else if (heddinResult && i + 1 == vec.size()) {
-                array1.push_back(this->language.m_total);
+                array1.push_back(this->m_total);
                 sizeOfResult = array1.size() - 1;
                 for (int ii = 0; ii < space; ii++)
                     array1[sizeOfResult] = " " + array1[sizeOfResult] + " ";
             }
             else if (heddinIndex && i + 1 == vec.size()) {
-                array1.push_back(this->language.m_address);
+                array1.push_back(this->m_address);
                 sizeOfIndex = array1.size() - 1;
                 for (int ii = 0; ii < space; ii++)
                     array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
@@ -308,29 +286,29 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
 
 
 
-        bool star = temp_title_table > this->language.m_data_title.length() ?
-            ((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) % 2 == 1 : true;
-        int space_size = temp_title_table > this->language.m_data_title.length() ?
-            ((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) % 2 == 0 ?
-            (((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) / 2) + (mySpace - 1) :
-            (((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) / 2) + mySpace : mySpace;
-        int color_message = this->get_color_by_name(this->language.m_color_data_title);
-        int color_table = this->get_color_by_name(this->language.m_color_data_table);
+        bool star = temp_title_table > this->m_data_title.length() ?
+            ((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) % 2 == 1 : true;
+        int space_size = temp_title_table > this->m_data_title.length() ?
+            ((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) % 2 == 0 ?
+            (((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) / 2) + (mySpace - 1) :
+            (((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) / 2) + mySpace : mySpace;
+        int color_message = this->get_color_by_name(this->m_color_data_title);
+        int color_table = this->get_color_by_name(this->m_color_data_table);
         SetConsoleTextAttribute(hConsole, color_message);
         std::string temp = "";
         for (int i = 0; i < space_size; i++)
             temp += " ";
         temp = star ? temp : temp + "*";
-        std::cout << temp << this->language.m_data_title << std::endl;
+        std::cout << temp << this->m_data_title << std::endl;
         SetConsoleTextAttribute(hConsole, color_table);
 
 
 
        
 
-        if (this->language.m_center_label) {
-            this->my_lable_space = this->get_lable_space(label, my_line, this->language.m_data_title.length());
-            this->m_star = this->get_star(label, my_line, this->language.m_data_title.length());
+        if (this->m_center_label) {
+            this->my_lable_space = this->get_lable_space(label, my_line, this->m_data_title.length());
+            this->m_star = this->get_star(label, my_line, this->m_data_title.length());
         }
 
 
@@ -475,14 +453,14 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
     }
     else {
         for (int i = 0; i < vec.size(); i++) {
-            std::string var1 = this->language.m_value;
+            std::string var1 = this->m_value;
             for (int ii = 0; ii < space; ii++)
                 var1 = " " + var1 + " ";
             array1.push_back(var1);
 
             if (heddinResult && heddinIndex && i + 1 == vec.size()) {
-                array1.push_back(this->language.m_total);
-                array1.push_back(this->language.m_address);
+                array1.push_back(this->m_total);
+                array1.push_back(this->m_address);
                 sizeOfResult = array1.size() - 2;
                 sizeOfIndex = array1.size() - 1;
                 for (int ii = 0; ii < space; ii++) {
@@ -491,14 +469,14 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
                 }
             }
             else if (heddinResult && i + 1 == vec.size()) {
-                array1.push_back(this->language.m_total);
+                array1.push_back(this->m_total);
                 sizeOfResult = array1.size() - 1;
                 for (int ii = 0; ii < space; ii++) {
                     array1[sizeOfResult] = " " + array1[sizeOfResult] + " ";
                 }
             }
             else if (heddinIndex && i + 1 == vec.size()) {
-                array1.push_back(this->language.m_address);
+                array1.push_back(this->m_address);
                 sizeOfIndex = array1.size() - 1;
                 for (int ii = 0; ii < space; ii++) {
                     array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
@@ -625,28 +603,28 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
 
 
 
-        bool star = temp_title_table > this->language.m_data_title.length() ?
-            ((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) % 2 == 1 : true;
-        int space_size = temp_title_table > this->language.m_data_title.length() ?
-            ((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) % 2 == 0 ?
-            (((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) / 2) + (mySpace - 1) :
-            (((my_line.length() - (mySpace + this->language.m_data_title.length())) - mySpace) / 2) + mySpace : mySpace;
-        int color_message = this->get_color_by_name(this->language.m_color_data_title);
-        int color_table = this->get_color_by_name(this->language.m_color_data_table);
+        bool star = temp_title_table > this->m_data_title.length() ?
+            ((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) % 2 == 1 : true;
+        int space_size = temp_title_table > this->m_data_title.length() ?
+            ((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) % 2 == 0 ?
+            (((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) / 2) + (mySpace - 1) :
+            (((my_line.length() - (mySpace + this->m_data_title.length())) - mySpace) / 2) + mySpace : mySpace;
+        int color_message = this->get_color_by_name(this->m_color_data_title);
+        int color_table = this->get_color_by_name(this->m_color_data_table);
         SetConsoleTextAttribute(hConsole, color_message);
         std::string temp = "";
         for (int i = 0; i < space_size; i++)
             temp += " ";
         temp = star ? temp : temp + "*";
-        std::cout << temp << this->language.m_data_title << std::endl;
+        std::cout << temp << this->m_data_title << std::endl;
         SetConsoleTextAttribute(hConsole, color_table);
 
 
 
       
-        if (this->language.m_center_label) {
-            this->my_lable_space = this->get_lable_space(label, my_line, this->language.m_data_title.length());
-            this->m_star = this->get_star(label, my_line, this->language.m_data_title.length());
+        if (this->m_center_label) {
+            this->my_lable_space = this->get_lable_space(label, my_line, this->m_data_title.length());
+            this->m_star = this->get_star(label, my_line, this->m_data_title.length());
         }
 
 
@@ -733,37 +711,37 @@ void Tables::tableResult77(std::vector<Input> vec, std::string id, std::string l
 
 void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table_jop = "", std::string label = "") {
     std::vector<std::string> array1;
-    int space = table_jop != "" ? this->language.m_result_space : this->language.m_sugges_space;
-    std::string fill = table_jop != "" ? this->language.m_result_fill : this->language.m_sugges_fill;
+    int space = table_jop != "" ? this->m_result_space : this->m_sugges_space;
+    std::string fill = table_jop != "" ? this->m_result_fill : this->m_sugges_fill;
     bool heddinIndex, heddinResult;
     if (table_jop != "") {
-        heddinIndex = this->language.m_heddin_result_address != "on" ? false : true;
-        heddinResult = this->language.m_heddin_result != "on" ? false : true;
+        heddinIndex = this->m_heddin_result_address != "on" ? false : true;
+        heddinResult = this->m_heddin_result != "on" ? false : true;
     }
     else {
-        heddinIndex = this->language.m_heddin_sugges_address != "on" ? false : true;
-        heddinResult = this->language.m_heddin_sugges_result != "on" ? false : true;
+        heddinIndex = this->m_heddin_sugges_address != "on" ? false : true;
+        heddinResult = this->m_heddin_sugges_result != "on" ? false : true;
     }
    
     int sizeOfResult = 0, sizeOfIndex = 0;
     std::vector<std::vector<Input>> temp;
     int sizeOfHed = 0;
-    std::string title = table_jop != "jop1" ? this->language.m_result_table_suggestion: this->language.m_result_title;
-    int color_title   = table_jop != "jop1" ? this->get_color_by_name(this->language.m_color_sugges_title): this->get_color_by_name(this->language.m_color_result_title);
-    int color_table   = table_jop != "jop1" ? this->get_color_by_name(this->language.m_color_sugges_table): this->get_color_by_name(this->language.m_color_result_table);
+    std::string title = table_jop != "jop1" ? this->m_result_table_suggestion: this->m_result_title;
+    int color_title   = table_jop != "jop1" ? this->get_color_by_name(this->m_color_sugges_title): this->get_color_by_name(this->m_color_result_title);
+    int color_table   = table_jop != "jop1" ? this->get_color_by_name(this->m_color_sugges_table): this->get_color_by_name(this->m_color_result_table);
     int temp_title_table;
-    if (this->language.m_center_label && table_jop == "jop1")
+    if (this->m_center_label && table_jop == "jop1")
         temp_title_table = title.length() < label.length() ? label.length() : title.length();
     else
         temp_title_table = title.length();
 
-    if (this->language.m_type_table_operator == "on") {
+    if (this->m_type_table_operator == "on") {
         if (table_jop == "jop1") {
             for (int i = 0; i < this->myResult.size(); i++) {
                 sizeOfHed = this->myResult.at(i).size() > this->myResult.at(sizeOfHed).size() ? i : sizeOfHed;
                 for (int z = array1.size() / 2; z < this->myResult.at(sizeOfHed).size(); z++) {
-                    std::string var1 = this->language.m_value;
-                    std::string op = this->language.m_mark;
+                    std::string var1 = this->m_value;
+                    std::string op = this->m_mark;
                     for (int ii = 0; ii < space; ii++) {
                         var1 = " " + var1 + " ";
                         op = " " + op + " ";
@@ -778,8 +756,8 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
 
                 if (i + 1 == this->myResult.size())
                     if (heddinResult && heddinIndex) {
-                        array1.push_back(this->language.m_total);
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_total);
+                        array1.push_back(this->m_address);
                         sizeOfResult = array1.size() - 2;
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++) {
@@ -788,13 +766,13 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                         }
                     }
                     else if (heddinResult) {
-                        array1.push_back(this->language.m_total);
+                        array1.push_back(this->m_total);
                         sizeOfResult = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfResult] = " " + array1[sizeOfResult] + " ";
                     }
                     else if (heddinIndex) {
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_address);
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
@@ -809,8 +787,8 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                     if (get_text_search(*vec) == inp2) {
                         sizeOfHed = this->myResult.at(i).size() > this->myResult.at(sizeOfHed).size() ? i : sizeOfHed;
                         for (int z = array1.size() / 2; z < this->myResult.at(sizeOfHed).size(); z++) {
-                            std::string var1 = this->language.m_value;
-                            std::string op = this->language.m_mark;
+                            std::string var1 = this->m_value;
+                            std::string op = this->m_mark;
                             for (int ii = 0; ii < space; ii++) {
                                 var1 = " " + var1 + " ";
                                 op = " " + op + " ";
@@ -827,8 +805,8 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                 }
                 if (i + 1 == this->myResult.size())
                     if (heddinResult && heddinIndex) {
-                        array1.push_back(this->language.m_total);
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_total);
+                        array1.push_back(this->m_address);
                         sizeOfResult = array1.size() - 2;
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++) {
@@ -837,13 +815,13 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                         }
                     }
                     else if (heddinResult) {
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_address);
                         sizeOfResult = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfResult] = " " + array1[sizeOfResult] + " ";
                     }
                     else if (heddinIndex) {
-                        array1.push_back(this->language.m_total);
+                        array1.push_back(this->m_total);
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
@@ -1054,7 +1032,7 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
         std::cout << space_value << title << std::endl;
         SetConsoleTextAttribute(hConsole, color_table);
 
-        if (this->language.m_center_label) {
+        if (this->m_center_label) {
             this->my_lable_space = this->get_lable_space(label, my_line, title.length());
             this->m_star = this->get_star(label, my_line, title.length());
         }
@@ -1219,7 +1197,7 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
             for (int i = 0; i < this->myResult.size(); i++) {
                 sizeOfHed = this->myResult.at(i).size() > this->myResult.at(sizeOfHed).size() ? i : sizeOfHed;
                 for (int z = array1.size(); z < this->myResult.at(sizeOfHed).size(); z++) {
-                    std::string var1 = this->language.m_value;
+                    std::string var1 = this->m_value;
                     for (int ii = 0; ii < space; ii++)
                         var1 = " " + var1 + " ";
                     array1.push_back(var1);
@@ -1230,8 +1208,8 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
 
                 if (i + 1 == this->myResult.size())
                     if (heddinResult && heddinIndex) {
-                        array1.push_back(this->language.m_total);
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_total);
+                        array1.push_back(this->m_address);
                         sizeOfResult = array1.size() - 2;
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++) {
@@ -1240,13 +1218,13 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                         }
                     }
                     else if (heddinResult) {
-                        array1.push_back(this->language.m_total);
+                        array1.push_back(this->m_total);
                         sizeOfResult = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfResult] = " " + array1[sizeOfResult] + " ";
                     }
                     else if (heddinIndex) {
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_address);
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
@@ -1261,7 +1239,7 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                     if (get_text_search(*vec) == inp2) {
                         sizeOfHed = this->myResult.at(i).size() > this->myResult.at(sizeOfHed).size() ? i : sizeOfHed;
                         for (int z = array1.size(); z < this->myResult.at(sizeOfHed).size(); z++) {
-                            std::string var1 = this->language.m_value;
+                            std::string var1 = this->m_value;
                             for (int ii = 0; ii < space; ii++)
                                 var1 = " " + var1 + " ";
                             array1.push_back(var1);
@@ -1277,8 +1255,8 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                     if (temp.empty())
                         return;
                     else if (heddinResult && heddinIndex) {
-                        array1.push_back(this->language.m_total);
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_total);
+                        array1.push_back(this->m_address);
                         sizeOfResult = array1.size() - 2;
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++) {
@@ -1287,13 +1265,13 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
                         }
                     }
                     else if (heddinResult) {
-                        array1.push_back(this->language.m_total);
+                        array1.push_back(this->m_total);
                         sizeOfResult = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfResult] = " " + array1[sizeOfResult] + " ";
                     }
                     else if (heddinIndex) {
-                        array1.push_back(this->language.m_address);
+                        array1.push_back(this->m_address);
                         sizeOfIndex = array1.size() - 1;
                         for (int ii = 0; ii < space; ii++)
                             array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
@@ -1423,7 +1401,7 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
         std::cout << space_value << title << std::endl;
         SetConsoleTextAttribute(hConsole, color_table);
 
-        if (this->language.m_center_label) {
+        if (this->m_center_label) {
             this->my_lable_space = this->get_lable_space(label, my_line, title.length());
             this->m_star = this->get_star(label, my_line, title.length());
         }
@@ -1511,17 +1489,17 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
 void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::string word, std::string label, MenuEdit section) {
     std::string id = word;
     std::vector<std::string> array1;
-    int space = this->language.m_menu_space;
-    bool heddinIndex = this->language.m_heddin_menu_address != "on" ? false : true;
+    int space = this->m_menu_space;
+    bool heddinIndex = this->m_heddin_menu_address != "on" ? false : true;
     int sizeOfIndex = 0;
 
-    array1 = { this->language.m_app };
+    array1 = { this->m_app };
     for (int i = 0; i < array1.size(); i++) {
         for (int y = 0; y < space; y++)
             array1[i] = " " + array1[i] + " ";
         if (i + 1 == array1.size()) {
             if (heddinIndex) {
-                array1.push_back(this->language.m_app_address);
+                array1.push_back(this->m_app_address);
                 sizeOfIndex = array1.size() - 1;
                 for (int y = 0; y < space; y++)
                     array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
@@ -1573,10 +1551,10 @@ void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::
 
 
     int temp_title_table;
-    if (this->language.m_center_label)
-        temp_title_table = this->language.get_m_menu_title(section).length() < label.length() ? label.length() : this->language.get_m_menu_title(section).length();
+    if (this->m_center_label)
+        temp_title_table = this->get_m_menu_title(section).length() < label.length() ? label.length() : this->get_m_menu_title(section).length();
     else
-        temp_title_table = this->language.get_m_menu_title(section).length();
+        temp_title_table = this->get_m_menu_title(section).length();
 
     std::string my_line = "";
     for (int i = 0; i < array1.size(); i++) {
@@ -1609,25 +1587,25 @@ void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::
 
 
 
-    bool star = temp_title_table > this->language.get_m_menu_title(section).length() ?
-        ((my_line.length() - (mySpace + this->language.get_m_menu_title(section).length())) - mySpace) % 2 == 1 : true;
-    int space_size = temp_title_table > this->language.get_m_menu_title(section).length() ?
-        ((my_line.length() - (mySpace + this->language.get_m_menu_title(section).length())) - mySpace) % 2 == 0 ?
-        (((my_line.length() - (mySpace + this->language.get_m_menu_title(section).length())) - mySpace) / 2) + (mySpace - 1) :
-        (((my_line.length() - (mySpace + this->language.get_m_menu_title(section).length())) - mySpace) / 2) + mySpace : mySpace;
-    int color_title = this->get_color_by_name(this->language.m_color_menu_title);
-    int color_table = this->get_color_by_name(this->language.m_color_menu_table);
+    bool star = temp_title_table > this->get_m_menu_title(section).length() ?
+        ((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) % 2 == 1 : true;
+    int space_size = temp_title_table > this->get_m_menu_title(section).length() ?
+        ((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) % 2 == 0 ?
+        (((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) / 2) + (mySpace - 1) :
+        (((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) / 2) + mySpace : mySpace;
+    int color_title = this->get_color_by_name(this->m_color_menu_title);
+    int color_table = this->get_color_by_name(this->m_color_menu_table);
     SetConsoleTextAttribute(hConsole, color_title);
     std::string temp = "";
     for (int i = 0; i < space_size; i++)
         temp += " ";
     temp = star ? temp : temp + "*";
-    std::cout << temp << this->language.get_m_menu_title(section) << std::endl;
+    std::cout << temp << this->get_m_menu_title(section) << std::endl;
     SetConsoleTextAttribute(hConsole, color_table);
 
-    if (this->language.m_center_label) {
-        this->my_lable_space = this->get_lable_space(label, my_line, this->language.get_m_menu_title(section).length());
-        this->m_star = this->get_star(label, my_line, this->language.get_m_menu_title(section).length());
+    if (this->m_center_label) {
+        this->my_lable_space = this->get_lable_space(label, my_line, this->get_m_menu_title(section).length());
+        this->m_star = this->get_star(label, my_line, this->get_m_menu_title(section).length());
     }
 
 
@@ -1646,7 +1624,7 @@ void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::
     for (int y = 0; y < vec.size(); y++) {
 
         if (word == std::to_string(y)) {
-            SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->language.m_color_select));
+            SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
             std::cout << "|";
             SetConsoleTextAttribute(hConsole, color_table);
         }
@@ -1670,7 +1648,7 @@ void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::
 
 
                 if (i + 1 == vec[y].size() && word == std::to_string(y)) {
-                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->language.m_color_select));
+                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
                     std::cout << vec.at(y).at(sizeOfIndex) << "|";
                     SetConsoleTextAttribute(hConsole, color_table);
                 }
@@ -1679,7 +1657,7 @@ void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::
 
 
                 else if (word == std::to_string(y)) {
-                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->language.m_color_select));
+                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
                     std::cout << value << "|";
                     SetConsoleTextAttribute(hConsole, color_table);
                 }
@@ -1696,7 +1674,7 @@ void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::
                         value += " ";
                 }
                 if (word == std::to_string(y)) {
-                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->language.m_color_select));
+                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
                     std::cout << value << "|";
                     SetConsoleTextAttribute(hConsole, color_table);
                 }
@@ -1706,7 +1684,7 @@ void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::
 
 
         if (word == std::to_string(y + 1) || word == std::to_string(y)) {
-            SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->language.m_color_select));
+            SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
             std::cout << std::endl << my_line;
             SetConsoleTextAttribute(hConsole, color_table);
         }
