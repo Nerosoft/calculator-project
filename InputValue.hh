@@ -1,4 +1,4 @@
-class InputValue : public Tables{
+class InputValue : public Input, public Tables{
 public:
     HANDLE hConsole;
     int m_id = 0;
