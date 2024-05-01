@@ -1,5 +1,7 @@
-class Language: public Section {
+class Language: public Section, public App, public Input {
 public:
+    std::vector<std::vector<Input>> myResult;
+    Json m_json;
     //----------------------------help--------------------------------
     
     std::string m_input_help101;
@@ -226,18 +228,30 @@ public:
 
     std::string m_color_error_message_user;
     
+    Language(){
+        std::vector<std::string> names = { "addition", "search", "edit" };
+        this->m_json = this->read_setting();
+        const int size = 3;
+        AddSearchEdit add_search_edit[size];
+        for (int i = 0; i < names.size(); i++)
+            add_search_edit[i] = this->read_add_search_edit(names[i], m_json);
+        this->myResult = this->read_result(m_json);
+        Table m_table = this->read_table(m_json);
+        Colors m_colors = this->read_colors(m_json);
+        Main m_main = this->read_main(m_json);
+        Dialog m_dialog = this->read_dialog(m_json);
+        Help m_help = this->read_Help(m_json);
+        Confirm m_confirm = this->read_confirm(m_json);
+        Delete m_delete = this->read_delete(m_json);
 
-    Language(){}
-    Language(AddSearchEdit add, Main main, Table table, Colors color, Dialog dialog, Help help, AddSearchEdit search, AddSearchEdit edit, Confirm confirm, Delete _delete){
-        //this->set_addition(add);
-        this->set_main(main);
-        this->set_table(table);
-        this->set_colors(color);
-        this->set_dialog(dialog);
-        this->set_help(help);
-        this->set_add_search_edit(add, search, edit);
-        this->set_confirm(confirm);
-        this->set_delete(_delete);
+        this->set_main(m_main);
+        this->set_table(m_table);
+        this->set_colors(m_colors);
+        this->set_dialog(m_dialog);
+        this->set_help(m_help);
+        this->set_add_search_edit(add_search_edit[0], add_search_edit[1], add_search_edit[2]);
+        this->set_confirm(m_confirm);
+        this->set_delete(m_delete);
     }
 
     std::string get_m_print_number(InputValid input_value) {
