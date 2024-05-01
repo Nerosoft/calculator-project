@@ -1,4 +1,4 @@
-class Language: public Section, public App, public Input {
+class Language: public Section, public App {
 public:
     std::vector<std::vector<Input>> myResult;
     Json m_json;
