@@ -1,7 +1,10 @@
-class Language: public Section, public App {
+class Language: public Section, private InitObject, private ReadFile, public App {
 public:
     std::vector<std::vector<Input>> myResult;
-    Json m_json;
+    //----------------------------json--------------------------------
+    int m_index;
+    std::string m_application;
+    std::string m_name;
     //----------------------------help--------------------------------
     
     std::string m_input_help101;
@@ -228,32 +231,20 @@ public:
 
     std::string m_color_error_message_user;
     
-    Language(){
-        std::vector<std::string> names = { "addition", "search", "edit" };
-        this->m_json = this->read_setting();
-        const int size = 3;
-        AddSearchEdit add_search_edit[size];
-        for (int i = 0; i < names.size(); i++)
-            add_search_edit[i] = this->read_add_search_edit(names[i], m_json);
-        this->myResult = this->read_result(m_json);
-        Table m_table = this->read_table(m_json);
-        Colors m_colors = this->read_colors(m_json);
-        Main m_main = this->read_main(m_json);
-        Dialog m_dialog = this->read_dialog(m_json);
-        Help m_help = this->read_Help(m_json);
-        Confirm m_confirm = this->read_confirm(m_json);
-        Delete m_delete = this->read_delete(m_json);
-
-        this->set_main(m_main);
-        this->set_table(m_table);
-        this->set_colors(m_colors);
-        this->set_dialog(m_dialog);
-        this->set_help(m_help);
-        this->set_add_search_edit(add_search_edit[0], add_search_edit[1], add_search_edit[2]);
-        this->set_confirm(m_confirm);
-        this->set_delete(m_delete);
+    Language():App(&this->json, &this->add, &this->search, &this->edit, &this->the_result, &this->table, &this->color, &this->main, &this->dialog, &this->help, &this->confirm, &this->m_delete){
+        this->read_help();
+        this->read_dialog();
+        this->read_add();
+        this->read_search();
+        this->read_edit();
+        this->read_delete();
+        this->read_confirm();
+        this->read_main();
+        this->read_table();
+        this->read_colors();
+        this->read_setting();
+        this->read_result();
     }
-
     std::string get_m_print_number(InputValid input_value) {
         switch (input_value)
         {
@@ -690,7 +681,7 @@ public:
     }
 
 private:
-    void set_help(Help help) {
+    void read_help()override{
         this->m_input_help101 = help.m_input_help_add;
         this->m_print_help101 = help.m_print_help_add;
         this->m_input_help102 = help.m_input_help_search;
@@ -706,8 +697,9 @@ private:
         
         this->m_input_help106 = help.m_input_help_delete;
         this->m_print_help106 = help.m_print_help_delete;
+        
     }
-    void set_dialog(Dialog dialog) {
+    void read_dialog()override {
         this->m_print_successfully_menu_statement_main_screen = dialog.m_print_successfully_menu_statement_main_screen;
         this->m_print_successfully_menu_statement_add_screen = dialog.m_print_successfully_menu_statement_add_screen;
         this->m_print_successfully_menu_statement_search_screen = dialog.m_print_successfully_menu_statement_search_screen;
@@ -769,9 +761,9 @@ private:
         this->m_print_screen106 = dialog.m_print_screen_delete;
         //exit
         this->m_print_screen107 = dialog.m_print_screen_exit;
+        
     }
-    void set_add_search_edit(AddSearchEdit add, AddSearchEdit search, AddSearchEdit edit) {
-        //---------------------------------start add----------------------------------------------
+    void read_add()override {
         this->m_print_statement_confirm101 = add.m_print_statement_confirm;
         this->m_print_error_statement_confirm101 = add.m_print_error_statement_confirm;
         this->m_print_successfully_statement_message_confirm101 = add.m_print_successfully_statement_message_confirm;
@@ -789,8 +781,9 @@ private:
         this->m_input_y101 = add.m_input_y;
         this->m_input_n101 = add.m_input_n;
         this->m_input_result_table101 = add.m_input_result_table;
-        //---------------------------------end add---------------------------------------------------------
-        //---------------------------------start search-------------------------------------------
+        
+    }
+    void read_search()override {
         this->m_print_statement_confirm102 = search.m_print_statement_confirm;
         this->m_print_error_statement_confirm102 = search.m_print_error_statement_confirm;
         this->m_print_successfully_statement_message_confirm102 = search.m_print_successfully_statement_message_confirm;
@@ -806,8 +799,9 @@ private:
         this->m_input_y102 = search.m_input_y;
         this->m_input_n102 = search.m_input_n;
         this->m_input_result_table102 = search.m_input_result_table;
-        //--------------------------------end search----------------------------------------------
-        //--------------------------------start edit----------------------------------------------
+        
+    }
+    void read_edit()override {
         this->m_print_statement_confirm103 = edit.m_print_statement_confirm;
         this->m_print_error_statement_confirm103 = edit.m_print_error_statement_confirm;
         this->m_print_successfully_statement_message_confirm103 = edit.m_print_successfully_statement_message_confirm;
@@ -823,24 +817,26 @@ private:
         this->m_input_y103 = edit.m_input_y;
         this->m_input_n103 = edit.m_input_n;
         this->m_input_result_table103 = edit.m_input_result_table;
-        //--------------------------------end edit------------------------------------------------
+        
     }
-    void set_delete(Delete _delete) {
-        this->m_input_y104 = _delete.m_input_y;
-        this->m_input_n104 = _delete.m_input_n;
-        this->m_print_message_user103 = _delete.m_print_message_user;
-        this->m_print_error_message_user103 = _delete.m_print_error_message_user;
-        this->m_print_successfully_statement_message_confirm105 = _delete.m_print_successfully_statement_message_confirm;
+    void read_delete()override {
+        this->m_input_y104 = m_delete.m_input_y;
+        this->m_input_n104 = m_delete.m_input_n;
+        this->m_print_message_user103 = m_delete.m_print_message_user;
+        this->m_print_error_message_user103 = m_delete.m_print_error_message_user;
+        this->m_print_successfully_statement_message_confirm105 = m_delete.m_print_successfully_statement_message_confirm;
+        
     }
-    void set_confirm(Confirm confirm) {
+    void read_confirm()override {
         this->m_input_key103 = confirm.m_input_key_edit;
         this->m_input_key104 = confirm.m_input_key_delete;
         this->m_print_successfully_statement_confirm103 = confirm.m_print_successfully_statement_confirm_edit;
         this->m_print_successfully_statement_confirm104 = confirm.m_print_successfully_statement_confirm_delete;
         this->m_print_message_user102 = confirm.m_print_message_user;
         this->m_print_error_message_user102 = confirm.m_print_error_message_user;
+        
     }
-    void set_main(Main main) {
+    void read_main()override {
         this->m_input_key101 = main.m_input_key_add;
         this->m_input_key102 = main.m_input_key_search;
         this->m_print_successfully_statement_confirm101 = main.m_print_successfully_statement_confirm_add;
@@ -849,8 +845,9 @@ private:
         this->m_print_message_user101 = main.m_print_message_user;
         this->m_print_error_message_user101 = main.m_print_error_message_user;
         this->m_print_successfully_statement_message_confirm104 = main.m_print_successfully_statement_message_confirm;
+        
     }
-    void set_table(Table table) {
+    void read_table()override {
         this->m_data_title = table.m_data_title;
         this->m_result_title = table.m_result_title;
         this->m_result_table_suggestion = table.m_result_table_suggestion;
@@ -882,8 +879,9 @@ private:
         this->m_heddin_menu_address = table.m_heddin_menu_address;
         this->m_type_table_operator = table.m_type_table_operator;
         this->m_center_label = table.m_center_label;
+        
     }
-    void set_colors(Colors color) {
+    void read_colors()override {
         this->m_color_help = color.m_color_help;
         this->m_color_result_title = color.m_color_result_title;
         this->m_color_menu_statement = color.m_color_menu_statement;
@@ -907,5 +905,15 @@ private:
         this->m_color_menu_title = color.m_color_menu_title;
         this->m_color_menu_table = color.m_color_menu_table;
         this->m_color_error_message_user = color.m_color_error_message_user;
+        
+    }
+    void read_setting()override {
+        this->m_index = json.m_index;
+        this->m_application = json.m_application;
+        this->m_name = json.m_name;
+        
+    }
+    void read_result()override {
+        this->myResult = the_result;
     }
 };
