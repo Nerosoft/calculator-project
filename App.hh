@@ -2,42 +2,20 @@ class App{
 private:
     Json m_json;
 public:
-    App(Json* json, AddSearchEdit *add, AddSearchEdit *search, AddSearchEdit *edit, std::vector<std::vector<Input>> *the_result, Table *table, Colors *color, Main *main, Dialog *dialog, Help *help, Confirm *confirm, Delete *m_delete) {
-        std::vector<std::string> names = { "addition", "search", "edit" };
-        *json = this->read_setting();
-        this->m_json = *json;
-        const int size = 3;
-        AddSearchEdit add_search_edit[size];
-        for (int i = 0; i < names.size(); i++)
-            add_search_edit[i] = this->read_add_search_edit(names[i]);
-
-        *add = add_search_edit[0];
-        *search = add_search_edit[1];
-        *edit = add_search_edit[2];
-
-        *the_result = this->read_result();
-        *table = this->read_table();
-        *color = this->read_colors();
-        *main = this->read_main();
-        *dialog = this->read_dialog();
-        *help = this->read_help();
-        *confirm = this->read_confirm();
-        *m_delete = this->read_delete();
-    }
-     std::vector<std::vector<Input>> read_result();
-     Table read_table();
-     Colors read_colors();
-     Main read_main();
-     Dialog read_dialog();
-     Help read_help();
-     AddSearchEdit read_add_search_edit(std::string name);
-     Confirm read_confirm();
-     Delete read_delete();
-     void write_result(std::vector<std::vector<Input>> result);
-     Json read_setting();
+     std::vector<std::vector<Input>> m_read_result();
+     Table m_read_table();
+     Colors m_read_colors();
+     Main m_read_main();
+     Dialog m_read_dialog();
+     Help m_read_help();
+     AddSearchEdit m_read_add_search_edit(std::string name);
+     Confirm m_read_confirm();
+     Delete m_read_delete();
+     void m_write_result(std::vector<std::vector<Input>> result);
+     Json m_read_setting();
 };
 
-Table App::read_table() {
+Table App::m_read_table() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -50,7 +28,7 @@ Table App::read_table() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Colors App::read_colors() {
+Colors App::m_read_colors() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -63,7 +41,7 @@ Colors App::read_colors() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Main App::read_main() {
+Main App::m_read_main() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -81,7 +59,7 @@ Main App::read_main() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Dialog App::read_dialog() {
+Dialog App::m_read_dialog() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -95,7 +73,7 @@ Dialog App::read_dialog() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Help App::read_help() {
+Help App::m_read_help() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -108,7 +86,7 @@ Help App::read_help() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-AddSearchEdit App::read_add_search_edit(std::string name) {
+AddSearchEdit App::m_read_add_search_edit(std::string name) {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
 
@@ -123,7 +101,7 @@ AddSearchEdit App::read_add_search_edit(std::string name) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Confirm App::read_confirm() {
+Confirm App::m_read_confirm() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -141,7 +119,7 @@ Confirm App::read_confirm() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Delete App::read_delete() {
+Delete App::m_read_delete() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -154,7 +132,7 @@ Delete App::read_delete() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-std::vector<std::vector<Input>> App::read_result() {
+std::vector<std::vector<Input>> App::m_read_result() {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile =
@@ -177,7 +155,7 @@ std::vector<std::vector<Input>> App::read_result() {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-void App::write_result(std::vector<std::vector<Input>> result) {
+void App::m_write_result(std::vector<std::vector<Input>> result) {
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile = nlohmann::json::parse(MyReadFile);
@@ -194,11 +172,12 @@ void App::write_result(std::vector<std::vector<Input>> result) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
     }
 }
-Json App::read_setting(){
+Json App::m_read_setting(){
     try {
         std::ifstream MyReadFile(TEXT_FIE_PATH);
         nlohmann::json JsonFile = nlohmann::json::parse(MyReadFile);
-        return JsonFile.template get<Json>();
+        this->m_json = JsonFile.template get<Json>();
+        return this->m_json;
     }
     catch (std::exception& e) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
