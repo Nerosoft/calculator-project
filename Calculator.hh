@@ -7,13 +7,12 @@
 #include"Main.hh"
 #include"Confirm.hh"
 #include"Delete.hh"
-
 #include"Section.hh"
 #include"Configration.hh"
 #include"Input.hh"
-#include"ReadWriteFile.hh"
 #include"App.hh"
-
+#include"InitObject.hh"
+#include"ReadFile.hh"
 #include"Language.hh"
 
 
@@ -124,7 +123,7 @@ void Calculator::display_result() {
                 if (isValidInt22(MenuEdit::message102, &add)) {
                     std::vector<Input>m_vec = this->myInput.vec;
                     this->myInput.myResult.push_back(m_vec);
-                    this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
+                    this->myInput.write_result(this->myInput.myResult);
                     std::string label = this->myInput.m_print_successfully_statement_message_confirm101;
                     int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
@@ -167,7 +166,7 @@ void Calculator::display_result() {
                         temp.push_back(this->myInput.myResult.at(i));
                     }
                     this->myInput.myResult = temp;
-                    this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
+                    this->myInput.write_result(this->myInput.myResult);
                     std::string label = this->myInput.m_print_successfully_statement_message_confirm105;
                     int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                     this->myInput.print_statement(label, color_label);
@@ -226,7 +225,7 @@ void Calculator::display_result() {
                         std::vector<Input> m_vec = this->myInput.vec;
                         m_result.at(m_index) = m_vec;
                         this->myInput.myResult = m_result;
-                        this->myInput.write_result(this->myInput.myResult, this->myInput.m_json);
+                        this->myInput.write_result(this->myInput.myResult);
                         std::string label = this->myInput.m_print_successfully_statement_message_confirm103;
                         int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_message_confirm);
                         this->myInput.print_statement(label, color_label);
