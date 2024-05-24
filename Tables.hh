@@ -1486,212 +1486,131 @@ void Tables::show_result_with_operator(std::vector<Input>*vec, std::string table
 
 }
 
+
 void Tables::display_table_menu(std::vector<std::vector<std::string>> vec, std::string word, std::string label, MenuEdit section) {
-    std::string id = word;
-    std::vector<std::string> array1;
-    int space = this->m_menu_space;
-    bool heddinIndex = this->m_heddin_menu_address != "on" ? false : true;
-    int sizeOfIndex = 0;
+ std::string id = word;
+ int color_select = this->get_color_by_name(this->m_color_select);
+ std::vector<std::string> array1;
+ int space = this->m_menu_space;
+ for (int i = 0; i < vec.size(); i++) {
+     word = vec[i][1] == word ? std::to_string(i) : word;
+     for (int y = 0; y < space; y++) {
+         if(i <= 0)
+             array1 = this->m_heddin_menu_address == "on" ? std::vector<std::string>{ " " + (y == 0 ? this->m_app : array1[0]) + " ", " " + (y == 0 ? this->m_app_address : array1[1]) + " "} : std::vector<std::string>{" " + (y == 0 ? this->m_app : array1[0]) + " "};
+         vec[i] = { " " + vec[i][0] + " ", " " + (y == 0 ? std::to_string(i + 1) :vec[i][1]) + " "};
+     }
+     for (int z = 0; z < array1.size(); z++) {
+         std::string value = vec.at(i).at(z);
+         if (value.length() > array1[z].length()) {
+             int myLen = value.length() - array1[z].length();
+             for (int ii = 0; ii < myLen; ii++)
+                 array1[z] += " ";
+         }
+     }
+ }
 
-    array1 = { this->m_app };
-    for (int i = 0; i < array1.size(); i++) {
-        for (int y = 0; y < space; y++)
-            array1[i] = " " + array1[i] + " ";
-        if (i + 1 == array1.size()) {
-            if (heddinIndex) {
-                array1.push_back(this->m_app_address);
-                sizeOfIndex = array1.size() - 1;
-                for (int y = 0; y < space; y++)
-                    array1[sizeOfIndex] = " " + array1[sizeOfIndex] + " ";
-                for (int z = 0; z < vec.size(); z++) {
-                    if (vec[z][1] == word)
-                        word = std::to_string(z);
-                    vec[z] = { vec[z][0], std::to_string(z + 1) };
-                }
-            }
-            else
-                for (int z = 0; z < vec.size(); z++) {
-                    if (vec[z][1] == word)
-                        word = std::to_string(z);
-                    vec[z] = { vec[z][0] };
-                }
-            break;
-        }
-    }
-
-    for (int y = 0; y < vec.size(); y++) {
-        for (int a = 0; a < vec.at(y).size(); a++)
-            for (int z = 0; z < space; z++) {
-                vec[y][a] = " " + vec[y][a] + " ";
-            }
-        if (heddinIndex)
-            for (int i = 0; i < vec.at(y).size(); i++) {
-                std::string value = vec.at(y).at(i);
-                if (value.length() > array1[i].length()) {
-                    int myLen = value.length() - array1[i].length();
-                    for (int ii = 0; ii < myLen; ii++)
-                        array1[i] += " ";
-                }
-                if (array1[sizeOfIndex].length() < vec.at(y).at(vec[y].size() - 1).length() && i + 1 == vec.at(y).size()) {
-                    int mySize = vec.at(y).at(vec[y].size() - 1).length() - array1[sizeOfIndex].length();
-                    for (int z = 0; z < mySize; z++)
-                        array1[sizeOfIndex] += " ";
-                }
-            }
-        else
-            for (int i = 0; i < vec.at(y).size(); i++) {
-                std::string value = vec.at(y).at(i);
-                if (value.length() > array1[i].length()) {
-                    int myLen = value.length() - array1[i].length();
-                    for (int ii = 0; ii < myLen; ii++)
-                        array1[i] += " ";
-                }
-            }
-    }
-
-
-    int temp_title_table;
-    if (this->m_center_label)
-        temp_title_table = this->get_m_menu_title(section).length() < label.length() ? label.length() : this->get_m_menu_title(section).length();
-    else
-        temp_title_table = this->get_m_menu_title(section).length();
-
-    std::string my_line = "";
-    for (int i = 0; i < array1.size(); i++) {
-        my_line += "+";
-        for (int ii = 0; ii < array1[i].length(); ii++)
-            my_line += "-";
-        if (i + 1 == array1.size() && my_line.length() / 2 < temp_title_table) {
-            int size = size = my_line.length() % 2 == 1 ? temp_title_table % 2 == 0 ? ((temp_title_table - (my_line.length() / 2)) * 2) - 2 :
-                ((temp_title_table - (my_line.length() / 2)) * 2) - 1 :
-                temp_title_table % 2 == 0 ? ((temp_title_table - (my_line.length() / 2)) * 2) - 1 : ((temp_title_table - (my_line.length() / 2)) * 2) - 2;
-            for (int z = 0; z < size; z++) {
-                my_line += "-";
-                array1[array1.size() - 1] += " ";
-            }
-            my_line += "+\n";
-        }
-        else if (i + 1 == array1.size()) {
-            int temp_size = my_line.size();
-            my_line += my_line.length() % 2 == 1 ? temp_title_table % 2 == 1 ? "-+\n" : "+\n" : temp_title_table % 2 == 1 ? "+\n" : "-+\n";
-            array1[array1.size() - 1] += temp_size % 2 == 1 ? temp_title_table % 2 == 1 ? " " : "" : temp_title_table % 2 == 1 ? "" : " ";
-        }
-    }
+ int temp_title_table;
+ if (this->m_center_label)
+     temp_title_table = this->get_m_menu_title(section).length() < label.length() ? label.length() : this->get_m_menu_title(section).length();
+ else
+     temp_title_table = this->get_m_menu_title(section).length();
+ std::string my_line = "";
+ for (int i = 0; i < array1.size(); i++) {
+     my_line += "+";
+     for (int ii = 0; ii < array1[i].length(); ii++)
+         my_line += "-";
+     if (i + 1 == array1.size() && my_line.length() / 2 < temp_title_table) {
+         int size = size = my_line.length() % 2 == 1 ? temp_title_table % 2 == 0 ? ((temp_title_table - (my_line.length() / 2)) * 2) - 2 :
+             ((temp_title_table - (my_line.length() / 2)) * 2) - 1 :
+             temp_title_table % 2 == 0 ? ((temp_title_table - (my_line.length() / 2)) * 2) - 1 : ((temp_title_table - (my_line.length() / 2)) * 2) - 2;
+         for (int z = 0; z < size; z++) {
+             my_line += "-";
+             array1[array1.size() - 1] += " ";
+         }
+         my_line += "+\n";
+     }
+     else if (i + 1 == array1.size()) {
+         int temp_size = my_line.size();
+         my_line += my_line.length() % 2 == 1 ? temp_title_table % 2 == 1 ? "-+\n" : "+\n" : temp_title_table % 2 == 1 ? "+\n" : "-+\n";
+         array1[array1.size() - 1] += temp_size % 2 == 1 ? temp_title_table % 2 == 1 ? " " : "" : temp_title_table % 2 == 1 ? "" : " ";
+     }
+ }
 
 
 
 
-    int size = (my_line.length() / 2) - (temp_title_table % 2 ? ((temp_title_table / 2) + 1) : temp_title_table / 2);
-    mySpace = temp_title_table == (my_line.length() / 2) || temp_title_table < (my_line.length() / 2) ? size : my_line.length() / 4;
+ int size = (my_line.length() / 2) - (temp_title_table % 2 ? ((temp_title_table / 2) + 1) : temp_title_table / 2);
+ mySpace = temp_title_table == (my_line.length() / 2) || temp_title_table < (my_line.length() / 2) ? size : my_line.length() / 4;
 
 
 
 
-    bool star = temp_title_table > this->get_m_menu_title(section).length() ?
-        ((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) % 2 == 1 : true;
-    int space_size = temp_title_table > this->get_m_menu_title(section).length() ?
-        ((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) % 2 == 0 ?
-        (((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) / 2) + (mySpace - 1) :
-        (((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) / 2) + mySpace : mySpace;
-    int color_title = this->get_color_by_name(this->m_color_menu_title);
-    int color_table = this->get_color_by_name(this->m_color_menu_table);
-    SetConsoleTextAttribute(hConsole, color_title);
-    std::string temp = "";
-    for (int i = 0; i < space_size; i++)
-        temp += " ";
-    temp = star ? temp : temp + "*";
-    std::cout << temp << this->get_m_menu_title(section) << std::endl;
-    SetConsoleTextAttribute(hConsole, color_table);
+ bool star = temp_title_table > this->get_m_menu_title(section).length() ?
+     ((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) % 2 == 1 : true;
+ int space_size = temp_title_table > this->get_m_menu_title(section).length() ?
+     ((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) % 2 == 0 ?
+     (((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) / 2) + (mySpace - 1) :
+     (((my_line.length() - (mySpace + this->get_m_menu_title(section).length())) - mySpace) / 2) + mySpace : mySpace;
+ int color_title = this->get_color_by_name(this->m_color_menu_title);
+ int color_table = this->get_color_by_name(this->m_color_menu_table);
+ SetConsoleTextAttribute(hConsole, color_title);
+ std::string temp = "";
+ for (int i = 0; i < space_size; i++)
+     temp += " ";
+ temp = star ? temp : temp + "*";
+ std::cout << temp << this->get_m_menu_title(section) << std::endl;
+ SetConsoleTextAttribute(hConsole, color_table);
 
-    if (this->m_center_label) {
-        this->my_lable_space = this->get_lable_space(label, my_line, this->get_m_menu_title(section).length());
-        this->m_star = this->get_star(label, my_line, this->get_m_menu_title(section).length());
-    }
+ if (this->m_center_label) {
+     this->my_lable_space = this->get_lable_space(label, my_line, this->get_m_menu_title(section).length());
+     this->m_star = this->get_star(label, my_line, this->get_m_menu_title(section).length());
+ }
 
-
-
-    std::cout << my_line;
-    for (int i = 0; i < array1.size(); i++) {
-        std::cout << "|" << array1[i];
-        if (i + 1 == array1.size())
-            std::cout << "|" << std::endl;
-    }
+ std::cout << my_line;
+ for (int i = 0; i < array1.size(); i++) {
+     std::cout << "|" << array1[i];
+     if (i + 1 == array1.size())
+         std::cout << "|" << std::endl;
+ }
 
 
-    
-    std::cout << my_line;
+ 
+ std::cout << my_line;
 
-    for (int y = 0; y < vec.size(); y++) {
-
-        if (word == std::to_string(y)) {
-            SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
-            std::cout << "|";
-            SetConsoleTextAttribute(hConsole, color_table);
-        }
-        else
-            std::cout << "|";
-
-        if (heddinIndex) {
-            for (int i = 0; i < vec.at(y).size(); i++) {
-                std::string value = vec.at(y).at(i);
-                if (value.length() < array1[i].length()) {
-                    int myLen = array1[i].length() - value.length();
-                    for (int i = 0; i < myLen; i++)
-                        value += " ";
-                }
-                if (vec.at(y).at(sizeOfIndex).length() < array1[sizeOfIndex].length() && i + 1 == vec[y].size()) {
-                    int mySize = array1[sizeOfIndex].length() - vec.at(y).at(sizeOfIndex).length();
-                    for (int i = 0; i < mySize; i++)
-                        vec.at(y).at(sizeOfIndex) += " ";
-                }
-
-
-
-                if (i + 1 == vec[y].size() && word == std::to_string(y)) {
-                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
-                    std::cout << vec.at(y).at(sizeOfIndex) << "|";
-                    SetConsoleTextAttribute(hConsole, color_table);
-                }
-                else if (i + 1 == vec[y].size())
-                    std::cout << vec.at(y).at(sizeOfIndex) << "|";
-
-
-                else if (word == std::to_string(y)) {
-                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
-                    std::cout << value << "|";
-                    SetConsoleTextAttribute(hConsole, color_table);
-                }
-                else
-                    std::cout << value << "|";
-            }
-        }
-        else
-            for (int i = 0; i < vec.at(y).size(); i++) {
-                std::string value = vec.at(y).at(i);
-                if (value.length() < array1[i].length()) {
-                    int myLen = array1[i].length() - value.length();
-                    for (int i = 0; i < myLen; i++)
-                        value += " ";
-                }
-                if (word == std::to_string(y)) {
-                    SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
-                    std::cout << value << "|";
-                    SetConsoleTextAttribute(hConsole, color_table);
-                }
-                else
-                    std::cout << value << "|";
-            }
-
-
-        if (word == std::to_string(y + 1) || word == std::to_string(y)) {
-            SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
-            std::cout << std::endl << my_line;
-            SetConsoleTextAttribute(hConsole, color_table);
-        }
-        else
-            std::cout << std::endl << my_line;
-    }
+ for (int y = 0; y < vec.size(); y++) {
+     if (word == std::to_string(y)) {
+         SetConsoleTextAttribute(hConsole, color_select);
+         std::cout << "|";
+         SetConsoleTextAttribute(hConsole, color_table);
+     }
+     else
+         std::cout << "|";
+     for (int i = 0; i < array1.size(); i++) {
+         std::string value = vec.at(y).at(i);
+         if (value.length() < array1[i].length()) {
+             int myLen = array1[i].length() - value.length();
+             for (int i = 0; i < myLen; i++)
+                 value += " ";
+         } 
+         if (word == std::to_string(y)) {
+             SetConsoleTextAttribute(hConsole, color_select);
+             std::cout << value << "|";
+             SetConsoleTextAttribute(hConsole, color_table);
+         }
+         else
+             std::cout << value << "|";
+     }
+     if (word == std::to_string(y + 1) || word == std::to_string(y)) {
+         SetConsoleTextAttribute(hConsole, this->get_color_by_name(this->m_color_select));
+         std::cout << std::endl << my_line;
+         SetConsoleTextAttribute(hConsole, color_table);
+     }
+     else
+         std::cout << std::endl << my_line;
+ }
 }
+
+
 
 int Tables::get_lable_space(std::string label, std::string my_line, int title) {
     return label.length() < title ?
