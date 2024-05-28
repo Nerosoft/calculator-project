@@ -473,6 +473,14 @@ bool Calculator::isValidInt22(MenuEdit menu_edit, std::string* input_value = nul
             || *input_value == this->myInput.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message101
             || *input_value == this->myInput.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message103
             || *input_value == this->myInput.get_m_input_n(menu_edit) && menu_edit == Section::MenuEdit::message104) {
+             if (menu_edit == Section::MenuEdit::message104) {
+                 std::string value = this->myInput_edit.m_var1;
+                 std::string m_operator = this->myInput_edit.m_operator;
+                 std::vector<Input> vec = this->myInput_edit.vec;
+                 std::string test = this->myInput_edit.test;
+                 std::string m_pos = pos;
+                 this->myInput = InputValue(&option, m_pos, value, m_operator, vec, test, nullptr);//confirm
+             }
             return false;
         }
         else if (menu_edit == Section::MenuEdit::add || menu_edit == Section::MenuEdit::search || menu_edit == Section::MenuEdit::update_item
