@@ -243,8 +243,8 @@ void Language::read_help() {
     this->m_print_help101 = help.m_print_help_add;
     this->m_input_help102 = help.m_input_help_search;
     this->m_print_help102 = help.m_print_help_search;
-    this->m_input_help103 = help.m_input_help_add;
-    this->m_print_help103 = help.m_print_help_add;
+    this->m_input_help103 = help.m_input_help_edit;
+    this->m_print_help103 = help.m_print_help_edit;
 
     this->m_input_help104 = help.m_input_help_main;
     this->m_print_help104 = help.m_print_help_main;
