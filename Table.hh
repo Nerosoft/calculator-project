@@ -1,6 +1,22 @@
 #pragma once
 class Table {
 public:
+    std::string m_line_menu;
+    std::string m_dismiss_line_menu;
+    std::string m_dismiss_word_menu;
+
+    std::string m_line_result;
+    std::string m_dismiss_line_result;
+    std::string m_dismiss_word_result;
+
+    std::string m_line_sugges;
+    std::string m_dismiss_line_sugges;
+    std::string m_dismiss_word_sugges;
+
+    std::string m_line_data;
+    std::string m_dismiss_line_data;
+    std::string m_dismiss_word_data;
+
     std::string m_data_title;
     std::string m_result_title;
     std::string m_result_table_suggestion;
@@ -42,6 +58,8 @@ public:
     std::string m_type_table_operator;
     bool m_center_label;
 
+    std::string m_heddin_table;
+
     Table() = default;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(Table,
         m_data_title,
@@ -74,6 +92,23 @@ public:
         m_menu_space,
         m_heddin_menu_address,
         m_type_table_operator,
-        m_center_label
+        m_center_label,
+
+        m_line_result,
+        m_dismiss_line_result,
+        m_dismiss_word_result,
+
+        m_line_sugges,
+        m_dismiss_line_sugges,
+        m_dismiss_word_sugges,
+
+        m_line_data,
+        m_dismiss_line_data,
+        m_dismiss_word_data,
+
+        m_line_menu,
+        m_dismiss_line_menu,
+        m_dismiss_word_menu,
+        m_heddin_table
     )
 };

@@ -16,6 +16,11 @@ public:
     std::string m_input_y;
     std::string m_input_n;
     std::string m_input_result_table;
+    std::string m_print_successfuly_select_item;
+
+    std::string m_input_search;
+    std::string m_input_result;
+
     AddSearchEdit() = default;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(AddSearchEdit,
         m_print_statement_confirm,
@@ -32,6 +37,9 @@ public:
 
         m_input_y,
         m_input_n,
-        m_input_result_table
+        m_input_result_table,
+        m_print_successfuly_select_item,
+        m_input_search,
+        m_input_result
     )
 };

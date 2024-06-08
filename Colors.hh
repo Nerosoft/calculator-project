@@ -1,6 +1,31 @@
 #pragma once
 class Colors {
 public:
+    std::string m_color_app_menu;
+    std::string m_color_address_menu;
+    std::string m_color_app_exit_menu;
+    std::string m_color_app_main_menu;
+    std::string m_color_app_add_menu;
+    std::string m_color_app_search;
+    std::string m_color_app_confirm_menu;
+    std::string m_color_app_edit_menu;
+    std::string m_color_app_delete_menu;
+
+    std::string m_color_value_result;
+    std::string m_color_operator_result;
+    std::string m_color_total_result;
+    std::string m_color_address_result;
+
+    std::string m_color_value_sugges;
+    std::string m_color_operator_sugges;
+    std::string m_color_total_sugges;
+    std::string m_color_address_sugges;
+
+    std::string m_color_value_data;
+    std::string m_color_operator_data;
+    std::string m_color_total_data;
+    std::string m_color_address_data;
+
     std::string m_color_help;
     std::string m_color_result_title;
     std::string m_color_menu_statement;
@@ -27,6 +52,9 @@ public:
 
     std::string m_color_error_message_user;
 
+    std::string m_color_main;
+    std::string m_color_confirm;
+
     Colors() = default;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(Colors,
         m_color_help,
@@ -51,6 +79,29 @@ public:
         m_color_data_title,
         m_color_menu_title,
         m_color_menu_table,
-        m_color_error_message_user
+        m_color_error_message_user,
+        m_color_value_result,
+        m_color_operator_result,
+        m_color_total_result,
+        m_color_address_result,
+        m_color_value_sugges,
+        m_color_operator_sugges,
+        m_color_total_sugges,
+        m_color_address_sugges,
+        m_color_value_data,
+        m_color_operator_data,
+        m_color_total_data,
+        m_color_address_data,
+        m_color_app_menu,
+        m_color_address_menu,
+        m_color_app_exit_menu,
+        m_color_app_main_menu,
+        m_color_app_add_menu,
+        m_color_app_search,
+        m_color_app_confirm_menu,
+        m_color_app_edit_menu,
+        m_color_app_delete_menu,
+        m_color_main,
+        m_color_confirm
     )
 };

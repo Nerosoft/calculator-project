@@ -22,7 +22,7 @@ Table App::m_read_table() {
             m_json.m_application != "" && m_json.m_name != "" ?
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
-        return JsonFile["eng"]["tables"].template get<Table>();
+        return JsonFile[this->m_json.m_language]["tables"].template get<Table>();
     }
     catch (std::exception& e) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
@@ -35,7 +35,7 @@ Colors App::m_read_colors() {
             m_json.m_application != "" && m_json.m_name != "" ?
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
-        return JsonFile["eng"]["color"].template get<Colors>();
+        return JsonFile[this->m_json.m_language]["color"].template get<Colors>();
     }
     catch (std::exception& e) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
@@ -48,7 +48,7 @@ Main App::m_read_main() {
             m_json.m_application != "" && m_json.m_name != "" ?
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
-        Main m_main = JsonFile["eng"]["main"].template get<Main>();
+        Main m_main = JsonFile[this->m_json.m_language]["main"].template get<Main>();
         if (m_main.m_input_key_add == m_main.m_input_key_search) {
             m_main.m_input_key_add = m_main.m_input_key_add + "1";
             m_main.m_input_key_search = m_main.m_input_key_search + "2";
@@ -66,7 +66,7 @@ Dialog App::m_read_dialog() {
             m_json.m_application != "" && m_json.m_name != "" ?
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
-        return JsonFile["eng"]["dialog"].template get<Dialog>();
+        return JsonFile[this->m_json.m_language]["dialog"].template get<Dialog>();
         //return add;
     }
     catch (std::exception& e) {
@@ -80,7 +80,7 @@ Help App::m_read_help() {
             m_json.m_application != "" && m_json.m_name != "" ?
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
-        return JsonFile["eng"]["help"].template get<Help>();
+        return JsonFile[this->m_json.m_language]["help"].template get<Help>();
     }
     catch (std::exception& e) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
@@ -95,7 +95,12 @@ AddSearchEdit App::m_read_add_search_edit(std::string name) {
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
 
-        return  JsonFile["eng"][name].template get<AddSearchEdit>();
+        AddSearchEdit addSearchEdit = JsonFile[this->m_json.m_language][name].template get<AddSearchEdit>();
+        if (addSearchEdit.m_input_n == addSearchEdit.m_input_y) {
+            addSearchEdit.m_input_n = addSearchEdit.m_input_n + "1";
+            addSearchEdit.m_input_y = addSearchEdit.m_input_y + "2";
+        }
+        return addSearchEdit;
     }
     catch (std::exception& e) {
         std::cout << "Standard exception: result" << e.what() << std::endl;
@@ -108,7 +113,7 @@ Confirm App::m_read_confirm() {
             m_json.m_application != "" && m_json.m_name != "" ?
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
-        Confirm confirm = JsonFile["eng"]["confirm"].template get<Confirm>();
+        Confirm confirm = JsonFile[this->m_json.m_language]["confirm"].template get<Confirm>();
         if (confirm.m_input_key_edit == confirm.m_input_key_delete) {
             confirm.m_input_key_edit = confirm.m_input_key_edit + "1";
             confirm.m_input_key_delete = confirm.m_input_key_delete + "2";
@@ -126,7 +131,12 @@ Delete App::m_read_delete() {
             m_json.m_application != "" && m_json.m_name != "" ?
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index).at(m_json.m_application).at(m_json.m_name) :
             nlohmann::json::parse(MyReadFile).at("data").at(m_json.m_index);
-        return JsonFile["eng"]["delete"].template get<Delete>();
+        Delete d = JsonFile[this->m_json.m_language]["delete"].template get<Delete>();
+        if (d.m_input_n == d.m_input_y) {
+            d.m_input_n = d.m_input_n + "1";
+            d.m_input_y = d.m_input_y+ "2";
+        }
+        return d;
     }
     catch (std::exception& e) {
         std::cout << "Standard exception: result" << e.what() << std::endl;

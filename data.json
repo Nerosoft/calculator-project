@@ -5,7 +5,9 @@
         "addition": {
           "m_input_clear": "clear",
           "m_input_n": "n",
+          "m_input_result": "=",
           "m_input_result_table": "lee",
+          "m_input_search": "=",
           "m_input_y": "y",
           "m_print_clear": "The opration is cleared.",
           "m_print_error_number": "There is an error on the add screen. Please enter the number again!.",
@@ -14,10 +16,24 @@
           "m_print_number": "Please enter the number ? ",
           "m_print_operator": "Please enter the opretor (+ - / * =): or help ? ",
           "m_print_statement_confirm": "Do you agree to add the calculation or help ? ",
-          "m_print_successfully_statement_message_confirm": "The addition process was completed successfully."
+          "m_print_successfully_statement_message_confirm": "The addition process was completed successfully.",
+          "m_print_successfuly_select_item": "You are already working on this item"
         },
         "color": {
+          "m_color_address_data": "blue",
+          "m_color_address_menu": "blue",
+          "m_color_address_result": "bright_blue",
+          "m_color_address_sugges": "cyan",
+          "m_color_app_add_menu": "green",
+          "m_color_app_confirm_menu": "green",
+          "m_color_app_delete_menu": "green",
+          "m_color_app_edit_menu": "green",
+          "m_color_app_exit_menu": "green",
+          "m_color_app_main_menu": "green",
+          "m_color_app_menu": "yellow",
+          "m_color_app_search": "green",
           "m_color_clear": "blue",
+          "m_color_confirm": "cyan",
           "m_color_data_table": "bright_cyan",
           "m_color_data_title": "cyan",
           "m_color_error_menu_statement": "red",
@@ -26,11 +42,15 @@
           "m_color_error_operator": "red",
           "m_color_error_statement_confirm": "red",
           "m_color_help": "bright_green",
+          "m_color_main": "purple",
           "m_color_menu_statement": "blue",
           "m_color_menu_table": "green",
           "m_color_menu_title": "cyan",
           "m_color_number": "blue",
           "m_color_operator": "yellow",
+          "m_color_operator_data": "yellow_dark",
+          "m_color_operator_result": "purple",
+          "m_color_operator_sugges": "bright_cyan",
           "m_color_result_table": "green",
           "m_color_result_title": "cyan",
           "m_color_select": "yellow_dark",
@@ -39,13 +59,19 @@
           "m_color_successfully_statement_confirm": "pink_magenta",
           "m_color_successfully_statement_message_confirm": "green",
           "m_color_sugges_table": "purple",
-          "m_color_sugges_title": "cyan"
+          "m_color_sugges_title": "cyan",
+          "m_color_total_data": "cyan",
+          "m_color_total_result": "red",
+          "m_color_total_sugges": "yellow_dark",
+          "m_color_value_data": "red",
+          "m_color_value_result": "bright_green",
+          "m_color_value_sugges": "blue"
         },
         "confirm": {
           "m_input_key_delete": "d",
           "m_input_key_edit": "u",
           "m_print_error_message_user": "There is an error confirm screen, please re-enter the command again.",
-          "m_print_message_user": "Please choose to modify the selected item or choose to delete the selected item or help ? ",
+          "m_print_message_user": "Please choose u to modify the selected item or choose d to delete the selected item or help ? ",
           "m_print_successfully_statement_confirm_delete": "You have successfully finished working on the confirm program. you are now in delete program.",
           "m_print_successfully_statement_confirm_edit": "You have successfully finished working on the confirm program. you are now in edit program."
         },
@@ -53,7 +79,8 @@
           "m_input_n": "n",
           "m_input_y": "y",
           "m_print_error_message_user": "Error in deleting the correct operation to be modified.",
-          "m_print_message_user": "Please delete the correct operation to modify or help ? ",
+          "m_print_statement_confirm": "Please delete the correct operation to modify or help ? ",
+          "m_print_successfully_statement_confirm_delete": "You have successfully finished working on the delete program. you are now in confirm program.",
           "m_print_successfully_statement_message_confirm": "The delete process was completed successfully."
         },
         "dialog": {
@@ -104,7 +131,9 @@
         "edit": {
           "m_input_clear": "clear",
           "m_input_n": "n",
+          "m_input_result": "=",
           "m_input_result_table": "lee",
+          "m_input_search": "=",
           "m_input_y": "y",
           "m_print_clear": "The opration is cleared.",
           "m_print_error_number": "There is an error on the edit screen. please enter the new number again!.",
@@ -113,7 +142,8 @@
           "m_print_number": "Please enter the new number ? ",
           "m_print_operator": "Please enter the new opretor(+ - / * =): or help ? ",
           "m_print_statement_confirm": "Do you agree to update the calculation or help ? ",
-          "m_print_successfully_statement_message_confirm": "The update process was completed successfully."
+          "m_print_successfully_statement_message_confirm": "The update process was completed successfully.",
+          "m_print_successfuly_select_item": "You are already working on this item"
         },
         "help": {
           "m_input_help_add": "help",
@@ -133,7 +163,7 @@
           "m_input_key_add": "a",
           "m_input_key_search": "s",
           "m_print_error_message_user": "Error in selecting the correct operation to be modified.",
-          "m_print_message_user": "Please select the correct operation to modify or help ? ",
+          "m_print_message_user": "Please select the correct operation in table to modify or help ? ",
           "m_print_successfully_statement_confirm_add": "You have successfully finished working on the main program. you are now in add program.",
           "m_print_successfully_statement_confirm_search": "You have successfully finished working on the main program. you are now in search program.",
           "m_print_successfully_statement_message_confirm": "The select process was completed successfully."
@@ -141,7 +171,9 @@
         "search": {
           "m_input_clear": "clear",
           "m_input_n": "n",
+          "m_input_result": "=",
           "m_input_result_table": "lee",
+          "m_input_search": "=",
           "m_input_y": "y",
           "m_print_clear": "The opration is cleared.",
           "m_print_error_number": "There is an error on the search screen. please enter the number again!.",
@@ -150,7 +182,8 @@
           "m_print_number": "Please enter the number you are looking for ? ",
           "m_print_operator": "Please enter the opretor you are looking for (+ - / * =): or help ? ",
           "m_print_statement_confirm": "Do you agree to delete and edit the calculation or help ? ",
-          "m_print_successfully_statement_message_confirm": "The search process was completed successfully."
+          "m_print_successfully_statement_message_confirm": "The search process was completed successfully.",
+          "m_print_successfuly_select_item": "You are already working on this item"
         },
         "tables": {
           "m_address": "address",
@@ -159,6 +192,14 @@
           "m_center_label": true,
           "m_data_space": 2,
           "m_data_title": "Data entry table",
+          "m_dismiss_line_data": "+",
+          "m_dismiss_line_menu": "+",
+          "m_dismiss_line_result": "+",
+          "m_dismiss_line_sugges": "+",
+          "m_dismiss_word_data": "|",
+          "m_dismiss_word_menu": "|",
+          "m_dismiss_word_result": "|",
+          "m_dismiss_word_sugges": "|",
           "m_heddin_data_address": "on",
           "m_heddin_data_result": "on",
           "m_heddin_menu_address": "on",
@@ -166,7 +207,12 @@
           "m_heddin_result_address": "on",
           "m_heddin_sugges_address": "on",
           "m_heddin_sugges_result": "on",
+          "m_heddin_table": "on",
           "m_interrogative": "!?",
+          "m_line_data": "=",
+          "m_line_menu": "-",
+          "m_line_result": "-",
+          "m_line_sugges": "-",
           "m_mark": "operator",
           "m_menu_space": 2,
           "m_result_fill": "###",
@@ -178,6 +224,232 @@
           "m_total": "total",
           "m_type_table_operator": "on",
           "m_value": "value",
+          "m_value_result": "#?"
+        }
+      },
+      "frans": {
+        "addition": {
+          "m_input_clear": "clear",
+          "m_input_n": "n",
+          "m_input_result": "=",
+          "m_input_result_table": "lee",
+          "m_input_search": "=",
+          "m_input_y": "y",
+          "m_print_clear": "L'opération est validée.",
+          "m_print_error_number": "Il y a une erreur sur l'écran d'ajout. Veuillez saisir à nouveau le numéro !.",
+          "m_print_error_operator": "Erreur lors de la saisie des signes d'addition, de multiplication et de division.",
+          "m_print_error_statement_confirm": "Une erreur s'est produite lors du processus d'ajout, veuillez examiner le problème.",
+          "m_print_number": "Veuillez entrer le numéro ? ",
+          "m_print_operator": "Veuillez saisir l'opérateur (+ - / * =) : ou aide ? ",
+          "m_print_statement_confirm": "Acceptez-vous d'ajouter le calcul ou l'aide ? ",
+          "m_print_successfully_statement_message_confirm": "Le processus d'ajout s'est terminé avec succès.",
+          "m_print_successfuly_select_item": "Vous travaillez déjà sur cet article"
+        },
+        "color": {
+          "m_color_address_data": "blue",
+          "m_color_address_menu": "blue",
+          "m_color_address_result": "yellow",
+          "m_color_address_sugges": "cyan",
+          "m_color_app_add_menu": "green",
+          "m_color_app_confirm_menu": "green",
+          "m_color_app_delete_menu": "green",
+          "m_color_app_edit_menu": "green",
+          "m_color_app_exit_menu": "green",
+          "m_color_app_main_menu": "green",
+          "m_color_app_menu": "yellow",
+          "m_color_app_search": "green",
+          "m_color_clear": "blue",
+          "m_color_confirm": "cyan",
+          "m_color_data_table": "bright_cyan",
+          "m_color_data_title": "cyan",
+          "m_color_error_menu_statement": "red",
+          "m_color_error_message_user": "red",
+          "m_color_error_number": "red",
+          "m_color_error_operator": "red",
+          "m_color_error_statement_confirm": "red",
+          "m_color_help": "bright_green",
+          "m_color_main": "purple",
+          "m_color_menu_statement": "blue",
+          "m_color_menu_table": "green",
+          "m_color_menu_title": "cyan",
+          "m_color_number": "blue",
+          "m_color_operator": "yellow",
+          "m_color_operator_data": "yellow_dark",
+          "m_color_operator_result": "cyan",
+          "m_color_operator_sugges": "bright_cyan",
+          "m_color_result_table": "green",
+          "m_color_result_title": "cyan",
+          "m_color_select": "yellow_dark",
+          "m_color_statement_confirm": "blue",
+          "m_color_successfully_menu_statement": "pink_magenta",
+          "m_color_successfully_statement_confirm": "pink_magenta",
+          "m_color_successfully_statement_message_confirm": "green",
+          "m_color_sugges_table": "purple",
+          "m_color_sugges_title": "cyan",
+          "m_color_total_data": "cyan",
+          "m_color_total_result": "red",
+          "m_color_total_sugges": "yellow_dark",
+          "m_color_value_data": "red",
+          "m_color_value_result": "white",
+          "m_color_value_sugges": "blue"
+        },
+        "confirm": {
+          "m_input_key_delete": "d",
+          "m_input_key_edit": "u",
+          "m_print_error_message_user": "Il y a un écran de confirmation d'erreur, veuillez saisir à nouveau la commande.",
+          "m_print_message_user": "Veuillez choisir u pour modifier l'élément sélectionné ou choisir d pour supprimer l'élément sélectionné ou aider ? ",
+          "m_print_successfully_statement_confirm_delete": "Vous avez terminé avec succès le travail sur le programme de confirmation. vous êtes maintenant dans le programme de suppression.",
+          "m_print_successfully_statement_confirm_edit": "Vous avez terminé avec succès le travail sur le programme de confirmation. vous êtes maintenant dans le programme d'édition."
+        },
+        "delete": {
+          "m_input_n": "n",
+          "m_input_y": "y",
+          "m_print_error_message_user": "Erreur lors de la suppression de l'opération correcte à modifier.",
+          "m_print_statement_confirm": "Veuillez supprimer l'opération correcte pour modifier ou aider ? ",
+          "m_print_successfully_statement_confirm_delete": "Vous avez terminé avec succès votre travail sur le programme de suppression. vous êtes maintenant dans le programme de confirmation.",
+          "m_print_successfully_statement_message_confirm": "Le processus de suppression s'est terminé avec succès."
+        },
+        "dialog": {
+          "m_input_menu_add": "ajouter",
+          "m_input_menu_confirm": "confirm",
+          "m_input_menu_delete": "supprimer",
+          "m_input_menu_edit": "modifier",
+          "m_input_menu_main": "principale",
+          "m_input_menu_search": "recherche",
+          "m_menu_title_add": "Ajouter la liste",
+          "m_menu_title_confirm": "Confirmer la liste",
+          "m_menu_title_delete": "Supprimer la liste",
+          "m_menu_title_edit": "Liste d'édition",
+          "m_menu_title_main": "Liste principale",
+          "m_menu_title_search": "Liste de recherche",
+          "m_print_error_menu_statement_add": "Erreur dans la liste des modules complémentaires. Veuillez réessayer.",
+          "m_print_error_menu_statement_confirm": "Erreur dans la liste de confirmation. Veuillez réessayer.",
+          "m_print_error_menu_statement_delete": "Erreur dans la liste des suppressions. Veuillez réessayer.",
+          "m_print_error_menu_statement_edit": "Erreur dans la liste de modifications. Veuillez réessayer.",
+          "m_print_error_menu_statement_main": "Erreur dans la liste principale. Veuillez réessayer.",
+          "m_print_error_menu_statement_search": "Erreur dans la liste de recherche. Veuillez réessayer.",
+          "m_print_menu_statement_add": "Bienvenue dans la liste d'ajout. veuillez choisir la liste à laquelle vous souhaitez accéder ? ",
+          "m_print_menu_statement_confirm": "Bienvenue sur la liste de confirmation. veuillez choisir la liste à laquelle vous souhaitez accéder ? ",
+          "m_print_menu_statement_delete": "Bienvenue dans la liste de suppression. veuillez choisir la liste à laquelle vous souhaitez accéder ? ",
+          "m_print_menu_statement_edit": "Bienvenue dans la liste d'édition. veuillez choisir la liste à laquelle vous souhaitez accéder ? ",
+          "m_print_menu_statement_main": "Bienvenue sur la liste principale. veuillez choisir la liste à laquelle vous souhaitez accéder ? ",
+          "m_print_menu_statement_search": "Bienvenue dans la liste de recherche. veuillez choisir la liste à laquelle vous souhaitez accéder ? ",
+          "m_print_screen_add": "Ajouter un programme",
+          "m_print_screen_confirm": "Confirmer le programme",
+          "m_print_screen_delete": "Supprimer le programme",
+          "m_print_screen_edit": "Modifier le programme",
+          "m_print_screen_exit": "Quitter le programme",
+          "m_print_screen_main": "Programme principal",
+          "m_print_screen_search": "Programme de recherche",
+          "m_print_successfully_menu_statement_add": "Bienvenue sur l'écran d'ajout.",
+          "m_print_successfully_menu_statement_add_screen": "Vous êtes allé avec succès à l’écran d’ajout.",
+          "m_print_successfully_menu_statement_confirm": "Bienvenue sur l'écran de confirmation.",
+          "m_print_successfully_menu_statement_confirm_screen": "Vous êtes allé avec succès à l’écran de confirmation.",
+          "m_print_successfully_menu_statement_delete": "Bienvenue sur l'écran de suppression.",
+          "m_print_successfully_menu_statement_delete_screen": "Vous avez réussi à accéder à la liste de suppression.",
+          "m_print_successfully_menu_statement_edit": "Bienvenue sur l'écran d'édition.",
+          "m_print_successfully_menu_statement_edit_screen": "Vous avez accédé avec succès à la liste d'édition.",
+          "m_print_successfully_menu_statement_main": "Bienvenue sur l'écran principal.",
+          "m_print_successfully_menu_statement_main_screen": "Vous êtes arrivé avec succès à l’écran principal.",
+          "m_print_successfully_menu_statement_search": "Bienvenue sur l'écran de recherche.",
+          "m_print_successfully_menu_statement_search_screen": "Vous êtes allé avec succès à l’écran de recherche."
+        },
+        "edit": {
+          "m_input_clear": "claire",
+          "m_input_n": "n",
+          "m_input_result": "=",
+          "m_input_result_table": "lee",
+          "m_input_search": "=",
+          "m_input_y": "y",
+          "m_print_clear": "L'opération est validée.",
+          "m_print_error_number": "Il y a une erreur sur l'écran d'édition. veuillez saisir à nouveau le nouveau numéro !.",
+          "m_print_error_operator": "Erreur lors de la saisie des signes d'addition, de multiplication et de division dans l'écran d'édition.",
+          "m_print_error_statement_confirm": "Une erreur s'est produite lors du processus de mise à jour. Veuillez examiner le problème.",
+          "m_print_number": "Veuillez entrer le nouveau numéro ? ",
+          "m_print_operator": "Veuillez entrer le nouvel opérateur(+ - / * =) : ou aide ? ",
+          "m_print_statement_confirm": "Acceptez-vous de mettre à jour le calcul ou l'aide ? ",
+          "m_print_successfully_statement_message_confirm": "Le processus de mise à jour s'est terminé avec succès.",
+          "m_print_successfuly_select_item": "Vous travaillez déjà sur cet article"
+        },
+        "help": {
+          "m_input_help_add": "aide",
+          "m_input_help_confirm": "aide",
+          "m_input_help_delete": "aide",
+          "m_input_help_edit": "aide",
+          "m_input_help_main": "aide",
+          "m_input_help_search": "aide",
+          "m_print_help_add": "L'écran d'ajout permet d'effectuer de nouveaux calculs, qui sont ensuite enregistrés dans le tableau des calculs.",
+          "m_print_help_confirm": "L'écran de confirmation permet de confirmer l'ordre de modification de ce calcul ou l'ordre de supprimer ce calcul.",
+          "m_print_help_delete": "L'écran de suppression permet de supprimer le calcul du tableau des calculs.",
+          "m_print_help_edit": "L'écran de modification vous permet de modifier les calculs que vous avez préalablement enregistrés et qui sont déjà dans le tableau des calculs.",
+          "m_print_help_main": "L'écran Choisir des calculs vous permet de sélectionner un calcul en fonction de son emplacement dans le tableau.",
+          "m_print_help_search": "L'écran de recherche permet de rechercher des précalculs qui existent déjà dans la table des calculs."
+        },
+        "main": {
+          "m_input_key_add": "a",
+          "m_input_key_search": "s",
+          "m_print_error_message_user": "Erreur lors de la sélection de l'opération correcte à modifier.",
+          "m_print_message_user": "Veuillez sélectionner l'opération correcte dans le tableau pour modifier ou aider ? ",
+          "m_print_successfully_statement_confirm_add": "Vous avez terminé avec succès votre travail sur le programme principal. vous êtes maintenant dans le programme d'ajout.",
+          "m_print_successfully_statement_confirm_search": "Vous avez terminé avec succès votre travail sur le programme principal. vous êtes maintenant dans le programme de recherche.",
+          "m_print_successfully_statement_message_confirm": "Le processus de sélection s'est terminé avec succès."
+        },
+        "search": {
+          "m_input_clear": "claire",
+          "m_input_n": "n",
+          "m_input_result": "=",
+          "m_input_result_table": "lee",
+          "m_input_search": "=",
+          "m_input_y": "y",
+          "m_print_clear": "L'opération est validée.",
+          "m_print_error_number": "Il y a une erreur sur l'écran de recherche. veuillez saisir à nouveau le numéro !.",
+          "m_print_error_operator": "Erreur lors de la saisie des signes d'addition, de multiplication et de division dans l'écran de recherche.",
+          "m_print_error_statement_confirm": "Une erreur s'est produite lors du processus de recherche. Veuillez examiner le problème.",
+          "m_print_number": "Veuillez entrer le numéro que vous recherchez ? ",
+          "m_print_operator": "Veuillez saisir l'opérateur que vous recherchez (+ - / * =) : ou de l'aide ? ",
+          "m_print_statement_confirm": "Acceptez-vous de supprimer et de modifier le calcul ou l'aide ? ",
+          "m_print_successfully_statement_message_confirm": "Le processus de recherche s'est terminé avec succès.",
+          "m_print_successfuly_select_item": "Vous travaillez déjà sur cet article"
+        },
+        "tables": {
+          "m_address": "adresse",
+          "m_app": "application",
+          "m_app_address": "adresse de l'application",
+          "m_center_label": true,
+          "m_data_space": 2,
+          "m_data_title": "Tableau de saisie des données",
+          "m_dismiss_line_data": "+",
+          "m_dismiss_line_menu": "+",
+          "m_dismiss_line_result": "+",
+          "m_dismiss_line_sugges": "+",
+          "m_dismiss_word_data": "|",
+          "m_dismiss_word_menu": "|",
+          "m_dismiss_word_result": "|",
+          "m_dismiss_word_sugges": "|",
+          "m_heddin_data_address": "on",
+          "m_heddin_data_result": "on",
+          "m_heddin_menu_address": "on",
+          "m_heddin_result": "on",
+          "m_heddin_result_address": "on",
+          "m_heddin_sugges_address": "on",
+          "m_heddin_sugges_result": "on",
+          "m_heddin_table": "on",
+          "m_interrogative": "!?",
+          "m_line_data": "=",
+          "m_line_menu": "-",
+          "m_line_result": "-",
+          "m_line_sugges": "-",
+          "m_mark": "opératrice",
+          "m_menu_space": 2,
+          "m_result_fill": "###",
+          "m_result_space": 2,
+          "m_result_table_suggestion": "Tableau de suggestions",
+          "m_result_title": "Tableau des résultats",
+          "m_sugges_fill": "###",
+          "m_sugges_space": 2,
+          "m_total": "totale",
+          "m_type_table_operator": "on",
+          "m_value": "valeur",
           "m_value_result": "#?"
         }
       },
@@ -498,8 +770,13 @@
         ],
         [
           {
-            "m_operator": "*",
+            "m_operator": "-",
             "m_result": "1.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
             "m_var1": "1"
           },
           {
@@ -511,13 +788,277 @@
         [
           {
             "m_operator": "-",
-            "m_result": "0.000000",
+            "m_result": "1.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
             "m_var1": "1"
           },
           {
             "m_operator": "",
             "m_result": "",
             "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "42.000000",
+            "m_var1": "22"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "42.000000",
+            "m_var1": "22"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "42.000000",
+            "m_var1": "22"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "84.000000",
+            "m_var1": "22"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "-",
+            "m_result": "84.000000",
+            "m_var1": "22"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "2.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "6.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "3"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "22.500000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "21"
+          },
+          {
+            "m_operator": "/",
+            "m_result": "",
+            "m_var1": "21"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "2.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "123.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "121"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "123.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "121"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "11.250000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "21"
+          },
+          {
+            "m_operator": "/",
+            "m_result": "",
+            "m_var1": "21"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "/",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
           }
         ],
         [
@@ -537,5 +1078,6 @@
   ],
   "m_application": "",
   "m_index": 0,
+  "m_language": "eng",
   "m_name": ""
 }

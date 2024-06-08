@@ -4,6 +4,7 @@ public:
     int m_index;
     std::string m_application;
     std::string m_name;
+    std::string m_language;
     std::string m_input_help101;
     std::string m_print_help101;
     std::string m_input_help102;
@@ -106,11 +107,12 @@ public:
     std::string m_input_key104;
     std::string m_print_successfully_statement_confirm103;
     std::string m_print_successfully_statement_confirm104;
+    std::string m_print_successfully_statement_confirm105;
     std::string m_print_message_user102;
     std::string m_print_error_message_user102;
     std::string m_input_y104;
     std::string m_input_n104;
-    std::string m_print_message_user103;
+    std::string m_print_statement_confirm104;
     std::string m_print_error_message_user103;
     std::string m_print_successfully_statement_message_confirm105;
     std::string m_data_title;
@@ -163,6 +165,58 @@ public:
     std::string m_color_menu_title;
     std::string m_color_menu_table;
     std::string m_color_error_message_user;
+    std::string m_color_value_result;
+    std::string m_color_operator_result;
+    std::string m_color_total_result;
+    std::string m_color_address_result;
+    std::string m_color_value_sugges;
+    std::string m_color_operator_sugges;
+    std::string m_color_total_sugges;
+    std::string m_color_address_sugges;
+    std::string m_line_result;
+    std::string m_dismiss_line_result;
+    std::string m_dismiss_word_result;
+    std::string m_line_sugges;
+    std::string m_dismiss_line_sugges;
+    std::string m_dismiss_word_sugges;
+    std::string m_color_value_data;
+    std::string m_color_operator_data;
+    std::string m_color_total_data;
+    std::string m_color_address_data;
+    std::string m_line_data;
+    std::string m_dismiss_line_data;
+    std::string m_dismiss_word_data;
+
+    std::string m_color_app_menu;
+    std::string m_color_address_menu;
+    std::string m_color_app_exit_menu;
+    std::string m_color_app_main_menu;
+    std::string m_color_app_add_menu;
+    std::string m_color_app_search;
+    std::string m_color_app_confirm_menu;
+    std::string m_color_app_edit_menu;
+    std::string m_color_app_delete_menu;
+
+    std::string m_line_menu;
+    std::string m_dismiss_line_menu;
+    std::string m_dismiss_word_menu;
+
+    std::string m_print_successfuly_select_item101;
+    std::string m_print_successfuly_select_item102;
+    std::string m_print_successfuly_select_item103;
+
+    std::string m_input_search101;
+    std::string m_input_search102;
+    std::string m_input_search103;
+    std::string m_input_result101;
+    std::string m_input_result102;
+    std::string m_input_result103;
+
+    std::string m_heddin_table;
+
+    std::string m_color_main;
+    std::string m_color_confirm;
+
     Language(){
         this->json = this->m_read_setting();
         this->read_setting();
@@ -194,34 +248,6 @@ public:
         m_delete = this->m_read_delete();
         this->read_delete();
     }
-    std::string get_m_print_number(InputValid input_value);
-    std::string get_m_print_operator(InputValid input_value);
-    std::string get_m_print_error_number(InputValid input_value);
-    std::string get_m_print_error_operator(InputValid input_value);
-    std::string get_m_input_clear(InputValid input_value);
-    std::string get_m_print_clear(InputValid input_value);
-    std::string get_m_input_result_table(InputValid input_value);
-    std::string get_m_input_menu(InputValid input_value);
-    std::string get_m_input_menu(MenuEdit menu_edit);
-    std::string get_m_print_successfully_menu_statement(MenuEdit menu_edit);
-    std::string get_m_input_help(InputValid input_value);
-    std::string get_m_input_help(MenuEdit menu_edit);
-    std::string get_m_print_help(InputValid input_value);
-    std::string get_m_print_help(MenuEdit menu_edit);
-    std::string get_m_menu_title(MenuEdit menu_edit);
-    std::string get_m_print_menu_statement(MenuEdit menu_edit);
-    std::string get_m_print_error_menu_statement(MenuEdit menu_edit);
-    std::string get_m_print_menu_statement_screen(std::string id);
-    std::string get_id_menu(MenuEdit menu_edit);
-    std::string get_m_print_message_user(MenuEdit menu_edit);
-    std::string get_m_input_y(MenuEdit menu_edit);
-    std::string get_m_input_n(MenuEdit menu_edit);
-    std::string get_m_print_statement_confirm(MenuEdit menu_edit);
-    std::string get_m_print_error_statement_confirm(MenuEdit menu_edit);
-    std::string get_m_print_successfully_statement_confirm(Section::InputKey input_key);
-    Section::InputKey get_section(std::string input_key, std::string add, std::string search, std::string var);
-    Section::MenuEdit get_menu_edit(std::string menu, Section::MenuEdit menu_edit);
-
 private:
     void read_help()override;
     void read_dialog()override;
@@ -241,8 +267,10 @@ private:
 void Language::read_help() {
     this->m_input_help101 = help.m_input_help_add;
     this->m_print_help101 = help.m_print_help_add;
+
     this->m_input_help102 = help.m_input_help_search;
     this->m_print_help102 = help.m_print_help_search;
+
     this->m_input_help103 = help.m_input_help_edit;
     this->m_print_help103 = help.m_print_help_edit;
 
@@ -339,6 +367,10 @@ void Language::read_add() {
     this->m_input_n101 = add.m_input_n;
     this->m_input_result_table101 = add.m_input_result_table;
 
+    this->m_print_successfuly_select_item101 = add.m_print_successfuly_select_item;
+
+    this->m_input_search101 = add.m_input_search;
+    this->m_input_result101 = add.m_input_result;
 }
 void Language::read_search() {
     this->m_print_statement_confirm102 = search.m_print_statement_confirm;
@@ -356,7 +388,10 @@ void Language::read_search() {
     this->m_input_y102 = search.m_input_y;
     this->m_input_n102 = search.m_input_n;
     this->m_input_result_table102 = search.m_input_result_table;
+    this->m_print_successfuly_select_item102 = search.m_print_successfuly_select_item;
 
+    this->m_input_search102 = search.m_input_search;
+    this->m_input_result102 = search.m_input_result;
 }
 void Language::read_edit() {
     this->m_print_statement_confirm103 = edit.m_print_statement_confirm;
@@ -374,14 +409,18 @@ void Language::read_edit() {
     this->m_input_y103 = edit.m_input_y;
     this->m_input_n103 = edit.m_input_n;
     this->m_input_result_table103 = edit.m_input_result_table;
+    this->m_print_successfuly_select_item103 = edit.m_print_successfuly_select_item;
 
+    this->m_input_search103 = edit.m_input_search;
+    this->m_input_result103 = edit.m_input_result;
 }
 void Language::read_delete() {
     this->m_input_y104 = m_delete.m_input_y;
     this->m_input_n104 = m_delete.m_input_n;
-    this->m_print_message_user103 = m_delete.m_print_message_user;
+    this->m_print_statement_confirm104 = m_delete.m_print_statement_confirm;
     this->m_print_error_message_user103 = m_delete.m_print_error_message_user;
     this->m_print_successfully_statement_message_confirm105 = m_delete.m_print_successfully_statement_message_confirm;
+    this->m_print_successfully_statement_confirm105 = m_delete.m_print_successfully_statement_confirm_delete;
 
 }
 void Language::read_confirm() {
@@ -437,6 +476,23 @@ void Language::read_table() {
     this->m_type_table_operator = table.m_type_table_operator;
     this->m_center_label = table.m_center_label;
 
+    this->m_line_result = table.m_line_result;
+    this->m_dismiss_line_result = table.m_dismiss_line_result;
+    this->m_dismiss_word_result = table.m_dismiss_word_result;
+
+    this->m_line_sugges = table.m_line_sugges;
+    this->m_dismiss_line_sugges = table.m_dismiss_line_sugges;
+    this->m_dismiss_word_sugges = table.m_dismiss_word_sugges;
+
+    this->m_line_data = table.m_line_data;
+    this->m_dismiss_line_data = table.m_dismiss_line_data;
+    this->m_dismiss_word_data = table.m_dismiss_word_data;
+
+    this->m_line_menu = table.m_line_menu;
+    this->m_dismiss_line_menu = table.m_dismiss_line_menu;
+    this->m_dismiss_word_menu = table.m_dismiss_word_menu;
+
+    this->m_heddin_table = table.m_heddin_table;
 }
 void Language::read_colors() {
     this->m_color_help = color.m_color_help;
@@ -462,12 +518,40 @@ void Language::read_colors() {
     this->m_color_menu_title = color.m_color_menu_title;
     this->m_color_menu_table = color.m_color_menu_table;
     this->m_color_error_message_user = color.m_color_error_message_user;
+    this->m_color_value_result = color.m_color_value_result;
+    this->m_color_operator_result = color.m_color_operator_result;
+    this->m_color_total_result = color.m_color_total_result;
+    this->m_color_address_result = color.m_color_address_result;
+    this->m_color_value_sugges = color.m_color_value_sugges;
+    this->m_color_operator_sugges = color.m_color_operator_sugges;
+    this->m_color_total_sugges = color.m_color_total_sugges;
+    this->m_color_address_sugges = color.m_color_address_sugges;
+    
+    this->m_color_value_data = color.m_color_value_data;
+    this->m_color_operator_data = color.m_color_operator_data;
+    this->m_color_total_data = color.m_color_total_data;
+    this->m_color_address_data = color.m_color_address_data;
+
+
+    this->m_color_app_menu = color.m_color_app_menu;
+    this->m_color_address_menu = color.m_color_address_menu;
+    this->m_color_app_exit_menu = color.m_color_app_exit_menu;
+    this->m_color_app_main_menu = color.m_color_app_main_menu;
+    this->m_color_app_add_menu = color.m_color_app_add_menu;
+    this->m_color_app_search = color.m_color_app_search;
+    this->m_color_app_confirm_menu = color.m_color_app_confirm_menu;
+    this->m_color_app_edit_menu = color.m_color_app_edit_menu;
+    this->m_color_app_delete_menu = color.m_color_app_delete_menu;
+
+    this->m_color_main = color.m_color_main;
+    this->m_color_confirm = color.m_color_confirm;
 
 }
 void Language::read_setting() {
     this->m_index = json.m_index;
     this->m_application = json.m_application;
     this->m_name = json.m_name;
+    this->m_language = json.m_language;
 
 }
 void Language::read_result() {
@@ -475,429 +559,26 @@ void Language::read_result() {
 }
 
 
-Section::InputKey Language::get_section(std::string input_key, std::string add, std::string search, std::string var) {
 
-    if (input_key == this->m_input_key101 && add == "nero-soft")
-        return Section::InputKey::first_call_add;
-    else if (input_key == this->m_input_key102 && search == "nero-soft")
-        return Section::InputKey::first_call_search;
-    else if (input_key == this->m_input_key103 && var == "nero-soft")
-        return Section::InputKey::first_call_edit;
-    else if (input_key == this->m_input_key101)
-        return Section::InputKey::addition;
-    else if (input_key == this->m_input_key102)
-        return Section::InputKey::search;
-    else if (input_key == this->m_input_key103)
-        return Section::InputKey::edit;
-    else if (input_key == this->m_input_key104)
-        return Section::InputKey::deletion;
-}
-Section::MenuEdit Language::get_menu_edit(std::string menu, Section::MenuEdit menu_edit) {
-    if (menu == this->m_print_screen101)
-        return menu_edit != Section::MenuEdit::add ? Section::MenuEdit::message102 : Section::MenuEdit::add;
-    else if (menu == this->m_print_screen102)
-        return  menu_edit != Section::MenuEdit::search ? Section::MenuEdit::message101 : Section::MenuEdit::search;
-    else if (menu == this->m_print_screen103)
-        return menu_edit != Section::MenuEdit::update_item ? Section::MenuEdit::message103 : Section::MenuEdit::update_item;
-    else if (menu == this->m_print_screen104)
-        return Section::MenuEdit::first_opration;
-    else if (menu == this->m_print_screen105)
-        return Section::MenuEdit::chose_operation;
-    else if (menu == this->m_print_screen106)
-        return Section::MenuEdit::message104;
-}
-std::string Language::get_m_print_number(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_print_number101;
-    case InputValid::input_mark_search:
-        return this->m_print_number102;
-    case InputValid::input_mark_update_add:
-        return this->m_print_number103;
-    }
-}
-std::string  Language::get_m_print_operator(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_print_operator101;
-    case InputValid::input_mark_search:
-        return this->m_print_operator102;
-    case InputValid::input_mark_update_add:
-        return this->m_print_operator103;
-    }
-}
-std::string Language::get_m_print_error_number(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_print_error_number101;
-    case InputValid::input_mark_search:
-        return this->m_print_error_number102;
-    case InputValid::input_mark_update_add:
-        return this->m_print_error_number103;
-    }
-}
-std::string Language::get_m_print_error_operator(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_print_error_operator101;
-    case InputValid::input_mark_search:
-        return this->m_print_error_operator102;
-    case InputValid::input_mark_update_add:
-        return this->m_print_error_operator103;
-    }
-}
-std::string Language::get_m_input_clear(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_input_clear101;
-    case InputValid::input_mark_search:
-        return this->m_input_clear102;
-    case InputValid::input_mark_update_add:
-        return this->m_input_clear103;
-    }
-}
-std::string Language::get_m_print_clear(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_print_clear101;
-    case InputValid::input_mark_search:
-        return this->m_print_clear102;
-    case InputValid::input_mark_update_add:
-        return this->m_print_clear103;
-    }
-}
-std::string Language::get_m_input_result_table(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_input_result_table101;
-    case InputValid::input_mark_search:
-        return this->m_input_result_table102;
-    case InputValid::input_mark_update_add:
-        return this->m_input_result_table103;
-    }
-}
-std::string Language::get_m_input_menu(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_input_menu101;
-    case InputValid::input_mark_search:
-        return this->m_input_menu102;
-    case InputValid::input_mark_update_add:
-        return this->m_input_menu103;
-    }
-}
-std::string Language::get_m_input_menu(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case Section::MenuEdit::message102:
-    case Section::MenuEdit::add:
-        return this->m_input_menu101;
 
-    case Section::MenuEdit::message101:
-    case Section::MenuEdit::search:
-        return this->m_input_menu102;
 
-    case Section::MenuEdit::message103:
-    case Section::MenuEdit::update_item:
-        return this->m_input_menu103;
 
-    case Section::MenuEdit::first_opration:
-        return this->m_input_menu104;
 
-    case Section::MenuEdit::message104:
-        return this->m_input_menu106;
 
-    case Section::MenuEdit::chose_operation:
-        return this->m_input_menu105;
-    }
-}
-std::string Language::get_m_print_successfully_menu_statement(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case Section::MenuEdit::message102:
-    case Section::MenuEdit::add:
-        return this->m_print_successfully_menu_statement101;
 
-    case Section::MenuEdit::message101:
-    case Section::MenuEdit::search:
-        return this->m_print_successfully_menu_statement102;
 
-    case Section::MenuEdit::message103:
-    case Section::MenuEdit::update_item:
-        return this->m_print_successfully_menu_statement103;
 
-    case Section::MenuEdit::first_opration:
-        return this->m_print_successfully_menu_statement104;
 
-    case Section::MenuEdit::message104:
-        return this->m_print_successfully_menu_statement106;
 
-    case Section::MenuEdit::chose_operation:
-        return this->m_print_successfully_menu_statement105;
-    }
-}
-std::string Language::get_m_input_help(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_input_help101;
-    case InputValid::input_mark_search:
-        return this->m_input_help102;
-    case InputValid::input_mark_update_add:
-        return this->m_input_help103;
-    }
-}
-std::string Language::get_m_input_help(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case MenuEdit::first_opration:
-        return this->m_input_help104;
-    case MenuEdit::chose_operation:
-        return this->m_input_help105;
-    case MenuEdit::message104:
-        return this->m_input_help106;
-    default:
-        return "";
-    }
-}
-std::string Language::get_m_print_help(InputValid input_value) {
-    switch (input_value)
-    {
-    case InputValid::addition:
-        return this->m_print_help101;
-    case InputValid::input_mark_search:
-        return this->m_print_help102;
-    case InputValid::input_mark_update_add:
-        return this->m_print_help103;
-    }
-}
-std::string Language::get_m_print_help(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case MenuEdit::first_opration:
-        return this->m_print_help104;
-    case MenuEdit::chose_operation:
-        return this->m_print_help105;
-    case MenuEdit::message104:
-        return this->m_print_help106;
-    }
-}
-std::string Language::get_m_menu_title(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case MenuEdit::message102:
-    case MenuEdit::add:
-        return this->m_menu_title101;
-    case MenuEdit::message101:
-    case MenuEdit::search:
-        return this->m_menu_title102;
-    case MenuEdit::message103:
-    case MenuEdit::update_item:
-        return this->m_menu_title103;
-    case MenuEdit::first_opration:
-        return this->m_menu_title104;
-    case MenuEdit::chose_operation:
-        return this->m_menu_title105;
-    case MenuEdit::message104:
-        return this->m_menu_title106;
-    }
-}
-std::string Language::get_m_print_menu_statement(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case MenuEdit::message102:
-    case MenuEdit::add:
-        return this->m_print_menu_statement101;
-    case MenuEdit::message101:
-    case MenuEdit::search:
-        return this->m_print_menu_statement102;
-    case MenuEdit::message103:
-    case MenuEdit::update_item:
-        return this->m_print_menu_statement103;
-    case MenuEdit::first_opration:
-        return this->m_print_menu_statement104;
-    case MenuEdit::chose_operation:
-        return this->m_print_menu_statement105;
-    case MenuEdit::message104:
-        return this->m_print_menu_statement106;
-    }
-}
-std::string Language::get_m_print_error_menu_statement(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case MenuEdit::message102:
-    case MenuEdit::add:
-        return this->m_print_error_menu_statement101;
-    case MenuEdit::message101:
-    case MenuEdit::search:
-        return this->m_print_error_menu_statement102;
-    case MenuEdit::message103:
-    case MenuEdit::update_item:
-        return this->m_print_error_menu_statement103;
-    case MenuEdit::first_opration:
-        return this->m_print_error_menu_statement104;
-    case MenuEdit::chose_operation:
-        return this->m_print_error_menu_statement105;
-    case MenuEdit::message104:
-        return this->m_print_error_menu_statement106;
-    }
-}
-std::string Language::get_m_print_menu_statement_screen(std::string id) {
 
-    if (id == "menu_search")
-        return m_print_successfully_menu_statement_search_screen;
-    else if (id == "menu_add")
-        return m_print_successfully_menu_statement_add_screen;
-    else if (id == "menu_delete")
-        return m_print_successfully_menu_statement_delete_screen;
-    else if (id == "menu_select")
-        return m_print_successfully_menu_statement_main_screen;
-    else if (id == "menu_option")
-        return m_print_successfully_menu_statement_confirm_screen;
-    else if (id == "menu_update")
-        return m_print_successfully_menu_statement_edit_screen;
 
-}
-std::string Language::get_id_menu(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case MenuEdit::message102:
-    case MenuEdit::add:
-        return "menu_add";
-    case MenuEdit::message101:
-    case MenuEdit::search:
-        return "menu_search";
-    case MenuEdit::message103:
-    case MenuEdit::update_item:
-        return "menu_update";
-    case MenuEdit::first_opration:
-        return "menu_select";
-    case MenuEdit::message104:
-        return "menu_delete";
-    case MenuEdit::chose_operation:
-        return "menu_option";
-    default:
-        break;
-    }
-}
-std::string Language::get_m_print_message_user(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case Section::MenuEdit::first_opration:
-        return m_print_message_user101;
-    case Section::MenuEdit::message104:
-        return m_print_message_user103;
-    case Section::MenuEdit::chose_operation:
-        return m_print_message_user102;
-    }
-}
-std::string Language::get_m_input_y(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case Section::MenuEdit::message102:
-        return this->m_input_y101;
-    case Section::MenuEdit::message101:
-        return this->m_input_y102;
-    case Section::MenuEdit::message103:
-        return this->m_input_y103;
-    case Section::MenuEdit::message104:
-        return this->m_input_y104;
-    default:
-        return "";
-    }
-}
-std::string Language::get_m_input_n(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case Section::MenuEdit::message102:
-        return this->m_input_n101;
-    case Section::MenuEdit::message101:
-        return this->m_input_n102;
-    case Section::MenuEdit::message103:
-        return this->m_input_n103;
-    case Section::MenuEdit::message104:
-        return this->m_input_n104;
-    default:
-        return "";
-    }
-}
-std::string Language::get_m_print_statement_confirm(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case Section::MenuEdit::add:
-    case Section::MenuEdit::message102:
-        return m_print_statement_confirm101;
 
-    case Section::MenuEdit::search:
-    case Section::MenuEdit::message101:
-        return m_print_statement_confirm102;
 
-    case Section::MenuEdit::update_item:
-    case Section::MenuEdit::message103:
-        return m_print_statement_confirm103;
 
-    case Section::MenuEdit::first_opration:
-        return m_print_message_user101;
 
-    case Section::MenuEdit::message104:
-        return m_print_message_user103;
 
-    case Section::MenuEdit::chose_operation:
-        return m_print_message_user102;
-    }
-}
-std::string Language::get_m_print_error_statement_confirm(MenuEdit menu_edit) {
-    switch (menu_edit)
-    {
-    case Section::MenuEdit::add:
-    case Section::MenuEdit::message102:
-        return m_print_error_statement_confirm101;
 
-    case Section::MenuEdit::search:
-    case Section::MenuEdit::message101:
-        return m_print_error_statement_confirm102;
 
-    case Section::MenuEdit::update_item:
-    case Section::MenuEdit::message103:
-        return m_print_error_statement_confirm103;
-
-    case Section::MenuEdit::first_opration:
-        return m_print_error_message_user101;
-
-    case Section::MenuEdit::message104:
-        return m_print_error_message_user103;
-
-    case Section::MenuEdit::chose_operation:
-        return m_print_error_message_user102;
-    }
-}
-std::string Language::get_m_print_successfully_statement_confirm(Section::InputKey input_key) {
-    switch (input_key)
-    {
-    case Section::InputKey::addition:
-        return this->m_print_successfully_statement_confirm101;
-    case Section::InputKey::search:
-        return this->m_print_successfully_statement_confirm102;
-    case Section::InputKey::edit:
-        return this->m_print_successfully_statement_confirm103;
-    case Section::InputKey::deletion:
-        return this->m_print_successfully_statement_confirm104;
-    case Section::InputKey::first_call_add:
-        return this->m_print_successfully_statement_confirm101;
-    case Section::InputKey::first_call_search:
-        return this->m_print_successfully_statement_confirm102;
-    case Section::InputKey::first_call_edit:
-        return this->m_print_successfully_statement_confirm103;
-    }
-}
 
 
 

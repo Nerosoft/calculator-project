@@ -8,6 +8,7 @@
 #include<ios>
 #include"Calculator.hh"
 int main() {
+	//system("pause");
     Calculator calc;
 	calc.display_result();
 	return 0;
