@@ -26,8 +26,7 @@ private:
     void print_body(std::string my_line, std::vector<std::vector<Input>>temp, bool heddinResult, std::string dismiss_word, std::vector<std::string>array1);
     bool get_total_address(std::string value);
     void init_input_table(int space, bool heddinIndex, bool heddinResult, std::vector<Input>* vec, std::vector<std::string>* array1);
-    void print_body2(std::string my_line, std::string dismiss_word, std::vector<std::string>array1, std::vector<Input>vec, bool heddinResult);
-
+    void print_body_test(bool state, std::string my_line, std::vector<std::string>array1, std::vector<Input> vec, bool heddinResult, std::string dismiss_word);
 };
 
 
@@ -205,21 +204,8 @@ void Tables::print_heder_table(std::vector<std::string>array1, bool heddinIndex,
 }
 void Tables::print_body(std::string my_line, std::vector<std::vector<Input>>temp, bool heddinResult, std::string dismiss_word, std::vector<std::string>array1) {
     std::cout << my_line;
-    for (int ii = 0; ii < temp.size(); ii++) {
-        std::cout << dismiss_word;
-        for (int i = 0; i < array1.size(); i++) {
-            std::string value = this->m_type_table_operator != "on" ? i < temp[ii].size() ? temp[ii].at(i).m_var1 : heddinResult && i == temp[ii].size() ? temp[ii][0].m_result : temp[ii][0].m_index :
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                i < ((temp[ii].size() * 2) - 1) ? i == 0 || i % 2 == 0 && i > 1 ? temp[ii].at((((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2))).m_var1 : temp[ii].at((((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2))).m_operator : heddinResult && (((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2)) == temp[ii].size() - 1 ? temp.at(ii).at(0).m_result : temp.at(ii).at(0).m_index;
-            if (array1[i].length() > value.length()) {
-                int mySize = array1[i].length() - value.length();
-                for (int i = 0; i < mySize; i++)
-                    value += " ";
-            }
-            std::cout << value << dismiss_word;
-        }
-        std::cout << std::endl << my_line;
-    }
+    for (int ii = 0; ii < temp.size(); ii++)
+        this->print_body_test(false, my_line, array1, temp[ii], heddinResult, dismiss_word);
 }
 bool Tables::get_total_address(std::string value) {
     return value != "on" ? false : true;
@@ -279,14 +265,21 @@ void Tables::init_input_table(int space, bool heddinIndex, bool heddinResult, st
             }
     }
 }
-void Tables::print_body2(std::string my_line, std::string dismiss_word, std::vector<std::string>array1, std::vector<Input>vec, bool heddinResult) {
-    std::cout << my_line << dismiss_word;
+void Tables::print_body_test(bool state, std::string my_line, std::vector<std::string>array1, std::vector<Input> vec, bool heddinResult, std::string dismiss_word) {
+    if (state)
+        std::cout << my_line << dismiss_word;
+    else
+        std::cout << dismiss_word;
     for (int i = 0; i < array1.size(); i++) {
-        int index = ((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2);
-        std::string value = this->m_type_table_operator != "on" ?
+        std::string value = state ?
+            this->m_type_table_operator != "on" ?
             i < vec.size() ? vec.at(i).m_var1 : heddinResult && i == vec.size() ? vec.at(0).m_result : vec.at(0).m_index :
             //----------------------------------------------------------------------------------------------------------------
-            i < (trim(vec[vec.size() - 1].m_operator) == "" ? ((vec.size() * 2) - 1) : (vec.size() * 2)) ? i == 0 || i % 2 == 0 && i > 1 ? vec.at(index).m_var1 : vec.at(index).m_operator : heddinResult && i == (trim(vec[vec.size() - 1].m_operator) == "" ? ((vec.size() * 2) - 1) : (vec.size() * 2)) ? vec.at(0).m_result : vec.at(0).m_index;
+            i < (trim(vec[vec.size() - 1].m_operator) == "" ? ((vec.size() * 2) - 1) : (vec.size() * 2)) ? i == 0 || i % 2 == 0 && i > 1 ? vec.at(((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2)).m_var1 : vec.at(((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2)).m_operator : heddinResult && i == (trim(vec[vec.size() - 1].m_operator) == "" ? ((vec.size() * 2) - 1) : (vec.size() * 2)) ? vec.at(0).m_result : vec.at(0).m_index :
+            //---------------------------------------------------------------------------------------
+            this->m_type_table_operator != "on" ? i < vec.size() ? vec.at(i).m_var1 : heddinResult && i == vec.size() ? vec[0].m_result : vec[0].m_index :
+            //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            i < ((vec.size() * 2) - 1) ? i == 0 || i % 2 == 0 && i > 1 ? vec.at((((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2))).m_var1 : vec.at((((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2))).m_operator : heddinResult && (((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2)) == vec.size() - 1 ? vec.at(0).m_result : vec.at(0).m_index;
         if (array1[i].length() > value.length()) {
             int mySize = array1[i].length() - value.length();
             for (int i = 0; i < mySize; i++)
@@ -377,8 +370,10 @@ void Tables::tableResult77(std::vector<Input> vec, std::string label) {
         this->m_type_table_operator != "on" ? 0 : this->get_color_by_name(this->m_color_operator_data),
         this->get_color_by_name(this->m_color_value_data),
         this->get_color_by_name(this->m_color_data_table));
-    this->print_body2(my_line, this->m_dismiss_word_data, array1, vec,
-        this->get_total_address(this->m_heddin_data_result));
+
+    this->print_body_test(true, my_line, array1, vec,
+        this->get_total_address(this->m_heddin_data_result),
+        this->m_dismiss_word_data);
 }
 
 void Tables::show_result_with_operator(std::vector<Input> vec, std::string table_jop = "", std::string label = "") {
