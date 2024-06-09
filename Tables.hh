@@ -37,20 +37,18 @@ void Tables::int_tables(bool state, std::vector<Input>* vec, std::vector<std::st
         int size_item = sizeOfHed != nullptr ? this->myResult.at(*sizeOfHed).size() : 0;
         const int my_size = !state && size_array < size_item ? size_item - size_array : state ? 1 : 0;
         for (int i = 0; i < my_size; i++)
-            if (this->m_type_table_operator != "on" && !state ||
-                !this->get_total_address(this->m_type_table_operator) && z < vec->size() && state || z < vec->size() && z + 1 == vec->size() && vec->at(vec->size() - 1).m_operator == "" && state)//condtion
+            if (this->m_type_table_operator != "on" && !state || !this->get_total_address(this->m_type_table_operator) && z < vec->size() && state || z < vec->size() && z + 1 == vec->size() && vec->at(vec->size() - 1).m_operator == "" && state)//condtion
                 array1->push_back(this->m_value);
-
-            else if (z < vec->size()) {
-                array1->push_back(this->m_value);
-                array1->push_back(this->m_mark);
-            }
-            else if (heddinIndex && heddinResult) {
+            else if (z == vec->size() && heddinIndex && heddinResult) {
                 array1->push_back(this->m_total);
                 array1->push_back(this->m_address);
             }
-            else if (heddinResult || heddinIndex)
+            else if (z == vec->size() && heddinResult || z == vec->size() && heddinIndex)
                 array1->push_back(heddinResult ? this->m_total : this->m_address);
+            else {
+                array1->push_back(this->m_value);
+                array1->push_back(this->m_mark);
+            }
 
         for (int a = 0; a < space; a++) {
             if (!state && size_array < size_item)
