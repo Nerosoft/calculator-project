@@ -596,7 +596,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->myInput.print_statement(label, color_label);
 
             label = this->get_m_print_statement_confirm_user(menu_edit);
-            color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
+            color_label = this->myInput.get_color_by_name(this->get_m_print_color_confirm_user(menu_edit));
             this->myInput.print_statement(label, color_label, this->get_input_value(menu_edit));
             continue;
         }
