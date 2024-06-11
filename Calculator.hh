@@ -494,7 +494,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->myInput.print_statement(label, color_label, &i);
             if (!isValidIntegr(i, menu_edit) && i == 1)
                 return;
-            else if (!isValidIntegr(i, menu_edit) && i <= this->menu.size() && i > 0) {
+            else {
                 Section::MenuEdit m_menu_edit = this->get_menu_edit(this->menu.at(i - 1).at(0), menu_edit);
                 std::string label = menu_edit != m_menu_edit ? this->get_m_print_menu_statement_screen(this->menu.at(i - 1).at(1)) : this->get_m_print_successfully_menu_statement(menu_edit);
                 int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_menu_statement);
