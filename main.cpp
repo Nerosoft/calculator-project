@@ -8,8 +8,7 @@
 #include<ios>
 #include"Calculator.hh"
 int main() {
-	//system("pause");
     Calculator calc;
-	calc.display_result();
+	calc.isValidInt22(Section::MenuEdit::first_opration);
 	return 0;
 }
