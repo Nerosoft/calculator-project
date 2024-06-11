@@ -6,39 +6,50 @@ public:
     std::string m_index = "";
     std::vector<Input>vec;
     MenuEdit m_input_valid;
-    InputValue(){}
-    //select
-    InputValue(std::string* item) {
+    InputValue(){
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
-        if (this->myResult.size() != 0) {
-            std::string label = this->m_print_message_user101;
-            std::vector<Input> empty_vec;
-            this->show_result_with_operator(empty_vec, "jop1", label);
-        } 
-        if (item != nullptr)
-            *item = "";
     }
-    //end select
-
-    void display_table_confirm(std::string label);
-    void display_table_confirm2(std::string label);
-    //start confirm
-    InputValue(std::string* option, std::string pos, std::string*item) {// search and first screen and update -- item only for search
+    InputValue(std::string option, std::string pos = "") {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        this->m_index = pos;
-        std::string label = this->m_print_message_user102;
-        this->display_table_confirm2(label);
-        *option = "";
-        if (item != nullptr)
-            *item = pos;
-    }
-    InputValue(std::string *option, std::string pos, std::string value, std::string operator1, std::vector<Input>vec, std::string test, std::string* item) {
+        this->get_culc_Result();
+        if (option == "main") {
+            if (this->myResult.size() != 0) {
+                std::string label = this->m_print_message_user101;
+                std::vector<Input> empty_vec;
+                this->show_result_with_operator(empty_vec, "jop1", label);
+            }
+        }
+        else if (option == "confirm") {
+            this->m_index = pos;
+            std::string label = this->m_print_message_user102;
+            this->display_table_confirm2(label);
+        }
+        else if (option == "delete") {
+            this->searchItem(stoi(pos));
+            this->m_index = pos;
+            std::string label = this->m_print_statement_confirm104;
+            this->vec[0].m_index = pos;
+            this->tableResult77(this->vec, label);
+        }
+        else //if (option == "edit")
+        {
+            this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+            this->get_culc_Result();
+            this->searchItem(stoi(pos));
+            this->m_var1 = this->vec[this->vec.size() - 1].m_var1;
+            this->test = "+";
+            this->vec.pop_back();
+            this->m_index = pos;
+            this->m_input_valid = MenuEdit::input_mark_update_add;
+        }
+    }  
+    //start confirm
+    InputValue(std::string pos, std::string value, std::string operator1, std::vector<Input>vec, std::string test) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->m_input_valid = MenuEdit::input_mark_update_add;
         this->m_index = pos;
         std::string label = this->m_print_message_user102;
-
         if (value == "" && operator1 == "" && vec.empty() && test == "")
             this->display_table_confirm2(label);
         else {
@@ -50,19 +61,14 @@ public:
               this->vec.pop_back();
           this->display_table_confirm(label);
         }
-        *option = "";
-        if (item != nullptr)
-            *item = pos;
     }
     //end confirm
-
-    //start add and search
+    //start add and search----
     InputValue(std::string key, bool state, std::string* search) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
         this->m_input_valid = key != this->m_input_key102 ? MenuEdit::addition : MenuEdit::input_mark_search;
         this->m_index = key != this->m_input_key102 ? std::to_string(this->myResult.size() + 1) : this->m_interrogative;
-        //this->m_id = id != 0 ? id : 0;
         if (this->myResult.size() != 0 && state) {
             std::string label = key != this->m_input_key102 ? this->m_print_number101 : this->m_print_number102;
             std::vector<Input> empty_vec;
@@ -71,7 +77,7 @@ public:
         if (search != nullptr)
             *search = "";
     }  
-    InputValue(std::string key, std::string value, std::string m_operator, std::string test, std::vector<Input>vec, int space, std::string *item, int id = 0) { //space for clear
+    InputValue(std::string key, std::string value, std::string m_operator, std::string test, std::vector<Input>vec, int space, int id = 0) { //space for clear
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
         this->m_input_valid = key != this->m_input_key102 ? MenuEdit::addition : MenuEdit::input_mark_search;
@@ -82,44 +88,10 @@ public:
         this->vec = vec;
         this->m_var1 = value;
         this->m_operator = m_operator;
-        if (item != nullptr)
-            *item = key;
     }
-    //end add
-    
-     
-    //start delete
-    InputValue(std::string pos, std::string* option, std::string* item) {
-        this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        this->get_culc_Result();
-        this->searchItem(stoi(pos));
-        this->m_index = pos;
-        std::string label = this->m_print_statement_confirm104;
-        this->vec[0].m_index = pos;
-        this->tableResult77(this->vec, label);
-        if (option != nullptr && item != nullptr) {
-            *item = pos;
-            *option = this->m_input_key104;
-        }
-    }
-    //end delete
- 
-    //start edit 
-    InputValue(std::string* option, std::string* item, std::string pos) {
-        this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        this->get_culc_Result();
-        this->searchItem(stoi(pos));
-        this->m_var1 = this->vec[this->vec.size() - 1].m_var1;
-        this->test = "+";
-        this->vec.pop_back();
-        this->m_index = pos;
-        this->m_input_valid = MenuEdit::input_mark_update_add;
-        if (option != nullptr && item != nullptr) {
-            *item = pos;
-            *option = this->m_input_key103;
-        }
-    }
-    InputValue(std::string pos, int space, std::string test, std::string value, std::string m_operator, std::vector<Input>vec, std::string* item, std::string* option) {
+    //end add--- 
+    //start edit
+    InputValue(std::string pos, int space, std::string test, std::string value, std::string m_operator, std::vector<Input>vec) {
         this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->get_culc_Result();
         this->my_lable_space = space;
@@ -129,17 +101,10 @@ public:
         this->test = test;
         this->m_index = pos;
         this->m_input_valid = MenuEdit::input_mark_update_add;
-        if (item != nullptr && option != nullptr) {
-            *option = this->m_input_key103;
-            *item = pos;
-        }
     }
     //end edit
-   
-   
-
-
-
+    void display_table_confirm(std::string label);
+    void display_table_confirm2(std::string label);
     std::string add_search_ubdate(std::string value);
     void print_statement(std::string word, int color);
     void print_statement(std::string word, int color, std::string* input_value);
