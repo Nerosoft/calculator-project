@@ -483,7 +483,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             std::string label = this->myInput.m_print_message_user101;
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_main);
             this->myInput.print_statement(label, color_label, &item);
-            continue;
         }
         else if (menu_edit == MenuEdit::add && add == this->myInput.m_input_menu101 || menu_edit == MenuEdit::message102 && add == this->myInput.m_input_menu101 || menu_edit == MenuEdit::search && search == this->myInput.m_input_menu102 || menu_edit == MenuEdit::message101 && search == this->myInput.m_input_menu102 || menu_edit == MenuEdit::update_item && var == this->myInput.m_input_menu103 || menu_edit == MenuEdit::message103 && var == this->myInput.m_input_menu103 || menu_edit == MenuEdit::first_opration && item == this->myInput.m_input_menu104 || menu_edit == MenuEdit::chose_operation && option == this->myInput.m_input_menu105 || menu_edit == MenuEdit::message104 && var2 == this->myInput.m_input_menu106) {
             MenuEdit menu_edit2 = menu_edit;
