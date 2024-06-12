@@ -104,6 +104,7 @@ void Calculator::reset_pos() {
     if (pos != item) {
         pos = item;
         this->myInput_edit = InputValue("edit", item);//call input edit when go to edit from any app using menu
+        var = var != this->myInput.m_input_menu103 ? var : "";
     }
 }
 std::string Calculator::get_m_print_error_statement_confirm(MenuEdit menu_edit) {
@@ -329,7 +330,7 @@ void Calculator::deleting_item() {
         else if (menu.at(i).at(0) == this->myInput.m_print_screen102) {//temp
             menu1.push_back({ this->myInput.m_print_screen102, "menu_search" });
             if (this->myInput.myResult.size() == 0)
-                this->myInput_search = this->set_search_add_input(this->myInput.m_input_key102, false, search != "search" ? nullptr : &search);
+                this->myInput_search = this->set_search_add_input(this->myInput.m_input_key102, false, search != this->myInput.m_input_menu102 ? nullptr : &search);
 
             else if (this->myInput_search.m_id == stoi(pos))
                 this->reset_search();
@@ -494,7 +495,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->myInput.print_statement(label, color_label, &i);
             if (!isValidIntegr(i, menu_edit) && i == 1)
                 return;
-            else {
+            else{
                 Section::MenuEdit m_menu_edit = this->get_menu_edit(this->menu.at(i - 1).at(0), menu_edit);
                 std::string label = menu_edit != m_menu_edit ? this->get_m_print_menu_statement_screen(this->menu.at(i - 1).at(1)) : this->get_m_print_successfully_menu_statement(menu_edit);
                 int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_menu_statement);
