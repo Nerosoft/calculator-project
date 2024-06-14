@@ -602,6 +602,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             //--------------------------------------------
             menu_edit = this->menu_exist(MenuEdit::add) ==  "" ? MenuEdit::message102:MenuEdit::add;
             this->init_input(menu_edit);//save input add
+            continue;
 
         }
         else if (item == this->myInput.m_input_key102 && menu_edit == MenuEdit::first_opration) {
@@ -612,6 +613,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             //-------------------------------------
             menu_edit = this->menu_exist(MenuEdit::search) == "" ? MenuEdit::message101 : MenuEdit::search;
             this->init_input(menu_edit);//save input search
+            continue;
         }
         else if (this->valid_number() && menu_edit == MenuEdit::first_opration || var2 == this->myInput.m_input_n104 && menu_edit == Section::MenuEdit::message104) {
             item = this->valid_number() ? item :pos;
@@ -636,6 +638,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             //----------------------------------
             menu_edit = this->menu_exist(MenuEdit::update_item) == "" ? MenuEdit::message103 : MenuEdit::update_item;
             this->init_input(menu_edit);//save input update
+            continue;
         }
         else if (option == this->myInput.m_input_key104 && menu_edit == MenuEdit::chose_operation) {
             std::string label = this->myInput.m_print_successfully_statement_confirm104;
