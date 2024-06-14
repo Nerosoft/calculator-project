@@ -674,6 +674,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             //----------------------
             menu_edit = this->menu_exist(MenuEdit::add) ==  "" ? MenuEdit::message102:MenuEdit::add;
             this->init_input(menu_edit);//save input add
+            continue;
         }
         else if (search == this->myInput.m_input_y102 && menu_edit == MenuEdit::message101) {
             std::string label = this->myInput.m_print_successfully_statement_message_confirm102;
@@ -708,6 +709,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             *this->get_input_value(menu_edit) = this->menu_exist(menu_edit);
             menu_edit = *this->get_input_value(menu_edit) != "" ? menu_edit : get_key_menu(menu_edit);
             this->init_input(menu_edit);//save input add or search or edit
+            continue;
         }
         else if (add == "" && menu_edit == MenuEdit::message102 || search == "" && menu_edit == MenuEdit::message101 || var == "" && menu_edit == MenuEdit::message103) {
             this->init_input(menu_edit);//save input add or search or edit
