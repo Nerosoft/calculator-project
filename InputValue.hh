@@ -427,7 +427,7 @@ std::string InputValue::check_vec(std::vector<Input> vec) {
 
 std::string InputValue::add_search_ubdate(std::string value) {
     if (this->get_valid_menu(value))
-        //return this->m_input_valid != MenuEdit::input_mark_search ? "" : std::to_string(this->m_id);
+        //her print label confirm
         return "";
 
     else if (this->vec.empty() && this->test != "") {
