@@ -581,6 +581,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                 search = menu_edit2 == MenuEdit::search ? "" : search;
                 var = menu_edit2 == MenuEdit::update_item ? "" : var;
                 this->init_input(menu_edit);//save input
+                continue;
             }
         }
         else if (menu_edit == MenuEdit::add && add == this->myInput.m_input_help101 || menu_edit == MenuEdit::message102 && add == this->myInput.m_input_help101 || menu_edit == MenuEdit::search && search == this->myInput.m_input_help102 || menu_edit == MenuEdit::message101 && search == this->myInput.m_input_help102 || menu_edit == MenuEdit::update_item && var == this->myInput.m_input_help103 || menu_edit == MenuEdit::message103 && var == this->myInput.m_input_help103 || menu_edit == MenuEdit::first_opration && item == this->myInput.m_input_help104 || menu_edit == MenuEdit::chose_operation && option == this->myInput.m_input_help105 || menu_edit == MenuEdit::message104 && var2 == this->myInput.m_input_help106) {
