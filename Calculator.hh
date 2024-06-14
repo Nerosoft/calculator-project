@@ -76,18 +76,8 @@ private:
     void reset_pos();
     InputValue get_input_confirm();
     void get_confirm();
-
-    void get_add_search_edit_confirm(MenuEdit menu_edit);
-
 };
-void Calculator::get_add_search_edit_confirm(MenuEdit menu_edit) {
-    std::vector<Input> v1 = this->myInput.vec;
-    std::string label = this->get_m_print_statement_confirm_user(menu_edit);
-    v1[0].m_index = menu_edit != MenuEdit::message101 ? this->myInput.m_index : std::to_string(this->myInput.m_id);
-    this->myInput.tableResult77(v1, label);
-    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
-    this->myInput.print_statement(label, color_label, this->get_input_value(menu_edit));
-}
+
 void Calculator::get_confirm() {
     std::string index = this->myInput_search.m_id == stoi(pos) && this->myInput.get_text_search(this->myInput_search.vec) != this->myInput.get_text_search(this->myInput_edit.vec) ? this->reset_search() : pos;
     this->myInput = InputValue("confirm", index);//confirm
@@ -516,16 +506,12 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                     if (menu_edit == MenuEdit::add || menu_edit == MenuEdit::message102) {
                         add = this->myInput.add_search_ubdate(menu_edit == MenuEdit::add ? "" : add);
                         menu_edit = add != "" ? MenuEdit::add : MenuEdit::message102;
-                        if (add == "")
-                            this->get_add_search_edit_confirm(menu_edit);
                         this->init_input(menu_edit);//save input add
                         continue;
                     }
                     else {
                         add = this->myInput.add_search_ubdate(add);
-                        menu_edit = add != "" ? MenuEdit::add : MenuEdit::message102;
-                        if (add == "")
-                            this->get_add_search_edit_confirm(menu_edit);          
+                        menu_edit = add != "" ? MenuEdit::add : MenuEdit::message102;   
                     }
                     break;
 
@@ -535,16 +521,12 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                     if (menu_edit == MenuEdit::search || menu_edit == MenuEdit::message101) {
                         search = this->myInput.add_search_ubdate(menu_edit == MenuEdit::search ? "" : search);
                         menu_edit = search != "" ? MenuEdit::search : MenuEdit::message101;
-                        if (search == "")
-                            this->get_add_search_edit_confirm(menu_edit);
                         this->init_input(menu_edit);//save input search
                         continue;
                     }
                     else {
                         search = this->myInput.add_search_ubdate(search);
                         menu_edit = search != "" ? MenuEdit::search : MenuEdit::message101;
-                        if (search == "")
-                            this->get_add_search_edit_confirm(menu_edit);
                     }
                     break;
                 case Section::MenuEdit::message103:
@@ -553,8 +535,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                     if (menu_edit == MenuEdit::update_item || menu_edit == MenuEdit::message103) {
                         var = this->myInput.add_search_ubdate(menu_edit == MenuEdit::update_item ? "" : var);
                         menu_edit = var != "" ? MenuEdit::update_item : MenuEdit::message103;
-                        if (var == "")
-                            this->get_add_search_edit_confirm(menu_edit);
                         this->init_input(menu_edit);//save input edit
                         continue;
                         
@@ -562,8 +542,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                     else {
                         var = this->myInput.add_search_ubdate(var);
                         menu_edit = var != "" ? MenuEdit::update_item : MenuEdit::message103;
-                        if (var == "")
-                            this->get_add_search_edit_confirm(menu_edit);
                     }
                     break;
                 case Section::MenuEdit::first_opration: {
@@ -729,8 +707,13 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
         }
         else if (add == "" && menu_edit == MenuEdit::message102 || search == "" && menu_edit == MenuEdit::message101 || var == "" && menu_edit == MenuEdit::message103) {
             this->init_input(menu_edit);//save input add or search or edit
-            this->get_add_search_edit_confirm(menu_edit);
-        }
+            std::vector<Input> v1 = this->myInput.vec;
+            std::string label = this->get_m_print_statement_confirm_user(menu_edit);
+            v1[0].m_index = menu_edit != MenuEdit::message101 ? this->myInput.m_index : std::to_string(this->myInput.m_id);
+            this->myInput.tableResult77(v1, label);
+            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
+            this->myInput.print_statement(label, color_label, this->get_input_value(menu_edit));
+            }
         else {
             // no save input in error
             std::string label = this->get_m_print_error_statement_confirm(menu_edit);
