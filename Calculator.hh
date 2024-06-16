@@ -78,7 +78,33 @@ private:
     void get_confirm();
 
     void setup_menu(MenuEdit menu_edit);
+    void get_add_search_edit(MenuEdit* menu_edit);
 };
+void Calculator::get_add_search_edit(MenuEdit* menu_edit) {
+    int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_confirm);
+    if (item == this->myInput.m_input_key101 && *menu_edit == MenuEdit::first_opration) {
+        std::string label = this->myInput.m_print_successfully_statement_confirm101;
+        this->myInput.print_statement(label, color_label);
+        this->get_input_add();//----      
+        //--------------------------------------------
+        *menu_edit = this->menu_exist(MenuEdit::add) == "" ? MenuEdit::message102 : MenuEdit::add;
+    }
+    else if (item == this->myInput.m_input_key102 && *menu_edit == MenuEdit::first_opration) {
+        std::string label = this->myInput.m_print_successfully_statement_confirm102;
+        this->myInput.print_statement(label, color_label);
+        this->get_input_search();//------
+        //-------------------------------------
+        *menu_edit = this->menu_exist(MenuEdit::search) == "" ? MenuEdit::message101 : MenuEdit::search;
+    }
+    else {
+        std::string label = this->myInput.m_print_successfully_statement_confirm103;
+        this->myInput.print_statement(label, color_label);
+        this->get_edit_input();
+        //----------------------------------
+        *menu_edit = this->menu_exist(MenuEdit::update_item) == "" ? MenuEdit::message103 : MenuEdit::update_item;
+    }
+    this->init_input(*menu_edit);//save input add search edit
+}
 void Calculator::setup_menu(MenuEdit menu_edit) {
     add = menu_edit == MenuEdit::add ? "" : add;
     search = menu_edit == MenuEdit::search ? "" : search;
@@ -557,25 +583,8 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             color_label = this->myInput.get_color_by_name(this->get_m_print_color_confirm_user(menu_edit));
             this->myInput.print_statement(label, color_label, this->get_input_value(menu_edit));
         }
-        else if (item == this->myInput.m_input_key101 && menu_edit == MenuEdit::first_opration) {
-            std::string label = this->myInput.m_print_successfully_statement_confirm101;
-            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_confirm);
-            this->myInput.print_statement(label, color_label);
-            this->get_input_add();//----      
-            //--------------------------------------------
-            menu_edit = this->menu_exist(MenuEdit::add) ==  "" ? MenuEdit::message102: MenuEdit::add;
-            this->init_input(menu_edit);//save input add
-            continue;
-
-        }
-        else if (item == this->myInput.m_input_key102 && menu_edit == MenuEdit::first_opration) {
-            std::string label = this->myInput.m_print_successfully_statement_confirm102;
-            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_confirm);
-            this->myInput.print_statement(label, color_label);
-            this->get_input_search();//------
-            //-------------------------------------
-            menu_edit = this->menu_exist(MenuEdit::search) == "" ? MenuEdit::message101 : MenuEdit::search;
-            this->init_input(menu_edit);//save input search
+        else if (option == this->myInput.m_input_key103 && menu_edit == MenuEdit::chose_operation || item == this->myInput.m_input_key101 && menu_edit == MenuEdit::first_opration || item == this->myInput.m_input_key102 && menu_edit == MenuEdit::first_opration) {
+            this->get_add_search_edit(&menu_edit);
             continue;
         }
         else if (this->valid_number() && menu_edit == MenuEdit::first_opration || var2 == this->myInput.m_input_n104 && menu_edit == Section::MenuEdit::message104) {
@@ -592,16 +601,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             label = this->myInput.m_print_message_user102;
             color_label = this->myInput.get_color_by_name(this->myInput.m_color_confirm);
             this->myInput.print_statement(label, color_label, &option);
-        }
-        else if (option == this->myInput.m_input_key103 && menu_edit == MenuEdit::chose_operation) {
-            std::string label = this->myInput.m_print_successfully_statement_confirm103;
-            int color_label = this->myInput.get_color_by_name(this->myInput.m_color_successfully_statement_confirm);
-            this->myInput.print_statement(label, color_label);
-            this->get_edit_input();
-            //----------------------------------
-            menu_edit = this->menu_exist(MenuEdit::update_item) == "" ? MenuEdit::message103 : MenuEdit::update_item;
-            this->init_input(menu_edit);//save input update
-            continue;
         }
         else if (option == this->myInput.m_input_key104 && menu_edit == MenuEdit::chose_operation) {
             std::string label = this->myInput.m_print_successfully_statement_confirm104;
