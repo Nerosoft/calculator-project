@@ -76,8 +76,14 @@ private:
     void reset_pos();
     InputValue get_input_confirm();
     void get_confirm();
-};
 
+    void setup_menu(MenuEdit menu_edit);
+};
+void Calculator::setup_menu(MenuEdit menu_edit) {
+    add = menu_edit == MenuEdit::add ? "" : add;
+    search = menu_edit == MenuEdit::search ? "" : search;
+    var = menu_edit == MenuEdit::update_item ? "" : var;
+}
 void Calculator::get_confirm() {
     std::string index = this->myInput_search.m_id == stoi(pos) && this->myInput.get_text_search(this->myInput_search.vec) != this->myInput.get_text_search(this->myInput_edit.vec) ? this->reset_search() : pos;
     this->myInput = InputValue("confirm", index);//confirm
@@ -352,11 +358,6 @@ Section::MenuEdit Calculator::get_key_menu(MenuEdit menu_edit) {
 InputValue Calculator::set_search_add_input(std::string key, bool state, std::string* ptr_search = nullptr) {
     return InputValue(key, state, ptr_search);//search
 }
-
-
-
-
-
 std::string Calculator::reset_search() {
     this->myInput_search.m_id = 0;
     if (search == this->myInput.m_input_menu102) {
@@ -503,85 +504,47 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                 case Section::MenuEdit::message102:
                 case Section::MenuEdit::add:
                     this->get_input_add();//----
-                    if (menu_edit == MenuEdit::add || menu_edit == MenuEdit::message102) {
-                        add = this->myInput.add_search_ubdate(menu_edit == MenuEdit::add ? "" : add);
-                        menu_edit = add != "" ? MenuEdit::add : MenuEdit::message102;
-                        this->init_input(menu_edit);//save input add
-                        continue;
-                    }
-                    else {
-                        add = this->myInput.add_search_ubdate(add);
-                        menu_edit = add != "" ? MenuEdit::add : MenuEdit::message102;   
-                    }
-                    break;
-
+                    this->setup_menu(menu_edit);
+                    add = this->myInput.add_search_ubdate(add);
+                    menu_edit = add != "" ? MenuEdit::add : MenuEdit::message102;
+                    this->init_input(menu_edit);//save input add
+                    continue;
                 case Section::MenuEdit::message101:
                 case Section::MenuEdit::search:
                     this->get_input_search();//------
-                    if (menu_edit == MenuEdit::search || menu_edit == MenuEdit::message101) {
-                        search = this->myInput.add_search_ubdate(menu_edit == MenuEdit::search ? "" : search);
-                        menu_edit = search != "" ? MenuEdit::search : MenuEdit::message101;
-                        this->init_input(menu_edit);//save input search
-                        continue;
-                    }
-                    else {
-                        search = this->myInput.add_search_ubdate(search);
-                        menu_edit = search != "" ? MenuEdit::search : MenuEdit::message101;
-                    }
-                    break;
+                    this->setup_menu(menu_edit);
+                    search = this->myInput.add_search_ubdate(search);
+                    menu_edit = search != "" ? MenuEdit::search : MenuEdit::message101;
+                    this->init_input(menu_edit);//save input search
+                    continue;
                 case Section::MenuEdit::message103:
                 case Section::MenuEdit::update_item:
                     this->get_edit_input();
-                    if (menu_edit == MenuEdit::update_item || menu_edit == MenuEdit::message103) {
-                        var = this->myInput.add_search_ubdate(menu_edit == MenuEdit::update_item ? "" : var);
-                        menu_edit = var != "" ? MenuEdit::update_item : MenuEdit::message103;
-                        this->init_input(menu_edit);//save input edit
-                        continue;
-                        
-                    }
-                    else {
-                        var = this->myInput.add_search_ubdate(var);
-                        menu_edit = var != "" ? MenuEdit::update_item : MenuEdit::message103;
-                    }
-                    break;
+                    this->setup_menu(menu_edit);
+                    var = this->myInput.add_search_ubdate(var);
+                    menu_edit = var != "" ? MenuEdit::update_item : MenuEdit::message103;
+                    this->init_input(menu_edit);//save input edit
+                    continue;
                 case Section::MenuEdit::first_opration: {
                     this->get_main_input();
                     item = "go_main";
-                    if (menu_edit == MenuEdit::first_opration) {
-                        this->init_input(menu_edit);//save input main
-                        continue;
-                    }
-                    else
-                        menu_edit = MenuEdit::first_opration;
+                    menu_edit = MenuEdit::first_opration;
                     break;
                 }
                 case Section::MenuEdit::message104:
                     this->get_delete();
                     var2 = "go_delete";
-                    if (menu_edit == MenuEdit::message104) {
-                        this->init_input(menu_edit);//save input delete
-                        continue;
-                    }
-                    else 
-                        menu_edit = MenuEdit::message104;
+                    menu_edit = MenuEdit::message104;
                     break;
                 
                 case Section::MenuEdit::chose_operation:
                     this->get_input_confirm();
                     option = "go_confirm";
-                    if (menu_edit == MenuEdit::chose_operation) {
-                        this->init_input(menu_edit);//save input option
-                        continue;
-                    }
-                    else 
-                        menu_edit = MenuEdit::chose_operation;
+                    menu_edit = MenuEdit::chose_operation;
                     break;
                 }
-                add = menu_edit2 == MenuEdit::add ? "" : add;
-                search = menu_edit2 == MenuEdit::search ? "" : search;
-                var = menu_edit2 == MenuEdit::update_item ? "" : var;
-                this->init_input(menu_edit);//save input
-                continue;
+                this->setup_menu(menu_edit2);
+                this->init_input(menu_edit);//save input main confirm delete
             }
         }
         else if (menu_edit == MenuEdit::add && add == this->myInput.m_input_help101 || menu_edit == MenuEdit::message102 && add == this->myInput.m_input_help101 || menu_edit == MenuEdit::search && search == this->myInput.m_input_help102 || menu_edit == MenuEdit::message101 && search == this->myInput.m_input_help102 || menu_edit == MenuEdit::update_item && var == this->myInput.m_input_help103 || menu_edit == MenuEdit::message103 && var == this->myInput.m_input_help103 || menu_edit == MenuEdit::first_opration && item == this->myInput.m_input_help104 || menu_edit == MenuEdit::chose_operation && option == this->myInput.m_input_help105 || menu_edit == MenuEdit::message104 && var2 == this->myInput.m_input_help106) {
@@ -600,7 +563,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->myInput.print_statement(label, color_label);
             this->get_input_add();//----      
             //--------------------------------------------
-            menu_edit = this->menu_exist(MenuEdit::add) ==  "" ? MenuEdit::message102:MenuEdit::add;
+            menu_edit = this->menu_exist(MenuEdit::add) ==  "" ? MenuEdit::message102: MenuEdit::add;
             this->init_input(menu_edit);//save input add
             continue;
 
