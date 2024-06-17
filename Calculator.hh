@@ -623,7 +623,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             //---------------------------------
             menu_edit = MenuEdit::first_opration;
             this->init_input(menu_edit);//save input main
-            this->menu_exist(menu_edit);
             label = this->myInput.m_print_message_user101;
             color_label = this->myInput.get_color_by_name(this->myInput.m_color_main);
             this->myInput.print_statement(label, color_label, &item);
@@ -659,7 +658,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             //--------------------------
             menu_edit = MenuEdit::chose_operation;
             this->init_input(menu_edit);//save input option
-            this->menu_exist(MenuEdit::chose_operation);
             label = this->myInput.m_print_message_user102;
             color_label = this->myInput.get_color_by_name(this->myInput.m_color_confirm);
             this->myInput.print_statement(label, color_label, &option);
