@@ -89,7 +89,7 @@ void Calculator::get_add_search_edit(MenuEdit* menu_edit) {
         //--------------------------------------------
         *menu_edit = this->menu_exist(MenuEdit::add) == "" ? MenuEdit::message102 : MenuEdit::add;
     }
-    else if (item == this->myInput.m_input_key102 && *menu_edit == MenuEdit::first_opration) {
+    else if (*menu_edit == MenuEdit::first_opration) {
         std::string label = this->myInput.m_print_successfully_statement_confirm102;
         this->myInput.print_statement(label, color_label);
         this->get_input_search();//------
