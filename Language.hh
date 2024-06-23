@@ -164,7 +164,6 @@ public:
     std::string m_color_data_title;
     std::string m_color_menu_title;
     std::string m_color_menu_table;
-    std::string m_color_error_message_user;
     std::string m_color_value_result;
     std::string m_color_operator_result;
     std::string m_color_total_result;
@@ -216,6 +215,59 @@ public:
 
     std::string m_color_main;
     std::string m_color_confirm;
+
+
+
+    std::string m_color_confirm_table;
+    std::string m_color_confirm_title;
+    std::string m_color_value_confirm;
+    std::string m_color_operator_confirm;
+    std::string m_color_total_confirm;
+    std::string m_color_address_confirm;
+
+    std::string m_confirm_title;
+    std::string m_value_confirm_result;
+    int m_confirm_space;
+    std::string m_line_confirm;
+    std::string m_dismiss_word_confirm;
+    std::string m_dismiss_line_confirm;
+    std::string m_heddin_confirm_result;
+    std::string m_heddin_confirm_address;
+
+
+
+    std::string m_color_delete_table;
+    std::string m_color_delete_title;
+    std::string m_color_value_delete;
+    std::string m_color_operator_delete;
+    std::string m_color_total_delete;
+    std::string m_color_address_delete;
+
+    std::string m_delete_title;
+    int m_delete_space;
+    std::string m_line_delete;
+    std::string m_dismiss_word_delete;
+    std::string m_dismiss_line_delete;
+    std::string m_heddin_delete_result;
+    std::string m_heddin_delete_address;
+
+
+
+    std::string m_color_display_table;
+    std::string m_color_display_title;
+    std::string m_color_value_display;
+    std::string m_color_operator_display;
+    std::string m_color_total_display;
+    std::string m_color_address_display;
+
+    std::string m_display_title;
+    int m_display_space;
+    std::string m_line_display;
+    std::string m_dismiss_word_display;
+    std::string m_dismiss_line_display;
+    std::string m_heddin_display_result;
+    std::string m_heddin_display_address;
+
 
     Language(){
         this->json = this->m_read_setting();
@@ -493,6 +545,32 @@ void Language::read_table() {
     this->m_dismiss_word_menu = table.m_dismiss_word_menu;
 
     this->m_heddin_table = table.m_heddin_table;
+
+    this->m_confirm_title = table.m_confirm_title;
+    this->m_value_confirm_result = table.m_value_confirm_result;
+    this->m_confirm_space = table.m_confirm_space;
+    this->m_line_confirm = table.m_line_confirm;
+    this->m_dismiss_word_confirm = table.m_dismiss_word_confirm;
+    this->m_dismiss_line_confirm = table.m_dismiss_line_confirm;
+    this->m_heddin_confirm_result = table.m_heddin_confirm_result;
+    this->m_heddin_confirm_address = table.m_heddin_confirm_address;
+
+
+    this->m_delete_title = table.m_delete_title;
+    this->m_delete_space = table.m_delete_space;
+    this->m_line_delete = table.m_line_delete;
+    this->m_dismiss_word_delete = table.m_dismiss_word_delete;
+    this->m_dismiss_line_delete = table.m_dismiss_line_delete;
+    this->m_heddin_delete_result = table.m_heddin_delete_result;
+    this->m_heddin_delete_address = table.m_heddin_delete_address;
+
+    this->m_display_title = table.m_display_title;
+    this->m_display_space = table.m_display_space;
+    this->m_line_display = table.m_line_display;
+    this->m_dismiss_word_display = table.m_dismiss_word_display;
+    this->m_dismiss_line_display = table.m_dismiss_line_display;
+    this->m_heddin_display_result = table.m_heddin_display_result;
+    this->m_heddin_display_address = table.m_heddin_display_address;
 }
 void Language::read_colors() {
     this->m_color_help = color.m_color_help;
@@ -517,7 +595,6 @@ void Language::read_colors() {
     this->m_color_data_title = color.m_color_data_title;
     this->m_color_menu_title = color.m_color_menu_title;
     this->m_color_menu_table = color.m_color_menu_table;
-    this->m_color_error_message_user = color.m_color_error_message_user;
     this->m_color_value_result = color.m_color_value_result;
     this->m_color_operator_result = color.m_color_operator_result;
     this->m_color_total_result = color.m_color_total_result;
@@ -545,6 +622,29 @@ void Language::read_colors() {
 
     this->m_color_main = color.m_color_main;
     this->m_color_confirm = color.m_color_confirm;
+
+    this->m_color_confirm_table = color.m_color_confirm_table;
+    this->m_color_confirm_title = color.m_color_confirm_title;
+    this->m_color_value_confirm = color.m_color_value_confirm;
+    this->m_color_operator_confirm = color.m_color_operator_confirm;
+    this->m_color_total_confirm = color.m_color_total_confirm;
+    this->m_color_address_confirm = color.m_color_address_confirm;
+
+
+    this->m_color_delete_table = color.m_color_delete_table;
+    this->m_color_delete_title = color.m_color_delete_title;
+    this->m_color_value_delete = color.m_color_value_delete;
+    this->m_color_operator_delete = color.m_color_operator_delete;
+    this->m_color_total_delete = color.m_color_total_delete;
+    this->m_color_address_delete = color.m_color_address_delete;
+
+
+    this->m_color_display_table = color.m_color_display_table;
+    this->m_color_display_title = color.m_color_display_title;
+    this->m_color_value_display = color.m_color_value_display;
+    this->m_color_operator_display = color.m_color_operator_display;
+    this->m_color_total_display = color.m_color_total_display;
+    this->m_color_address_display = color.m_color_address_display;
 
 }
 void Language::read_setting() {
