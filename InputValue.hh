@@ -30,7 +30,7 @@ public:
             this->m_index = pos;
             std::string label = this->m_print_statement_confirm104;
             this->vec[0].m_index = pos;
-            this->tableResult77(this->vec, label);
+            this->table_delete(this->vec, label);
         }
         else //if (option == "edit")
         {
@@ -248,21 +248,21 @@ void InputValue::display_table_confirm(std::string label) {
         std::vector<Input>v1 = this->vec;
         v1.push_back(Input(this->m_var1, "", this->m_interrogative));
         v1[0].m_index = this->m_index;
-        this->tableResult77(v1, label);
+        this->table_confirm(v1, label);
     }
 
     else if (this->vec.size() >= 1 && test == "") {
         std::vector<Input>v1 = this->vec;
-        v1[0].m_result = this->m_value_result;
+        v1[0].m_result = this->m_value_confirm_result;
         v1[0].m_index = this->m_index;
-        this->tableResult77(v1, label);
+        this->table_confirm(v1, label);
     }
     else if (this->vec.size() >= 1) {
         std::vector<Input>v1 = this->vec;
         v1.push_back(Input(this->m_var1, "", ""));
         v1[0].m_result = this->getResult(&v1);
         v1[0].m_index = this->m_index;
-        this->tableResult77(v1, label);
+        this->table_confirm(v1, label);
     }
 }
 
@@ -272,7 +272,7 @@ void InputValue::display_table_confirm2(std::string label) {
     std::vector<Input>v1 = this->vec;
     v1[0].m_result = this->getResult(&v1);
     v1[0].m_index = this->m_index;
-    this->tableResult77(v1, label);
+    this->table_confirm(v1, label);
 }
 
 std::string InputValue::getResult() {// my vec of class
@@ -429,7 +429,6 @@ std::string InputValue::add_search_ubdate(std::string value) {
     if (this->get_valid_menu(value))
         //her print label confirm
         return "";
-
     else if (this->vec.empty() && this->test != "") {
         std::vector<Input>v1 = this->vec;
         v1.push_back(Input(this->m_var1, "", this->m_value_result));
