@@ -6,6 +6,9 @@ public:
     bool m_star;
     Tables();
     void tableResult77(std::vector<Input> vec, std::string label);
+    void table_confirm(std::vector<Input> vec, std::string label);
+    void table_delete(std::vector<Input> vec, std::string label);
+    void table_display(std::vector<Input> vec, std::string label);
     void show_result_with_operator(std::vector<Input> vec, std::string table_jop, std::string label);
     void display_table_menu(std::vector<std::vector<std::string>> vec, std::string word, std::string label, std::string title_menu);
    
@@ -332,6 +335,69 @@ int Tables::get_color_by_name(std::string color_name) {
         return 7;
 }
  
+
+
+
+void Tables::table_display(std::vector<Input> vec, std::string label) {
+    std::vector<std::string> array1;
+    this->int_tables(true, &vec, &array1, nullptr, this->get_total_address(this->m_heddin_display_address), this->get_total_address(this->m_heddin_display_result), this->m_display_space, "", "");
+    std::string my_line = this->print_title(this->m_line_display, &array1, this->m_dismiss_line_display, this->m_center_label && this->m_display_title.length() < label.length() ? label.length() : this->m_display_title.length(), "jop1", this->m_display_title, this->get_color_by_name(this->m_color_display_title), this->get_color_by_name(this->m_color_display_table), label);
+    std::cout << my_line;
+    this->print_heder_table(array1,
+        this->get_total_address(this->m_heddin_display_address),
+        this->get_total_address(this->m_heddin_display_result),
+        this->m_dismiss_word_display,
+        this->get_color_by_name(this->m_color_address_display),
+        this->get_color_by_name(this->m_color_total_display),
+        this->m_type_table_operator != "on" ? 0 : this->get_color_by_name(this->m_color_operator_display),
+        this->get_color_by_name(this->m_color_value_display),
+        this->get_color_by_name(this->m_color_display_table));
+
+    this->print_body_test(true, my_line, array1, vec,
+        this->get_total_address(this->m_heddin_display_result),
+        this->m_dismiss_word_display);
+}
+
+void Tables::table_delete(std::vector<Input> vec, std::string label) {
+    std::vector<std::string> array1;
+    this->int_tables(true, &vec, &array1, nullptr, this->get_total_address(this->m_heddin_delete_address), this->get_total_address(this->m_heddin_delete_result), this->m_delete_space, "", "");
+    std::string my_line = this->print_title(this->m_line_delete, &array1, this->m_dismiss_line_delete, this->m_center_label && this->m_delete_title.length() < label.length() ? label.length() : this->m_delete_title.length(), "jop1", this->m_delete_title, this->get_color_by_name(this->m_color_delete_title), this->get_color_by_name(this->m_color_delete_table), label);
+    std::cout << my_line;
+    this->print_heder_table(array1,
+        this->get_total_address(this->m_heddin_delete_address),
+        this->get_total_address(this->m_heddin_delete_result),
+        this->m_dismiss_word_delete,
+        this->get_color_by_name(this->m_color_address_delete),
+        this->get_color_by_name(this->m_color_total_delete),
+        this->m_type_table_operator != "on" ? 0 : this->get_color_by_name(this->m_color_operator_delete),
+        this->get_color_by_name(this->m_color_value_delete),
+        this->get_color_by_name(this->m_color_delete_table));
+
+    this->print_body_test(true, my_line, array1, vec,
+        this->get_total_address(this->m_heddin_delete_result),
+        this->m_dismiss_word_delete);
+}
+
+
+void Tables::table_confirm(std::vector<Input> vec, std::string label) {
+    std::vector<std::string> array1;
+    this->int_tables(true, &vec, &array1, nullptr, this->get_total_address(this->m_heddin_confirm_address), this->get_total_address(this->m_heddin_confirm_result), this->m_confirm_space, "", "");
+    std::string my_line = this->print_title(this->m_line_confirm, &array1, this->m_dismiss_line_confirm, this->m_center_label && this->m_confirm_title.length() < label.length() ? label.length() : this->m_confirm_title.length(), "jop1", this->m_confirm_title, this->get_color_by_name(this->m_color_confirm_title), this->get_color_by_name(this->m_color_confirm_table), label);
+    std::cout << my_line;
+    this->print_heder_table(array1,
+        this->get_total_address(this->m_heddin_confirm_address),
+        this->get_total_address(this->m_heddin_confirm_result),
+        this->m_dismiss_word_confirm,
+        this->get_color_by_name(this->m_color_address_confirm),
+        this->get_color_by_name(this->m_color_total_confirm),
+        this->m_type_table_operator != "on" ? 0 : this->get_color_by_name(this->m_color_operator_confirm),
+        this->get_color_by_name(this->m_color_value_confirm),
+        this->get_color_by_name(this->m_color_confirm_table));
+
+    this->print_body_test(true, my_line, array1, vec,
+        this->get_total_address(this->m_heddin_confirm_result),
+        this->m_dismiss_word_confirm);
+}
 
 void Tables::tableResult77(std::vector<Input> vec, std::string label) {
     std::vector<std::string> array1;    
