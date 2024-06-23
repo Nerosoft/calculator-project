@@ -60,6 +60,32 @@ public:
 
     std::string m_heddin_table;
 
+    std::string m_confirm_title;
+    std::string m_value_confirm_result;
+    int m_confirm_space;
+    std::string m_line_confirm;
+    std::string m_dismiss_word_confirm;
+    std::string m_dismiss_line_confirm;
+    std::string m_heddin_confirm_result;
+    std::string m_heddin_confirm_address;
+
+    std::string m_delete_title;
+    int m_delete_space;
+    std::string m_line_delete;
+    std::string m_dismiss_word_delete;
+    std::string m_dismiss_line_delete;
+    std::string m_heddin_delete_result;
+    std::string m_heddin_delete_address;
+
+
+    std::string m_display_title;
+    int m_display_space;
+    std::string m_line_display;
+    std::string m_dismiss_word_display;
+    std::string m_dismiss_line_display;
+    std::string m_heddin_display_result;
+    std::string m_heddin_display_address;
+
     Table() = default;
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(Table,
         m_data_title,
@@ -109,6 +135,33 @@ public:
         m_line_menu,
         m_dismiss_line_menu,
         m_dismiss_word_menu,
-        m_heddin_table
+        m_heddin_table,
+
+        m_confirm_title,
+        m_value_confirm_result,
+        m_confirm_space,
+        m_line_confirm,
+        m_dismiss_word_confirm,
+        m_dismiss_line_confirm,
+        m_heddin_confirm_result,
+        m_heddin_confirm_address,
+
+
+        m_delete_title,
+        m_delete_space,
+        m_line_delete,
+        m_dismiss_word_delete,
+        m_dismiss_line_delete,
+        m_heddin_delete_result,
+        m_heddin_delete_address,
+
+
+        m_display_title,
+        m_display_space,
+        m_line_display,
+        m_dismiss_word_display,
+        m_dismiss_line_display,
+        m_heddin_display_result,
+        m_heddin_display_address
     )
 };
