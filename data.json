@@ -20,6 +20,7 @@
           "m_print_successfuly_select_item": "You are already working on this item"
         },
         "color": {
+          "m_color_address_confirm": "bright_cyan",
           "m_color_address_data": "blue",
           "m_color_address_menu": "blue",
           "m_color_address_result": "bright_blue",
@@ -34,6 +35,8 @@
           "m_color_app_search": "green",
           "m_color_clear": "blue",
           "m_color_confirm": "cyan",
+          "m_color_confirm_table": "red",
+          "m_color_confirm_title": "cyan",
           "m_color_data_table": "bright_cyan",
           "m_color_data_title": "cyan",
           "m_color_error_menu_statement": "red",
@@ -48,6 +51,7 @@
           "m_color_menu_title": "cyan",
           "m_color_number": "blue",
           "m_color_operator": "yellow",
+          "m_color_operator_confirm": "purple",
           "m_color_operator_data": "yellow_dark",
           "m_color_operator_result": "purple",
           "m_color_operator_sugges": "bright_cyan",
@@ -60,12 +64,30 @@
           "m_color_successfully_statement_message_confirm": "green",
           "m_color_sugges_table": "purple",
           "m_color_sugges_title": "cyan",
+          "m_color_total_confirm": "pink_magenta",
           "m_color_total_data": "cyan",
           "m_color_total_result": "red",
           "m_color_total_sugges": "yellow_dark",
+          "m_color_value_confirm": "green",
           "m_color_value_data": "red",
           "m_color_value_result": "bright_green",
-          "m_color_value_sugges": "blue"
+          "m_color_value_sugges": "blue",
+
+          "m_color_delete_table": "green",
+          "m_color_delete_title": "cyan",
+          "m_color_value_delete": "blue",
+          "m_color_operator_delete": "red",
+          "m_color_total_delete": "pink_magenta",
+          "m_color_address_delete": "yellow",
+
+
+          "m_color_display_table": "green",
+          "m_color_display_title": "cyan",
+          "m_color_value_display": "blue",
+          "m_color_operator_display": "red",
+          "m_color_total_display": "pink_magenta",
+          "m_color_address_display": "yellow"
+
         },
         "confirm": {
           "m_input_key_delete": "d",
@@ -190,16 +212,22 @@
           "m_app": "app",
           "m_app_address": "app address",
           "m_center_label": true,
+          "m_confirm_space": 2,
+          "m_confirm_title": "Confirm table",
           "m_data_space": 2,
           "m_data_title": "Data entry table",
+          "m_dismiss_line_confirm": "+",
           "m_dismiss_line_data": "+",
           "m_dismiss_line_menu": "+",
           "m_dismiss_line_result": "+",
           "m_dismiss_line_sugges": "+",
+          "m_dismiss_word_confirm": "|",
           "m_dismiss_word_data": "|",
           "m_dismiss_word_menu": "|",
           "m_dismiss_word_result": "|",
           "m_dismiss_word_sugges": "|",
+          "m_heddin_confirm_address": "on",
+          "m_heddin_confirm_result": "on",
           "m_heddin_data_address": "on",
           "m_heddin_data_result": "on",
           "m_heddin_menu_address": "on",
@@ -209,6 +237,7 @@
           "m_heddin_sugges_result": "on",
           "m_heddin_table": "on",
           "m_interrogative": "!?",
+          "m_line_confirm": "-",
           "m_line_data": "=",
           "m_line_menu": "-",
           "m_line_result": "-",
@@ -224,7 +253,25 @@
           "m_total": "total",
           "m_type_table_operator": "on",
           "m_value": "value",
-          "m_value_result": "#?"
+          "m_value_confirm_result": "@?",
+          "m_value_result": "#?",
+
+          "m_delete_title": "Delete items table",
+          "m_delete_space": 2,
+          "m_line_delete": "-",
+          "m_dismiss_word_delete": "|",
+          "m_dismiss_line_delete": "+",
+          "m_heddin_delete_result": "on",
+          "m_heddin_delete_address": "on",
+
+          "m_display_title": "Answer table",
+          "m_display_space": 2,
+          "m_line_display": "-",
+          "m_dismiss_word_display": "|",
+          "m_dismiss_line_display": "+",
+          "m_heddin_display_result": "on",
+          "m_heddin_display_address": "on"
+
         }
       },
       "frans": {
@@ -246,6 +293,7 @@
           "m_print_successfuly_select_item": "Vous travaillez déjà sur cet article"
         },
         "color": {
+          "m_color_address_confirm": "bright_cyan",
           "m_color_address_data": "blue",
           "m_color_address_menu": "blue",
           "m_color_address_result": "yellow",
@@ -260,6 +308,8 @@
           "m_color_app_search": "green",
           "m_color_clear": "blue",
           "m_color_confirm": "cyan",
+          "m_color_confirm_table": "red",
+          "m_color_confirm_title": "cyan",
           "m_color_data_table": "bright_cyan",
           "m_color_data_title": "cyan",
           "m_color_error_menu_statement": "red",
@@ -274,6 +324,7 @@
           "m_color_menu_title": "cyan",
           "m_color_number": "blue",
           "m_color_operator": "yellow",
+          "m_color_operator_confirm": "purple",
           "m_color_operator_data": "yellow_dark",
           "m_color_operator_result": "cyan",
           "m_color_operator_sugges": "bright_cyan",
@@ -286,12 +337,32 @@
           "m_color_successfully_statement_message_confirm": "green",
           "m_color_sugges_table": "purple",
           "m_color_sugges_title": "cyan",
+          "m_color_total_confirm": "pink_magenta",
           "m_color_total_data": "cyan",
           "m_color_total_result": "red",
           "m_color_total_sugges": "yellow_dark",
+          "m_color_value_confirm": "green",
           "m_color_value_data": "red",
           "m_color_value_result": "white",
-          "m_color_value_sugges": "blue"
+          "m_color_value_sugges": "blue",
+
+
+          "m_color_delete_table": "green",
+          "m_color_delete_title": "cyan",
+          "m_color_value_delete": "blue",
+          "m_color_operator_delete": "red",
+          "m_color_total_delete": "pink_magenta",
+          "m_color_address_delete": "yellow",
+
+
+          "m_color_display_table": "green",
+          "m_color_display_title": "cyan",
+          "m_color_value_display": "blue",
+          "m_color_operator_display": "red",
+          "m_color_total_display": "pink_magenta",
+          "m_color_address_display": "yellow"
+
+
         },
         "confirm": {
           "m_input_key_delete": "d",
@@ -416,16 +487,22 @@
           "m_app": "application",
           "m_app_address": "adresse de l'application",
           "m_center_label": true,
+          "m_confirm_space": 2,
+          "m_confirm_title": "Confirmer le tableau",
           "m_data_space": 2,
           "m_data_title": "Tableau de saisie des données",
+          "m_dismiss_line_confirm": "+",
           "m_dismiss_line_data": "+",
           "m_dismiss_line_menu": "+",
           "m_dismiss_line_result": "+",
           "m_dismiss_line_sugges": "+",
+          "m_dismiss_word_confirm": "|",
           "m_dismiss_word_data": "|",
           "m_dismiss_word_menu": "|",
           "m_dismiss_word_result": "|",
           "m_dismiss_word_sugges": "|",
+          "m_heddin_confirm_address": "on",
+          "m_heddin_confirm_result": "on",
           "m_heddin_data_address": "on",
           "m_heddin_data_result": "on",
           "m_heddin_menu_address": "on",
@@ -435,6 +512,7 @@
           "m_heddin_sugges_result": "on",
           "m_heddin_table": "on",
           "m_interrogative": "!?",
+          "m_line_confirm": "-",
           "m_line_data": "=",
           "m_line_menu": "-",
           "m_line_result": "-",
@@ -450,7 +528,25 @@
           "m_total": "totale",
           "m_type_table_operator": "on",
           "m_value": "valeur",
-          "m_value_result": "#?"
+          "m_value_confirm_result": "@?",
+          "m_value_result": "#?",
+
+          "m_delete_title": "Delete table",
+          "m_delete_space": 2,
+          "m_line_delete": "-",
+          "m_dismiss_word_delete": "|",
+          "m_dismiss_line_delete": "+",
+          "m_heddin_delete_result": "onf",
+          "m_heddin_delete_address": "on",
+
+          "m_display_title": "Answer table",
+          "m_display_space": 2,
+          "m_line_display": "-",
+          "m_dismiss_word_display": "|",
+          "m_dismiss_line_display": "+",
+          "m_heddin_display_result": "on",
+          "m_heddin_display_address": "on"
+
         }
       },
       "result": [
@@ -675,23 +771,6 @@
         ],
         [
           {
-            "m_operator": "/",
-            "m_result": "34.000000",
-            "m_var1": "34"
-          },
-          {
-            "m_operator": "*",
-            "m_result": "",
-            "m_var1": "2"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "2"
-          }
-        ],
-        [
-          {
             "m_operator": "-",
             "m_result": "119.000000",
             "m_var1": "98"
@@ -732,7 +811,7 @@
         [
           {
             "m_operator": "+",
-            "m_result": "4.000000",
+            "m_result": "10.000000",
             "m_var1": "1"
           },
           {
@@ -741,9 +820,24 @@
             "m_var1": "1"
           },
           {
-            "m_operator": "",
+            "m_operator": "*",
             "m_result": "",
             "m_var1": "2"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "2"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "1"
           }
         ],
         [
@@ -920,18 +1014,6 @@
             "m_operator": "",
             "m_result": "",
             "m_var1": "2"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "2.000000",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "1"
           }
         ],
         [
@@ -959,45 +1041,6 @@
         [
           {
             "m_operator": "+",
-            "m_result": "22.500000",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "+",
-            "m_result": "",
-            "m_var1": "21"
-          },
-          {
-            "m_operator": "/",
-            "m_result": "",
-            "m_var1": "21"
-          },
-          {
-            "m_operator": "+",
-            "m_result": "",
-            "m_var1": "2"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "1"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "2.000000",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "1"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
             "m_result": "123.000000",
             "m_var1": "1"
           },
@@ -1015,6 +1058,28 @@
         [
           {
             "m_operator": "+",
+            "m_result": "61.500000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "/",
+            "m_result": "",
+            "m_var1": "121"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
             "m_result": "123.000000",
             "m_var1": "1"
           },
@@ -1024,36 +1089,14 @@
             "m_var1": "1"
           },
           {
-            "m_operator": "",
+            "m_operator": "/",
             "m_result": "",
             "m_var1": "121"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "11.250000",
-            "m_var1": "1"
           },
           {
-            "m_operator": "+",
-            "m_result": "",
-            "m_var1": "21"
-          },
-          {
-            "m_operator": "/",
-            "m_result": "",
-            "m_var1": "21"
-          },
-          {
-            "m_operator": "+",
+            "m_operator": "*",
             "m_result": "",
             "m_var1": "2"
-          },
-          {
-            "m_operator": "/",
-            "m_result": "",
-            "m_var1": "1"
           },
           {
             "m_operator": "",
@@ -1064,13 +1107,40 @@
         [
           {
             "m_operator": "+",
-            "m_result": "2.000000",
+            "m_result": "123.000000",
             "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "/",
+            "m_result": "",
+            "m_var1": "121"
+          },
+          {
+            "m_operator": "*",
+            "m_result": "",
+            "m_var1": "2"
           },
           {
             "m_operator": "",
             "m_result": "",
-            "m_var1": "1"
+            "m_var1": "2"
+          }
+        ],
+        [
+          {
+            "m_operator": "+",
+            "m_result": "70.000000",
+            "m_var1": "20"
+          },
+          {
+            "m_operator": "",
+            "m_result": "",
+            "m_var1": "50"
           }
         ]
       ]
