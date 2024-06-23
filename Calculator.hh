@@ -676,7 +676,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             std::vector<Input> v1 = this->myInput.vec;
             std::string label = this->get_m_print_statement_confirm_user(menu_edit);
             v1[0].m_index = menu_edit != MenuEdit::message101 ? this->myInput.m_index : std::to_string(this->myInput.m_id);
-            this->myInput.tableResult77(v1, label);
+            this->myInput.table_display(v1, label);
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
             this->myInput.print_statement(label, color_label, this->get_input_value(menu_edit));
             }
