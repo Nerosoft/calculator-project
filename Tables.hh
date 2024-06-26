@@ -128,6 +128,7 @@ std::vector<std::vector<Input>> Tables::init_result_auto_compleat(std::vector<In
             for (int y = 0; y < (vec.size() > this->myResult[i].size() ? 0 : vec.size()); y++) {
                 inp2 += myResult[i].at(y).m_var1 + (vec.at(y).m_operator != myResult[i].at(y).m_operator ? "" : vec.at(y).m_operator);
                 if (this->get_text_search(vec) == inp2) {
+                    *sizeOfHed = this->myResult.at(i).size() > this->myResult.at(*sizeOfHed).size() ? i : *sizeOfHed;
                     this->int_tables(false, &inp, array1, sizeOfHed, false, false, space, fill, std::to_string(this->myResult.size() - i));
                     temp.push_back(inp);
                     break;
