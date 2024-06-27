@@ -20,73 +20,69 @@
           "m_print_successfuly_select_item": "You are already working on this item"
         },
         "color": {
-          "m_color_address_confirm": "bright_cyan",
-          "m_color_address_data": "blue",
-          "m_color_address_menu": "blue",
-          "m_color_address_result": "bright_blue",
-          "m_color_address_sugges": "cyan",
+          "m_color_address_confirm": "green",
+          "m_color_address_data": "green",
+          "m_color_address_delete": "green",
+          "m_color_address_display": "green",
+          "m_color_address_menu": "green",
+          "m_color_address_result": "green",
+          "m_color_address_sugges": "green",
           "m_color_app_add_menu": "green",
           "m_color_app_confirm_menu": "green",
           "m_color_app_delete_menu": "green",
           "m_color_app_edit_menu": "green",
           "m_color_app_exit_menu": "green",
           "m_color_app_main_menu": "green",
-          "m_color_app_menu": "yellow",
+          "m_color_app_menu": "green",
           "m_color_app_search": "green",
-          "m_color_clear": "blue",
-          "m_color_confirm": "cyan",
-          "m_color_confirm_table": "red",
+          "m_color_clear": "green",
+          "m_color_confirm": "white",
+          "m_color_confirm_table": "green",
           "m_color_confirm_title": "cyan",
-          "m_color_data_table": "bright_cyan",
+          "m_color_data_table": "green",
           "m_color_data_title": "cyan",
+          "m_color_delete_table": "green",
+          "m_color_delete_title": "cyan",
+          "m_color_display_table": "green",
+          "m_color_display_title": "cyan",
           "m_color_error_menu_statement": "red",
           "m_color_error_number": "red",
           "m_color_error_operator": "red",
           "m_color_error_statement_confirm": "red",
-          "m_color_help": "bright_green",
-          "m_color_main": "purple",
-          "m_color_menu_statement": "blue",
+          "m_color_help": "green",
+          "m_color_main": "white",
+          "m_color_menu_statement": "white",
           "m_color_menu_table": "green",
           "m_color_menu_title": "cyan",
-          "m_color_number": "blue",
-          "m_color_operator": "yellow",
-          "m_color_operator_confirm": "purple",
-          "m_color_operator_data": "yellow_dark",
-          "m_color_operator_result": "purple",
-          "m_color_operator_sugges": "bright_cyan",
+          "m_color_number": "white",
+          "m_color_operator": "white",
+          "m_color_operator_confirm": "green",
+          "m_color_operator_data": "green",
+          "m_color_operator_delete": "green",
+          "m_color_operator_display": "green",
+          "m_color_operator_result": "green",
+          "m_color_operator_sugges": "green",
           "m_color_result_table": "green",
           "m_color_result_title": "cyan",
           "m_color_select": "yellow_dark",
-          "m_color_statement_confirm": "blue",
-          "m_color_successfully_menu_statement": "pink_magenta",
-          "m_color_successfully_statement_confirm": "pink_magenta",
+          "m_color_statement_confirm": "white",
+          "m_color_successfully_menu_statement": "green",
+          "m_color_successfully_statement_confirm": "green",
           "m_color_successfully_statement_message_confirm": "green",
-          "m_color_sugges_table": "purple",
+          "m_color_sugges_table": "green",
           "m_color_sugges_title": "cyan",
-          "m_color_total_confirm": "pink_magenta",
-          "m_color_total_data": "cyan",
-          "m_color_total_result": "red",
-          "m_color_total_sugges": "yellow_dark",
+          "m_color_total_confirm": "green",
+          "m_color_total_data": "green",
+          "m_color_total_delete": "green",
+          "m_color_total_display": "green",
+          "m_color_total_result": "green",
+          "m_color_total_sugges": "green",
           "m_color_value_confirm": "green",
-          "m_color_value_data": "red",
-          "m_color_value_result": "bright_green",
-          "m_color_value_sugges": "blue",
-
-          "m_color_delete_table": "green",
-          "m_color_delete_title": "cyan",
-          "m_color_value_delete": "blue",
-          "m_color_operator_delete": "red",
-          "m_color_total_delete": "pink_magenta",
-          "m_color_address_delete": "yellow",
-
-
-          "m_color_display_table": "green",
-          "m_color_display_title": "cyan",
-          "m_color_value_display": "blue",
-          "m_color_operator_display": "red",
-          "m_color_total_display": "pink_magenta",
-          "m_color_address_display": "yellow"
-
+          "m_color_value_data": "green",
+          "m_color_value_delete": "green",
+          "m_color_value_display": "green",
+          "m_color_value_result": "green",
+          "m_color_value_sugges": "green"
         },
         "confirm": {
           "m_input_key_delete": "d",
@@ -161,8 +157,8 @@
           "m_print_error_operator": "Error in entering addition, multiplication and division signs in edit screen.",
           "m_print_error_statement_confirm": "There was an error in the update process please review the matter.",
           "m_print_number": "Please enter the new number ? ",
-          "m_print_operator": "Please enter the new opretor(+ - / * =): or help ? ",
-          "m_print_statement_confirm": "Do you agree to update the calculation or help ? ",
+          "m_print_operator": "Please enter the new opretor (+ - / * =): or help ? ",
+          "m_print_statement_confirm": "Do you agree to update the result or help ? ",
           "m_print_successfully_statement_message_confirm": "The update process was completed successfully.",
           "m_print_successfuly_select_item": "You are already working on this item"
         },
@@ -184,7 +180,7 @@
           "m_input_key_add": "a",
           "m_input_key_search": "s",
           "m_print_error_message_user": "Error in selecting the correct operation to be modified.",
-          "m_print_message_user": "Please select the correct operation in table to modify or help ? ",
+          "m_print_message_user": "Please select the correct operation to modify or help ? ",
           "m_print_successfully_statement_confirm_add": "You have successfully finished working on the main program. you are now in add program.",
           "m_print_successfully_statement_confirm_search": "You have successfully finished working on the main program. you are now in search program.",
           "m_print_successfully_statement_message_confirm": "The select process was completed successfully."
@@ -212,32 +208,46 @@
           "m_app_address": "app address",
           "m_center_label": true,
           "m_confirm_space": 2,
-          "m_confirm_title": "Confirm table",
+          "m_confirm_title": "Confirm data table",
           "m_data_space": 2,
           "m_data_title": "Data entry table",
+          "m_delete_space": 2,
+          "m_delete_title": "Delete items table",
           "m_dismiss_line_confirm": "+",
           "m_dismiss_line_data": "+",
+          "m_dismiss_line_delete": "+",
+          "m_dismiss_line_display": "+",
           "m_dismiss_line_menu": "+",
           "m_dismiss_line_result": "+",
           "m_dismiss_line_sugges": "+",
           "m_dismiss_word_confirm": "|",
           "m_dismiss_word_data": "|",
+          "m_dismiss_word_delete": "|",
+          "m_dismiss_word_display": "|",
           "m_dismiss_word_menu": "|",
           "m_dismiss_word_result": "|",
           "m_dismiss_word_sugges": "|",
+          "m_display_space": 2,
+          "m_display_title": "Answer table",
           "m_heddin_confirm_address": "on",
           "m_heddin_confirm_result": "on",
           "m_heddin_data_address": "on",
           "m_heddin_data_result": "on",
+          "m_heddin_delete_address": "on",
+          "m_heddin_delete_result": "on",
+          "m_heddin_display_address": "on",
+          "m_heddin_display_result": "on",
           "m_heddin_menu_address": "on",
           "m_heddin_result": "on",
           "m_heddin_result_address": "on",
           "m_heddin_sugges_address": "on",
           "m_heddin_sugges_result": "on",
           "m_heddin_table": "on",
-          "m_interrogative": "!?",
+          "m_interrogative": "?",
           "m_line_confirm": "-",
-          "m_line_data": "=",
+          "m_line_data": "-",
+          "m_line_delete": "-",
+          "m_line_display": "-",
           "m_line_menu": "-",
           "m_line_result": "-",
           "m_line_sugges": "-",
@@ -246,31 +256,14 @@
           "m_result_fill": "###",
           "m_result_space": 2,
           "m_result_table_suggestion": "Suggestion table",
-          "m_result_title": "Results table",
+          "m_result_title": "Result table",
           "m_sugges_fill": "###",
           "m_sugges_space": 2,
           "m_total": "total",
           "m_type_table_operator": "on",
           "m_value": "value",
-          "m_value_confirm_result": "@?",
-          "m_value_result": "#?",
-
-          "m_delete_title": "Delete items table",
-          "m_delete_space": 2,
-          "m_line_delete": "-",
-          "m_dismiss_word_delete": "|",
-          "m_dismiss_line_delete": "+",
-          "m_heddin_delete_result": "on",
-          "m_heddin_delete_address": "on",
-
-          "m_display_title": "Answer table",
-          "m_display_space": 2,
-          "m_line_display": "-",
-          "m_dismiss_word_display": "|",
-          "m_dismiss_line_display": "+",
-          "m_heddin_display_result": "on",
-          "m_heddin_display_address": "on"
-
+          "m_value_confirm_result": "?",
+          "m_value_result": "?"
         }
       },
       "frans": {
@@ -294,6 +287,8 @@
         "color": {
           "m_color_address_confirm": "bright_cyan",
           "m_color_address_data": "blue",
+          "m_color_address_delete": "yellow",
+          "m_color_address_display": "yellow",
           "m_color_address_menu": "blue",
           "m_color_address_result": "yellow",
           "m_color_address_sugges": "cyan",
@@ -311,6 +306,10 @@
           "m_color_confirm_title": "cyan",
           "m_color_data_table": "bright_cyan",
           "m_color_data_title": "cyan",
+          "m_color_delete_table": "green",
+          "m_color_delete_title": "cyan",
+          "m_color_display_table": "green",
+          "m_color_display_title": "cyan",
           "m_color_error_menu_statement": "red",
           "m_color_error_number": "red",
           "m_color_error_operator": "red",
@@ -324,6 +323,8 @@
           "m_color_operator": "yellow",
           "m_color_operator_confirm": "purple",
           "m_color_operator_data": "yellow_dark",
+          "m_color_operator_delete": "red",
+          "m_color_operator_display": "red",
           "m_color_operator_result": "cyan",
           "m_color_operator_sugges": "bright_cyan",
           "m_color_result_table": "green",
@@ -337,30 +338,16 @@
           "m_color_sugges_title": "cyan",
           "m_color_total_confirm": "pink_magenta",
           "m_color_total_data": "cyan",
+          "m_color_total_delete": "pink_magenta",
+          "m_color_total_display": "pink_magenta",
           "m_color_total_result": "red",
           "m_color_total_sugges": "yellow_dark",
           "m_color_value_confirm": "green",
           "m_color_value_data": "red",
-          "m_color_value_result": "white",
-          "m_color_value_sugges": "blue",
-
-
-          "m_color_delete_table": "green",
-          "m_color_delete_title": "cyan",
           "m_color_value_delete": "blue",
-          "m_color_operator_delete": "red",
-          "m_color_total_delete": "pink_magenta",
-          "m_color_address_delete": "yellow",
-
-
-          "m_color_display_table": "green",
-          "m_color_display_title": "cyan",
           "m_color_value_display": "blue",
-          "m_color_operator_display": "red",
-          "m_color_total_display": "pink_magenta",
-          "m_color_address_display": "yellow"
-
-
+          "m_color_value_result": "white",
+          "m_color_value_sugges": "blue"
         },
         "confirm": {
           "m_input_key_delete": "d",
@@ -489,20 +476,32 @@
           "m_confirm_title": "Confirmer le tableau",
           "m_data_space": 2,
           "m_data_title": "Tableau de saisie des données",
+          "m_delete_space": 2,
+          "m_delete_title": "Delete table",
           "m_dismiss_line_confirm": "+",
           "m_dismiss_line_data": "+",
+          "m_dismiss_line_delete": "+",
+          "m_dismiss_line_display": "+",
           "m_dismiss_line_menu": "+",
           "m_dismiss_line_result": "+",
           "m_dismiss_line_sugges": "+",
           "m_dismiss_word_confirm": "|",
           "m_dismiss_word_data": "|",
+          "m_dismiss_word_delete": "|",
+          "m_dismiss_word_display": "|",
           "m_dismiss_word_menu": "|",
           "m_dismiss_word_result": "|",
           "m_dismiss_word_sugges": "|",
+          "m_display_space": 2,
+          "m_display_title": "Answer table",
           "m_heddin_confirm_address": "on",
           "m_heddin_confirm_result": "on",
           "m_heddin_data_address": "on",
           "m_heddin_data_result": "on",
+          "m_heddin_delete_address": "on",
+          "m_heddin_delete_result": "onf",
+          "m_heddin_display_address": "on",
+          "m_heddin_display_result": "on",
           "m_heddin_menu_address": "on",
           "m_heddin_result": "on",
           "m_heddin_result_address": "on",
@@ -512,6 +511,8 @@
           "m_interrogative": "!?",
           "m_line_confirm": "-",
           "m_line_data": "=",
+          "m_line_delete": "-",
+          "m_line_display": "-",
           "m_line_menu": "-",
           "m_line_result": "-",
           "m_line_sugges": "-",
@@ -527,24 +528,7 @@
           "m_type_table_operator": "on",
           "m_value": "valeur",
           "m_value_confirm_result": "@?",
-          "m_value_result": "#?",
-
-          "m_delete_title": "Delete table",
-          "m_delete_space": 2,
-          "m_line_delete": "-",
-          "m_dismiss_word_delete": "|",
-          "m_dismiss_line_delete": "+",
-          "m_heddin_delete_result": "onf",
-          "m_heddin_delete_address": "on",
-
-          "m_display_title": "Answer table",
-          "m_display_space": 2,
-          "m_line_display": "-",
-          "m_dismiss_word_display": "|",
-          "m_dismiss_line_display": "+",
-          "m_heddin_display_result": "on",
-          "m_heddin_display_address": "on"
-
+          "m_value_result": "#?"
         }
       },
       "result": [
@@ -1017,13 +1001,8 @@
         [
           {
             "m_operator": "+",
-            "m_result": "6.000000",
+            "m_result": "3.000000",
             "m_var1": "1"
-          },
-          {
-            "m_operator": "+",
-            "m_result": "",
-            "m_var1": "3"
           },
           {
             "m_operator": "+",
@@ -1039,7 +1018,12 @@
         [
           {
             "m_operator": "+",
-            "m_result": "123.000000",
+            "m_result": "4.000000",
+            "m_var1": "1"
+          },
+          {
+            "m_operator": "+",
+            "m_result": "",
             "m_var1": "1"
           },
           {
@@ -1050,95 +1034,7 @@
           {
             "m_operator": "",
             "m_result": "",
-            "m_var1": "121"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "61.500000",
             "m_var1": "1"
-          },
-          {
-            "m_operator": "+",
-            "m_result": "",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "/",
-            "m_result": "",
-            "m_var1": "121"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "2"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "123.000000",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "+",
-            "m_result": "",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "/",
-            "m_result": "",
-            "m_var1": "121"
-          },
-          {
-            "m_operator": "*",
-            "m_result": "",
-            "m_var1": "2"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "2"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "123.000000",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "+",
-            "m_result": "",
-            "m_var1": "1"
-          },
-          {
-            "m_operator": "/",
-            "m_result": "",
-            "m_var1": "121"
-          },
-          {
-            "m_operator": "*",
-            "m_result": "",
-            "m_var1": "2"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "2"
-          }
-        ],
-        [
-          {
-            "m_operator": "+",
-            "m_result": "70.000000",
-            "m_var1": "20"
-          },
-          {
-            "m_operator": "",
-            "m_result": "",
-            "m_var1": "50"
           }
         ]
       ]
