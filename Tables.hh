@@ -22,8 +22,7 @@ public:
 private:
     std::string trim(const std::string& source);
     std::vector<std::vector<Input>> init_result_auto_compleat(std::vector<Input>vec, std::string jop, int* sizeOfHed, std::vector<std::string>* array1);
-    void set_total_address(int space, bool state_pop, bool heddinResult, bool heddinIndex, std::vector<std::string>* array1);
-    void change_space_hedder(int space, std::vector<std::vector<Input>>* temp, int sizeOfHed, std::string fill, std::vector<std::string>* array1, bool heddinResult);
+    void set_total_address(int space, bool state_pop, bool heddinResult, bool heddinIndex, std::vector<std::string>* array1, std::string fill, std::vector<std::vector<Input>>* temp, int sizeOfHed);
     std::string print_title(std::string m_line, std::vector<std::string>* array1, std::string dismiss_line, int temp_title_table, std::string table_jop, std::string title, int color_title, int color_table, std::string label);
     void print_heder_table(std::vector<std::string>array1, bool heddinIndex, bool heddinResult, std::string dismiss_word, int color_address, int color_total, int color_operator, int color_value, int color_table);
     void print_body(std::string my_line, std::vector<std::vector<Input>>temp, bool heddinResult, std::string dismiss_word, std::vector<std::string>array1);
@@ -138,7 +137,8 @@ std::vector<std::vector<Input>> Tables::init_result_auto_compleat(std::vector<In
     }
     return temp;
 }
-void Tables::set_total_address(int space, bool state_pop, bool heddinResult, bool heddinIndex, std::vector<std::string>* array1) {
+void Tables::set_total_address(int space, bool state_pop, bool heddinResult, bool heddinIndex, std::vector<std::string>* array1, std::string fill, std::vector<std::vector<Input>>* temp, int sizeOfHed) {
+    std::string m_fill = fill;
     if (state_pop)
         array1->pop_back();
     if (heddinIndex && heddinResult) {
@@ -147,21 +147,21 @@ void Tables::set_total_address(int space, bool state_pop, bool heddinResult, boo
         for (int ii = 0; ii < space; ii++) {
             array1->at(array1->size() - 1) = " " + array1->at(array1->size() - 1) + " ";
             array1->at(array1->size() - 2) = " " + array1->at(array1->size() - 2) + " ";
+            m_fill = " " + m_fill + " ";
         }
     }
     else if (heddinIndex || heddinResult) {
         array1->push_back(heddinResult ? this->m_total : this->m_address);
-        for (int ii = 0; ii < space; ii++)
+        for (int ii = 0; ii < space; ii++) {
             array1->at(array1->size() - 1) = " " + array1->at(array1->size() - 1) + " ";
-    }
-}
-void Tables::change_space_hedder(int space, std::vector<std::vector<Input>>* temp, int sizeOfHed, std::string fill, std::vector<std::string>* array1, bool heddinResult) {
+            m_fill = " " + m_fill + " ";
+        }
+    }else
+        for (int z = 0; z < space; z++)
+            m_fill = " " + m_fill + " ";
     for (int y = 0; y < temp->size(); y++) {
         if (temp->at(y).size() < this->myResult.at(sizeOfHed).size()) {
             int mySize = this->myResult.at(sizeOfHed).size() - temp->at(y).size();
-            std::string m_fill = fill;
-            for (int z = 0; z < space; z++)
-                m_fill = " " + m_fill + " ";
             for (int ii = 0; ii < mySize; ii++)
                 temp->at(y).push_back(Input(m_fill, m_fill, ""));
         }
@@ -178,6 +178,7 @@ void Tables::change_space_hedder(int space, std::vector<std::vector<Input>>* tem
             }
         }
     }
+
 }
 std::string Tables::print_title(std::string m_line, std::vector<std::string>* array1, std::string dismiss_line, int temp_title_table, std::string table_jop, std::string title, int color_title, int color_table, std::string label) {
     std::string my_line = "";
@@ -438,12 +439,7 @@ void Tables::show_result_with_operator(std::vector<Input> vec, std::string table
         this->get_total_address(this->m_type_table_operator),
         this->get_total_address(table_jop != "" ? this->m_heddin_result : this->m_heddin_sugges_result),
         this->get_total_address(table_jop != "" ? this->m_heddin_result_address : this->m_heddin_sugges_address),
-        &array1);
-
-    this->change_space_hedder(table_jop != "" ? this->m_result_space : this->m_sugges_space,
-        &temp, sizeOfHed,
-        table_jop != "" ? this->m_result_fill : this->m_sugges_fill,
-        &array1, this->get_total_address(table_jop != "" ? this->m_heddin_result : this->m_heddin_sugges_result));
+        &array1, table_jop != "" ? this->m_result_fill : this->m_sugges_fill, &temp, sizeOfHed);
 
     std::string my_line = table_jop != "" ? this->print_title(table_jop != "" ? this->m_line_result : this->m_line_sugges, &array1,
         table_jop != "" ? this->m_dismiss_line_result : this->m_dismiss_line_sugges,
