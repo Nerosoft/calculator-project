@@ -138,7 +138,6 @@ std::vector<std::vector<Input>> Tables::init_result_auto_compleat(std::vector<In
     return temp;
 }
 void Tables::set_total_address(int space, bool state_pop, bool heddinResult, bool heddinIndex, std::vector<std::string>* array1, std::string fill, std::vector<std::vector<Input>>* temp, int sizeOfHed) {
-    std::string m_fill = fill;
     if (state_pop)
         array1->pop_back();
     if (heddinIndex && heddinResult) {
@@ -147,23 +146,23 @@ void Tables::set_total_address(int space, bool state_pop, bool heddinResult, boo
         for (int ii = 0; ii < space; ii++) {
             array1->at(array1->size() - 1) = " " + array1->at(array1->size() - 1) + " ";
             array1->at(array1->size() - 2) = " " + array1->at(array1->size() - 2) + " ";
-            m_fill = " " + m_fill + " ";
+            fill = " " + fill + " ";
         }
     }
     else if (heddinIndex || heddinResult) {
         array1->push_back(heddinResult ? this->m_total : this->m_address);
         for (int ii = 0; ii < space; ii++) {
             array1->at(array1->size() - 1) = " " + array1->at(array1->size() - 1) + " ";
-            m_fill = " " + m_fill + " ";
+            fill = " " + fill + " ";
         }
     }else
         for (int z = 0; z < space; z++)
-            m_fill = " " + m_fill + " ";
+            fill = " " + fill + " ";
     for (int y = 0; y < temp->size(); y++) {
         if (temp->at(y).size() < this->myResult.at(sizeOfHed).size()) {
             int mySize = this->myResult.at(sizeOfHed).size() - temp->at(y).size();
             for (int ii = 0; ii < mySize; ii++)
-                temp->at(y).push_back(Input(m_fill, m_fill, ""));
+                temp->at(y).push_back(Input(fill, fill, ""));
         }
         for (int i = 0; i < array1->size(); i++) {
             int index = ((i + 1) + (i / 2) * 2) - (i + 1) - (i / 2);
