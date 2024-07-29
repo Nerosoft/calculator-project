@@ -493,6 +493,7 @@ void Calculator::init_input(MenuEdit menu_edit) {
 
 void Calculator::isValidInt22(MenuEdit menu_edit) {
     this->get_main_input();
+    this->init_input(menu_edit);//save input main
     this->menu_exist(MenuEdit::first_opration);
     do {     
         if (item == "go_main" && menu_edit == MenuEdit::first_opration) {
