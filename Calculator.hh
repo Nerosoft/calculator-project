@@ -685,6 +685,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
 bool Calculator::isValidIntegr(int& value, MenuEdit section) {
     do {
         if (std::cin.good() && value > 0 && value <= menu.size()) {
+            std::cin.ignore(100, '\n');
             return false;
         }
         else {
