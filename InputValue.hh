@@ -365,7 +365,7 @@ bool InputValue::isValidInt() {
         else if (this->get_input_search(this->m_var1[0]) && this->m_var1.size() >= 2 || this->get_input_search(this->m_operator[0]) && this->m_operator.size() >= 2) {
             this->set_value();
             for (int i = 0; i < (test != "" ? this->m_operator.size() : this->m_var1.size()); i++) {
-                if (this->m_var1.length() >= MAX_SIZE_STRING || this->m_operator.length() >= MAX_SIZE_STRING
+                if (this->m_var1.length() > MAX_SIZE_STRING || this->m_operator.length() > MAX_SIZE_STRING
                     || this->m_var1[0] == '0' || this->m_operator[0] == '0'
                     || !isdigit(test != "" ? this->m_operator.at(i) : this->m_var1.at(i))
                     || stoi(test != "" ? this->m_operator: this->m_var1) > this->myResult.size() 
