@@ -35,8 +35,6 @@ private:
     std::string var2 = "";
     std::string search = "nero-soft";
     InputValue myInput;
-    InputValue myInput_select;
-    InputValue myInput_delete;      
     InputValue myInput_edit;        
     InputValue myInput_add;      
     InputValue myInput_search; 
@@ -481,35 +479,30 @@ void Calculator::init_input(MenuEdit menu_edit) {
     case Section::MenuEdit::message103:
         this->myInput_edit = this->myInput;
         break;
-    case Section::MenuEdit::first_opration:
-        this->myInput_select = this->myInput;
-        break;
-    case Section::MenuEdit::message104:
-        this->myInput_delete = this->myInput;
-        break;
-        
     }
 }
 
 void Calculator::isValidInt22(MenuEdit menu_edit) {
     this->get_main_input();
-    this->init_input(menu_edit);//save input main
     this->menu_exist(MenuEdit::first_opration);
     do {     
         if (item == "go_main" && menu_edit == MenuEdit::first_opration) {
             std::string label = this->myInput.m_print_message_user101;
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_main);
             this->myInput.print_statement(label, color_label, &item);
+            //this->init_input(menu_edit);//save input main
         }
         else if (option == "go_confirm" && menu_edit == MenuEdit::chose_operation) {
             std::string label = this->myInput.m_print_message_user102;
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_confirm);
             this->myInput.print_statement(label, color_label, &option);
+            //this->init_input(menu_edit);//save input confirm
         }
         else if (var2 == "go_delete" && menu_edit == MenuEdit::message104) {
             std::string label = this->myInput.m_print_statement_confirm104;
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
             this->myInput.print_statement(label, color_label, &var2);
+            //this->init_input(menu_edit);//save input delete
         }
         else if (menu_edit == MenuEdit::add && add == this->myInput.m_input_menu101 || menu_edit == MenuEdit::message102 && add == this->myInput.m_input_menu101 || menu_edit == MenuEdit::search && search == this->myInput.m_input_menu102 || menu_edit == MenuEdit::message101 && search == this->myInput.m_input_menu102 || menu_edit == MenuEdit::update_item && var == this->myInput.m_input_menu103 || menu_edit == MenuEdit::message103 && var == this->myInput.m_input_menu103 || menu_edit == MenuEdit::first_opration && item == this->myInput.m_input_menu104 || menu_edit == MenuEdit::chose_operation && option == this->myInput.m_input_menu105 || menu_edit == MenuEdit::message104 && var2 == this->myInput.m_input_menu106) {
             MenuEdit menu_edit2 = menu_edit;
@@ -534,7 +527,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                     this->setup_menu(menu_edit);
                     add = this->myInput.add_search_ubdate(add);
                     menu_edit = add != "" ? MenuEdit::add : MenuEdit::message102;
-                    this->init_input(menu_edit);//save input add
+                    this->init_input(menu_edit);
                     continue;
                 case Section::MenuEdit::message101:
                 case Section::MenuEdit::search:
@@ -542,7 +535,7 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                     this->setup_menu(menu_edit);
                     search = this->myInput.add_search_ubdate(search);
                     menu_edit = search != "" ? MenuEdit::search : MenuEdit::message101;
-                    this->init_input(menu_edit);//save input search
+                    this->init_input(menu_edit);
                     continue;
                 case Section::MenuEdit::message103:
                 case Section::MenuEdit::update_item:
@@ -550,28 +543,28 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
                     this->setup_menu(menu_edit);
                     var = this->myInput.add_search_ubdate(var);
                     menu_edit = var != "" ? MenuEdit::update_item : MenuEdit::message103;
-                    this->init_input(menu_edit);//save input edit
+                    this->init_input(menu_edit);
                     continue;
-                case Section::MenuEdit::first_opration: {
+                case Section::MenuEdit::first_opration:
                     this->get_main_input();
                     item = "go_main";
                     menu_edit = MenuEdit::first_opration;
+                    this->setup_menu(menu_edit2);
                     break;
-                }
                 case Section::MenuEdit::message104:
                     this->get_delete();
                     var2 = "go_delete";
                     menu_edit = MenuEdit::message104;
+                    this->setup_menu(menu_edit2);
                     break;
                 
                 case Section::MenuEdit::chose_operation:
                     this->get_input_confirm();
                     option = "go_confirm";
                     menu_edit = MenuEdit::chose_operation;
+                    this->setup_menu(menu_edit2);
                     break;
                 }
-                this->setup_menu(menu_edit2);
-                this->init_input(menu_edit);//save input main confirm delete
             }
         }
         else if (menu_edit == MenuEdit::add && add == this->myInput.m_input_help101 || menu_edit == MenuEdit::message102 && add == this->myInput.m_input_help101 || menu_edit == MenuEdit::search && search == this->myInput.m_input_help102 || menu_edit == MenuEdit::message101 && search == this->myInput.m_input_help102 || menu_edit == MenuEdit::update_item && var == this->myInput.m_input_help103 || menu_edit == MenuEdit::message103 && var == this->myInput.m_input_help103 || menu_edit == MenuEdit::first_opration && item == this->myInput.m_input_help104 || menu_edit == MenuEdit::chose_operation && option == this->myInput.m_input_help105 || menu_edit == MenuEdit::message104 && var2 == this->myInput.m_input_help106) {
@@ -596,7 +589,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->get_confirm_input();
             this->reset_pos();//pos""
             menu_edit = MenuEdit::chose_operation;
-            this->init_input(menu_edit);//save input confirm
             //---------------------------------
             this->menu_exist(menu_edit);
             label = this->myInput.m_print_message_user102;
@@ -609,7 +601,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->myInput.print_statement(label, color_label);
             this->get_delete();
             menu_edit = MenuEdit::message104;
-            this->init_input(menu_edit);//save input delete
             //---------------------------
             this->menu_exist(menu_edit);
             label = this->myInput.m_print_statement_confirm104;
@@ -623,7 +614,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->deleting_item();
             //---------------------------------
             menu_edit = MenuEdit::first_opration;
-            this->init_input(menu_edit);//save input main
             label = this->myInput.m_print_message_user101;
             color_label = this->myInput.get_color_by_name(this->myInput.m_color_main);
             this->myInput.print_statement(label, color_label, &item);
@@ -645,7 +635,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->set_search();
             //-------------------------
             menu_edit = MenuEdit::chose_operation;
-            this->init_input(menu_edit);//save input option
             this->menu_exist(MenuEdit::chose_operation);
             label = this->myInput.m_print_message_user102;
             color_label = this->myInput.get_color_by_name(this->myInput.m_color_confirm);
@@ -658,7 +647,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             this->set_edit();
             //--------------------------
             menu_edit = MenuEdit::chose_operation;
-            this->init_input(menu_edit);//save input option
             label = this->myInput.m_print_message_user102;
             color_label = this->myInput.get_color_by_name(this->myInput.m_color_confirm);
             this->myInput.print_statement(label, color_label, &option);
