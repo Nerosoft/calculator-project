@@ -18,6 +18,7 @@
 
 #include"Tables.hh"
 #include"InputValue.hh"
+
 class Calculator : Section{
 public:
     Calculator(){
@@ -490,19 +491,16 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             std::string label = this->myInput.m_print_message_user101;
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_main);
             this->myInput.print_statement(label, color_label, &item);
-            //this->init_input(menu_edit);//save input main
         }
         else if (option == "go_confirm" && menu_edit == MenuEdit::chose_operation) {
             std::string label = this->myInput.m_print_message_user102;
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_confirm);
             this->myInput.print_statement(label, color_label, &option);
-            //this->init_input(menu_edit);//save input confirm
         }
         else if (var2 == "go_delete" && menu_edit == MenuEdit::message104) {
             std::string label = this->myInput.m_print_statement_confirm104;
             int color_label = this->myInput.get_color_by_name(this->myInput.m_color_statement_confirm);
             this->myInput.print_statement(label, color_label, &var2);
-            //this->init_input(menu_edit);//save input delete
         }
         else if (menu_edit == MenuEdit::add && add == this->myInput.m_input_menu101 || menu_edit == MenuEdit::message102 && add == this->myInput.m_input_menu101 || menu_edit == MenuEdit::search && search == this->myInput.m_input_menu102 || menu_edit == MenuEdit::message101 && search == this->myInput.m_input_menu102 || menu_edit == MenuEdit::update_item && var == this->myInput.m_input_menu103 || menu_edit == MenuEdit::message103 && var == this->myInput.m_input_menu103 || menu_edit == MenuEdit::first_opration && item == this->myInput.m_input_menu104 || menu_edit == MenuEdit::chose_operation && option == this->myInput.m_input_menu105 || menu_edit == MenuEdit::message104 && var2 == this->myInput.m_input_menu106) {
             MenuEdit menu_edit2 = menu_edit;
@@ -661,7 +659,6 @@ void Calculator::isValidInt22(MenuEdit menu_edit) {
             continue;
         }
         else if (add == "" && menu_edit == MenuEdit::message102 || search == "" && menu_edit == MenuEdit::message101 || var == "" && menu_edit == MenuEdit::message103) {
-            this->init_input(menu_edit);//save input add or search or edit
             std::vector<Input> v1 = this->myInput.vec;
             std::string label = this->get_m_print_statement_confirm_user(menu_edit);
             v1[0].m_index = menu_edit != MenuEdit::message101 ? this->myInput.m_index : std::to_string(this->myInput.m_id);
