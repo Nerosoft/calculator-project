@@ -112,12 +112,6 @@ public:
     std::string get_m_print_help(MenuEdit menu_edit);
 private:
     void show_result_table(std::string label);
-    bool get_valid_menu(std::string value);
-    bool get_valid_help(std::string value);
-    bool get_valid_result_table(std::string value);
-    bool get_valid_clear(std::string value);
-    bool get_input_result();
-    bool get_input_search(char value);
     std::string get_m_input_menu();
     bool isValidInt();
     std::string searchItem(int id);
@@ -208,31 +202,6 @@ std::string InputValue::get_m_print_help(MenuEdit menu_edit) {
     else
         return this->m_print_help106;
 }
-
-bool InputValue::get_valid_menu(std::string value) {
-    return value == this->m_input_menu101 && this->m_input_valid == MenuEdit::addition || value == this->m_input_menu102 && this->m_input_valid == MenuEdit::input_mark_search || value == this->m_input_menu103 && this->m_input_valid == MenuEdit::input_mark_update_add;
-}
-
-bool InputValue::get_valid_help(std::string value) {
-    return value == this->m_input_help101 && this->m_input_valid == MenuEdit::addition || value == this->m_input_help102 && this->m_input_valid == MenuEdit::input_mark_search || value == this->m_input_help103 && this->m_input_valid == MenuEdit::input_mark_update_add;
-}
-
-bool InputValue::get_valid_result_table(std::string value) {
-    return value == this->m_input_result_table101 && this->m_input_valid == MenuEdit::addition || value == this->m_input_result_table102 && this->m_input_valid == MenuEdit::input_mark_search || value == this->m_input_result_table103 && this->m_input_valid == MenuEdit::input_mark_update_add;
-}
-
-bool InputValue::get_valid_clear(std::string value) {
-    return value == this->m_input_clear101 && this->m_input_valid == MenuEdit::addition || value == this->m_input_clear102 && this->m_input_valid == MenuEdit::input_mark_search || value == this->m_input_clear103 && this->m_input_valid == MenuEdit::input_mark_update_add;
-}
-
-bool InputValue::get_input_result() {
-    return this->m_operator == this->m_input_result101 && this->m_input_valid == MenuEdit::addition || this->m_operator == this->m_input_result102 && this->m_input_valid == MenuEdit::input_mark_search || this->m_operator == this->m_input_result103 && this->m_input_valid == MenuEdit::input_mark_update_add;
-}
-
-bool InputValue::get_input_search(char value) {
-    return value == this->m_input_search101[0] && this->m_input_valid == MenuEdit::addition || value == this->m_input_search102[0] && this->m_input_valid == MenuEdit::input_mark_search || value == this->m_input_search103[0] && this->m_input_valid == MenuEdit::input_mark_update_add;
-}
-
 std::string InputValue::get_m_input_menu() {
     if (this->m_input_valid == MenuEdit::addition)
         return this->m_input_menu101;
@@ -326,17 +295,16 @@ bool InputValue::valid_number() {
         }
     }
     catch (std::exception& e) {
-        std::cout << "Standard exception: result" << e.what() << std::endl;
+        //std::cout << "Standard exception: result" << e.what() << std::endl;
         return false;
     }
 
 }
 bool InputValue::isValidInt() {
-    
     do{
-        if (this->get_valid_menu(this->m_var1) || this->get_valid_menu(this->m_operator))
+        if ((test != "" ? this->m_operator : this->m_var1) == this->m_input_menu101 && this->m_input_valid == MenuEdit::addition || (test != "" ? this->m_operator : this->m_var1) == this->m_input_menu102 && this->m_input_valid == MenuEdit::input_mark_search || (test != "" ? this->m_operator : this->m_var1) == this->m_input_menu103 && this->m_input_valid == MenuEdit::input_mark_update_add)
             return false;
-        else if (this->get_valid_help(this->m_var1) || this->get_valid_help(this->m_operator)) {
+        else if ((test != "" ? this->m_operator : this->m_var1) == this->m_input_help101 && this->m_input_valid == MenuEdit::addition || (test != "" ? this->m_operator : this->m_var1) == this->m_input_help102 && this->m_input_valid == MenuEdit::input_mark_search || (test != "" ? this->m_operator : this->m_var1) == this->m_input_help103 && this->m_input_valid == MenuEdit::input_mark_update_add) {
             std::string label = this->get_m_print_help(this->m_input_valid);
             int color_label = this->get_color_by_name(this->m_color_help);
             this->print_statement(label, color_label);
@@ -344,14 +312,14 @@ bool InputValue::isValidInt() {
             color_label = test != "" ? this->get_color_by_name(this->m_color_operator) : this->get_color_by_name(this->m_color_number);
             this->print_statement(label, color_label, test != "" ? &this->m_operator : &this->m_var1);
         }
-        else if (this->get_valid_result_table(this->m_var1) || this->get_valid_result_table(this->m_operator)) {
+        else if ((test != "" ? this->m_operator : this->m_var1) == this->m_input_result_table101 && this->m_input_valid == MenuEdit::addition || (test != "" ? this->m_operator : this->m_var1) == this->m_input_result_table102 && this->m_input_valid == MenuEdit::input_mark_search || (test != "" ? this->m_operator : this->m_var1) == this->m_input_result_table103 && this->m_input_valid == MenuEdit::input_mark_update_add) {
             std::string label = test != "" ? this->get_m_print_operator() : this->get_m_print_number();
             this->show_result_table(label);
             label = test != "" ? this->get_m_print_operator() : this->get_m_print_number();
             int color_label = test != "" ? this->get_color_by_name(this->m_color_operator) : this->get_color_by_name(this->m_color_number);
             this->print_statement(label, color_label, test != "" ? &this->m_operator : &this->m_var1);
         }
-        else if (this->get_valid_clear(this->m_var1) || this->get_valid_clear(this->m_operator)) {
+        else if ((test != "" ? this->m_operator : this->m_var1) == this->m_input_clear101 && this->m_input_valid == MenuEdit::addition || (test != "" ? this->m_operator : this->m_var1) == this->m_input_clear102 && this->m_input_valid == MenuEdit::input_mark_search || (test != "" ? this->m_operator : this->m_var1) == this->m_input_clear103 && this->m_input_valid == MenuEdit::input_mark_update_add) {
             vec.clear();
             std::string label = this->get_m_print_clear();
             int color_label = this->get_color_by_name(this->m_color_clear);
@@ -362,14 +330,18 @@ bool InputValue::isValidInt() {
             this->print_statement(label, color_label, &this->m_var1);
             test = test != "" ? "" : test;
         }
-        else if (this->get_input_search(this->m_var1[0]) && this->m_var1.size() >= 2 || this->get_input_search(this->m_operator[0]) && this->m_operator.size() >= 2) {
+        else if ((test != "" ? this->m_operator[0] : this->m_var1[0]) == this->m_input_search101[0] && this->m_input_valid == MenuEdit::addition && ((test != "" ? this->m_operator.size() : this->m_var1.size()) >= 2) || (test != "" ? this->m_operator[0] : this->m_var1[0]) == this->m_input_search102[0] && this->m_input_valid == MenuEdit::input_mark_search && ((test != "" ? this->m_operator.size() : this->m_var1.size()) >= 2) || (test != "" ? this->m_operator[0] : this->m_var1[0]) == this->m_input_search103[0] && this->m_input_valid == MenuEdit::input_mark_update_add && ((test != "" ? this->m_operator.size() : this->m_var1.size()) >= 2)) {
             this->set_value();
             for (int i = 0; i < (test != "" ? this->m_operator.size() : this->m_var1.size()); i++) {
-                if (this->m_var1.length() > MAX_SIZE_STRING || this->m_operator.length() > MAX_SIZE_STRING
+                if (
+                    this->m_var1.length() > MAX_SIZE_STRING || this->m_operator.length() > MAX_SIZE_STRING
                     || this->m_var1[0] == '0' || this->m_operator[0] == '0'
                     || !isdigit(test != "" ? this->m_operator.at(i) : this->m_var1.at(i))
+
                     || stoi(test != "" ? this->m_operator: this->m_var1) > this->myResult.size() 
-                    || stoi(test != "" ? this->m_operator: this->m_var1) < 1) {
+                    || stoi(test != "" ? this->m_operator: this->m_var1) < 1
+                    
+                    ) {
                     std::string label = test != "+" ? this->get_m_print_error_number() : this->get_m_print_error_operator();
                     int color_label = test != "+" ? this->get_color_by_name(this->m_color_error_number) : this->get_color_by_name(this->m_color_error_operator);
                     this->print_statement(label, color_label);
@@ -385,7 +357,7 @@ bool InputValue::isValidInt() {
                 }
             }
         }       
-        else if (this->get_input_result() && vec.size() >= 1 && m_id != 0 || this->get_input_result() && vec.size() >= 1 && this->m_input_valid != MenuEdit::input_mark_search) {
+        else if (this->m_operator == this->m_input_result101 && this->m_input_valid == MenuEdit::addition && vec.size() >= 1 || this->m_operator == this->m_input_result103 && this->m_input_valid == MenuEdit::input_mark_update_add && vec.size() >= 1 || this->m_operator == this->m_input_result102 && vec.size() >= 1 && m_id != 0 && this->m_input_valid == MenuEdit::input_mark_search) {
             vec.push_back(Input(this->m_var1, "", this->m_result));
             return false;
         }
@@ -426,7 +398,7 @@ std::string InputValue::check_vec(std::vector<Input> vec) {
 }
 
 std::string InputValue::add_search_ubdate(std::string value) {
-    if (this->get_valid_menu(value))
+    if (value == this->m_input_menu101 && this->m_input_valid == MenuEdit::addition || value == this->m_input_menu102 && this->m_input_valid == MenuEdit::input_mark_search || value == this->m_input_menu103 && this->m_input_valid == MenuEdit::input_mark_update_add)
         //her print label confirm
         return "";
     else if (this->vec.empty() && this->test != "") {
@@ -482,7 +454,7 @@ std::string InputValue::add_search_ubdate(std::string value) {
             test = "+";
             continue;
         }
-        else if (this->get_valid_menu(this->m_var1) || this->get_valid_menu(this->m_operator)) {
+        else if ((test != "" ? this->m_operator : this->m_var1) == this->m_input_menu101 && this->m_input_valid == MenuEdit::addition || (test != "" ? this->m_operator : this->m_var1) == this->m_input_menu102 && this->m_input_valid == MenuEdit::input_mark_search || (test != "" ? this->m_operator : this->m_var1) == this->m_input_menu103 && this->m_input_valid == MenuEdit::input_mark_update_add) {
             this->m_var1 = test != "+" ? "" : this->m_var1;// for display table in confirm section when call constractor confirm and send operator
             return this->get_m_input_menu();
         }
