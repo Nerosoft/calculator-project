@@ -84,7 +84,7 @@ void Tables::int_tables(bool state, std::vector<Input>* vec, std::vector<std::st
         }
 
 
-        if (state && z < vec->size()) {//call this code inside function
+        if (state && z < vec->size()) {//using if else her important
             if (z + 1 == vec->size() && trim(vec->at(vec->size() - 1).m_operator) == "" && this->get_total_address(this->m_type_table_operator) || vec->at(z).m_operator.length() > array1->at(array1->size() - 1).length() && this->get_total_address(this->m_type_table_operator)) {
                 int myLen = (z + 1 == vec->size() && trim(vec->at(vec->size() - 1).m_operator) == "" ? vec->at(vec->size() - 1).m_var1.length() : vec->at(z).m_operator.length()) - array1->at(array1->size() - 1).length();
                 for (int ii = 0; ii < myLen; ii++)
@@ -97,7 +97,7 @@ void Tables::int_tables(bool state, std::vector<Input>* vec, std::vector<std::st
             }
         }
         else if (state)
-            for (int i = 0; i < (heddinResult && heddinIndex ? 2 : 1); i++) {
+            for (int i = 0; i < (heddinResult && heddinIndex ? 2 : 1); i++) {//user if her
                 int myLen = i == 0 && heddinResult && heddinIndex ? vec->at(0).m_result.length() - array1->at(array1->size() - 2).length() : heddinIndex ? vec->at(0).m_index.length() - array1->at(array1->size() - 1).length() : vec->at(0).m_result.length() - array1->at(array1->size() - 1).length();
                 for (int ii = 0; ii < myLen; ii++)
                     array1->at(heddinResult && heddinIndex && i == 0 ? array1->size() - 2 : array1->size() - 1) += " ";
